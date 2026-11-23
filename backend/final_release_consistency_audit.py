@@ -60,7 +60,7 @@ for doc in ALL_DOCS:
 
 # Verify ALL Markdown and HTML relative figure links resolve on disk (expect >= 7 per doc)
 img_checks = [
-    (ROOT / "README.md", ROOT, r"\[[^\]]*\]\(((?:presentation/)?figures/[^)]+\.png)\)"),
+    (ROOT / "README.md", ROOT, r'(?:src="|\]\()((?:presentation/)?figures/[^"\)]+\.png)'),
     (ROOT / "presentation/MedVision_Academic_Report.md", ROOT / "presentation", r"\[[^\]]*\]\((figures/[^)]+\.png)\)"),
     (ROOT / "presentation/MedVision_Academic_Report.html", ROOT / "presentation", r'src="(figures/[^"]+\.png)"'),
 ]
