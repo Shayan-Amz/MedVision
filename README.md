@@ -136,27 +136,5 @@ uvicorn app.main:app --host 127.0.0.1 --port 8000
   - **High-Specificity Alert Gate:** `TP=43, FN=36, TN=129, FP=30` (`Sens 54.4%`, `Spec 81.1%`; anti-alert-fatigue pager filter only, not standalone screening)
 
 
-## Publication Figures (300 DPI)
-
-### 1. Clinical LLM & Disclosed Train-Bank RAG Progression
-<p align="center"><img src="presentation/figures/fig1_llm_progression_bar.png" alt="presentation/figures/fig1_llm_progression_bar.png" width="92%"/></p>
-
-### 2. NIH ChestX-ray14 Full Official Test (`n=25,596`) ? Per-Class AUROC
-<p align="center"><img src="presentation/figures/fig2_nih14_per_class_auroc.png" alt="presentation/figures/fig2_nih14_per_class_auroc.png" width="92%"/></p>
-
-### 3. ConvNeXt-Small Training Convergence & Official Test ROC Curves
-<p align="center"><img src="presentation/figures/fig3_training_convergence.png" alt="presentation/figures/fig3_training_convergence.png" width="92%"/></p>
-
-<p align="center"><img src="presentation/figures/fig6_nih14_ensemble_roc_300dpi.png" alt="presentation/figures/fig6_nih14_ensemble_roc_300dpi.png" width="92%"/></p>
-
-### 4. Off-the-Shelf Lung Segmentation & XAI Localization Ablation
-<p align="center"><img src="presentation/figures/fig4_segmentation_and_xai_ablation.png" alt="presentation/figures/fig4_segmentation_and_xai_ablation.png" width="92%"/></p>
-
-### 5. Single-GPU VRAM Footprint (`6.52 GB / 12.0 GB` RTX 4080)
-<p align="center"><img src="presentation/figures/fig5_vram_footprint.png" alt="presentation/figures/fig5_vram_footprint.png" width="92%"/></p>
-
-### 6. Patient-Level Cluster Bootstrap CIs & External IU-Xray Feasibility (`n=238`)
-<p align="center"><img src="presentation/figures/fig7_bootstrap_ci_and_external_e2e.png" alt="presentation/figures/fig7_bootstrap_ci_and_external_e2e.png" width="92%"/></p>
-
 
 - **Clinical Scope:** MedVision AI Studio v4.0 is an academic **Research Prototype** and clinical decision-support proof-of-concept, not a cleared diagnostic or triage device.
