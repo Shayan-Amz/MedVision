@@ -2,61 +2,7 @@
 
 > **A Modular Multimodal Clinical AI Suite for Thoracic Radiology Triage, Explainable Anatomical Segmentation, Dual-Adapter 7B Clinical Synthesis, and Disclosed Train-Bank 175k Medical RAG — Running Concurrently in `6.52 GB` VRAM on a Single Consumer Laptop GPU.**
 
-## Quick Start & Reproducibility (Windows / Linux + CUDA)
-
-> **Repository Scope:** Heavy binary artifacts (~30 GB total: model checkpoints `.pth`/LoRA weights, `Qwen2.5-7B-Instruct`, NIH-14/IU-Xray raw images, and the 175k FAISS binary index) are intentionally excluded via `.gitignore`. All training, RAG-indexing, evaluation, and verification scripts are included below to reproduce the full stack locally on a single 12 GB CUDA GPU.
-
-### 1. Environment Setup
-```powershell
-git clone https://github.com/Shayan-Amz/MedVision.git
-cd MedVision/backend
-python -m venv .venv_gpu
-.\.venv_gpu\Scripts\Activate.ps1
-pip install torch torchvision --index-url https://download.pytorch.org/whl/cu124
-pip install -r requirements.txt
-pip install torchxrayvision faiss-cpu sentence-transformers peft bitsandbytes accelerate datasets scikit-learn matplotlib pydicom
-```
-
-### 2. Model Training & RAG Index Reproduction (Optional - Full Pipeline)
-```powershell
-# A. Vision Ensemble (NIH ChestX-ray14: DenseNet-121 + ConvNeXt-Small)
-python phase3a_nih14_vision_train_eval.py
-python phase3d_convnext_ensemble_nih14.py
-
-# B. Clinical LLM Dual-LoRA (4-bit NF4 Qwen2.5-7B-Instruct: Clinical QA + IU-Xray Radiologist)
-python phase2a_scaled_multitask_sft.py
-python phase3b_iu_xray_clinical_report_eval.py
-
-# C. Build the 175,413-Passage FAISS + Cross-Encoder Medical RAG Index
-python phase2h_scientific_boost_80_60.py
-```
-
-### 3. Launch the FastAPI Radiology Workstation (Web App)
-```powershell
-cd backend
-.\.venv_gpu\Scripts\Activate.ps1
-uvicorn app.main:app --host 127.0.0.1 --port 8000
-# Open http://127.0.0.1:8000 in your browser
-```
-
-### 4. Launch n8n STAT Triage Automation (Gmail + Google Sheets + Telegram)
-```powershell
-# From the repository root (starts n8n on http://localhost:5678)
-docker compose up -d
-```
-1. Open `http://localhost:5678` and import `n8n_workflows/01_emergency_clinical_triage.json`.
-2. Connect your **Gmail**, **Google Sheets** (`MedVision_STAT_Triage_Log`), and/or **Telegram Bot** credentials in the corresponding nodes.
-3. Click **Save -> Publish** so FastAPI `STAT` alerts (`http://localhost:5678/webhook/medvision-critical-triage`) dispatch live notifications with deep links (`http://127.0.0.1:8000/?study_id=...`).
-
-### 5. Run Standalone Verification & Unit Tests (No GPU / FAISS Required)
-```powershell
-cd backend
-python tests/test_clinical_safety_guardrail.py
-python verify_manifests_reproducible.py
-python final_release_consistency_audit.py
-```
-
-# Open http://127.0.0.1:8000
+**Quick Navigation:** [1. Executive Summary](#1-executive-summary--biostatistical-significance-pre-submission-ready) | [2. Ablations](#2-controlled-ablation-studies-identical-splits) | [4. Figures](#4-empirical-figures-300-dpi) | [6. Limitations](#6-transparent-scientific-limitations--future-work) | [8. Quick Start & Reproducibility](#8-quick-start--reproducibility-windows--linux--cuda)
 
 # MedVision & Clinical LLM Studio (v4.0): A Modular Multimodal Clinical AI Suite on a Single 12 GB Consumer GPU
 
@@ -203,3 +149,60 @@ python final_release_consistency_audit.py
 
 
 - **Clinical Scope:** MedVision AI Studio v4.0 is an academic **Research Prototype** and clinical decision-support proof-of-concept, not a cleared diagnostic or triage device.
+
+
+## 8. Quick Start & Reproducibility (Windows / Linux + CUDA)
+
+> **Repository Scope:** Heavy binary artifacts (~30 GB total: model checkpoints `.pth`/LoRA weights, `Qwen2.5-7B-Instruct`, NIH-14/IU-Xray raw images, and the 175k FAISS binary index) are intentionally excluded via `.gitignore`. All training, RAG-indexing, evaluation, and verification scripts are included below to reproduce the full stack locally on a single 12 GB CUDA GPU.
+
+### 8.1 Environment Setup
+```powershell
+git clone https://github.com/Shayan-Amz/MedVision.git
+cd MedVision/backend
+python -m venv .venv_gpu
+.\.venv_gpu\Scripts\Activate.ps1
+pip install torch torchvision --index-url https://download.pytorch.org/whl/cu124
+pip install -r requirements.txt
+pip install torchxrayvision faiss-cpu sentence-transformers peft bitsandbytes accelerate datasets scikit-learn matplotlib pydicom
+```
+
+### 8.2 Model Training & RAG Index Reproduction (Optional - Full Pipeline)
+```powershell
+# A. Vision Ensemble (NIH ChestX-ray14: DenseNet-121 + ConvNeXt-Small)
+python phase3a_nih14_vision_train_eval.py
+python phase3d_convnext_ensemble_nih14.py
+
+# B. Clinical LLM Dual-LoRA (4-bit NF4 Qwen2.5-7B-Instruct: Clinical QA + IU-Xray Radiologist)
+python phase2a_scaled_multitask_sft.py
+python phase3b_iu_xray_clinical_report_eval.py
+
+# C. Build the 175,413-Passage FAISS + Cross-Encoder Medical RAG Index
+python phase2h_scientific_boost_80_60.py
+```
+
+### 8.3 Launch the FastAPI Radiology Workstation (Web App)
+```powershell
+cd backend
+.\.venv_gpu\Scripts\Activate.ps1
+uvicorn app.main:app --host 127.0.0.1 --port 8000
+# Open http://127.0.0.1:8000 in your browser
+```
+
+### 8.4 Launch n8n STAT Triage Automation (Gmail + Google Sheets + Telegram)
+```powershell
+# From the repository root (starts n8n on http://localhost:5678)
+docker compose up -d
+```
+1. Open `http://localhost:5678` and import `n8n_workflows/01_emergency_clinical_triage.json`.
+2. Connect your **Gmail**, **Google Sheets** (`MedVision_STAT_Triage_Log`), and/or **Telegram Bot** credentials in the corresponding nodes.
+3. Click **Save -> Publish** so FastAPI `STAT` alerts (`http://localhost:5678/webhook/medvision-critical-triage`) dispatch live notifications with deep links (`http://127.0.0.1:8000/?study_id=...`).
+
+### 8.5 Run Standalone Verification & Unit Tests (No GPU / FAISS Required)
+```powershell
+cd backend
+python tests/test_clinical_safety_guardrail.py
+python verify_manifests_reproducible.py
+python final_release_consistency_audit.py
+```
+
+# Open http://127.0.0.1:8000
