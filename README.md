@@ -103,15 +103,32 @@ uvicorn app.main:app --host 127.0.0.1 --port 8000
 ---
 
 ## 4. Empirical Figures (300 DPI)
-<p align="center"><img src="presentation/figures/fig7_bootstrap_ci_and_external_e2e.png" alt="presentation/figures/fig7_bootstrap_ci_and_external_e2e.png" width="92%"/></p>
-<p align="center"><img src="presentation/figures/fig1_llm_progression_bar.png" alt="presentation/figures/fig1_llm_progression_bar.png" width="92%"/></p>
-<p align="center"><img src="presentation/figures/fig2_nih14_per_class_auroc.png" alt="presentation/figures/fig2_nih14_per_class_auroc.png" width="92%"/></p>
-<p align="center"><img src="presentation/figures/fig3_training_convergence.png" alt="presentation/figures/fig3_training_convergence.png" width="92%"/></p>
-<p align="center"><img src="presentation/figures/fig6_nih14_ensemble_roc_300dpi.png" alt="presentation/figures/fig6_nih14_ensemble_roc_300dpi.png" width="92%"/></p>
-<p align="center"><img src="presentation/figures/fig4_segmentation_and_xai_ablation.png" alt="presentation/figures/fig4_segmentation_and_xai_ablation.png" width="92%"/></p>
-<p align="center"><img src="presentation/figures/fig5_vram_footprint.png" alt="presentation/figures/fig5_vram_footprint.png" width="92%"/></p>
 
----
+### Figure 1 ? Clinical LLM & Disclosed Train-Bank RAG Progression
+<p align="center"><img src="presentation/figures/fig1_llm_progression_bar.png" alt="Clinical LLM and RAG Progression" width="92%"/></p>
+<p align="center"><em>(Left) PubMedQA Held-Out (n=200, 0 overlap, 0 RAG; Majority-Class 51.5%, Base 39.50% -> Fine-tuned 78.50%, Macro-F1 60.05%). (Right) MedMCQA Validation (n=4,183; Base 55.99% -> Closed-Book v3 59.45% -> Train-Bank RAG 64.52% Single / 64.98% Cyclic-4; deduped n=4,136: 64.80%).</em></p>
+
+### Figure 2 ? NIH ChestX-ray14 Full Official Test (`n=25,596`) Per-Class AUROC
+<p align="center"><img src="presentation/figures/fig2_nih14_per_class_auroc.png" alt="NIH-14 Per-Class AUROC" width="92%"/></p>
+<p align="center"><em>Heterogeneous DenseNet-121 + ConvNeXt-Small ensemble (Mean AUROC 0.8213) outperforms both individual backbones across all 14 thoracic pathologies.</em></p>
+
+### Figure 3 ? ConvNeXt-Small Training Convergence (`69k` Train / `8.6k` Val)
+<p align="center"><img src="presentation/figures/fig3_training_convergence.png" alt="ConvNeXt-Small Training Convergence" width="76%"/></p>
+<p align="center"><em>8-epoch weighted-BCE loss and validation AUROC progression (Val Ensemble = 0.8522; patient-disjoint verified with 0 overlap).</em></p>
+
+### Figure 4 ? NIH-14 Official Test ROC Curves (`n=25,596` / `2,797` Unique Patients)
+<p align="center"><img src="presentation/figures/fig6_nih14_ensemble_roc_300dpi.png" alt="NIH-14 Official Test ROC Curves" width="80%"/></p>
+
+### Figure 5 ? Off-the-Shelf Lung Segmentation & XAI Localization Ablation
+<p align="center"><img src="presentation/figures/fig4_segmentation_and_xai_ablation.png" alt="Lung Segmentation and XAI Localization Ablation" width="92%"/></p>
+
+### Figure 6 ? Single-GPU VRAM Footprint (`6.52 GB / 12.0 GB` RTX 4080)
+<p align="center"><img src="presentation/figures/fig5_vram_footprint.png" alt="Single-GPU VRAM Footprint" width="76%"/></p>
+
+### Figure 7 ? Patient-Level Cluster Bootstrap CIs & External IU-Xray Feasibility (`n=238`)
+<p align="center"><img src="presentation/figures/fig7_bootstrap_ci_and_external_e2e.png" alt="Patient-Level Bootstrap CIs and External IU-Xray Feasibility" width="92%"/></p>
+<p align="center"><em>(Left) NIH-14 Patient-Level Cluster Bootstrap (B=2,000, 2,797 patients): Ensemble 0.8213 [0.8151, 0.8267]. (Right) External Weak-Label IU-Xray Feasibility (250 selected / n=238 evaluated frontal CXRs; AUROC 0.7408 [0.6699, 0.8070], 2.53s latency).</em></p>
+
 
 ## 5. System Architecture & Human-in-the-Loop Deployment
 * **Production Stack (`6.52 GB` Peak VRAM, `2.53s` E2E Latency):** FastAPI (`v4.0`) serves `DenseNet-121`, `ConvNeXt-Small`, `PSPNet`, and 4-bit `Qwen2.5-7B-Instruct` (`PyTorch/Transformers`) with dynamic Dual-Adapter routing (`radiologist` + `clinical_qa`), paired with a CPU-offloaded `175,413`-passage `FAISS + Cross-Encoder` RAG index (`Single-Pass` in production).
