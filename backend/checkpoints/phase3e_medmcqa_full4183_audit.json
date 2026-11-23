@@ -1,0 +1,15 @@
+{
+  "n_total": 4183,
+  "single_pass_rag_acc_pct": 64.52,
+  "cyclic4_rag_acc_pct": 64.98,
+  "nih14_counts": {
+    "train": 69000,
+    "val": 8617,
+    "test": 25500
+  },
+  "nih14_overlaps": {
+    "train_val": 0,
+    "train_test": 0,
+    "val_test": 0
+  }
+}

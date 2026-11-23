@@ -1,0 +1,25 @@
+{
+  "convnext_weight": 0.45,
+  "densenet_weight": 0.55,
+  "thresholds": {
+    "Atelectasis": 0.5046916604042053,
+    "Cardiomegaly": 0.1168549507856369,
+    "Effusion": 0.48320215940475464,
+    "Infiltration": 0.44364991784095764,
+    "Mass": 0.23748154938220978,
+    "Nodule": 0.3957604169845581,
+    "Pneumonia": 0.1066938266158104,
+    "Pneumothorax": 0.19485940039157867,
+    "Consolidation": 0.2508787214756012,
+    "Edema": 0.1093263253569603,
+    "Emphysema": 0.10667752474546432,
+    "Fibrosis": 0.10361997783184052,
+    "Pleural_Thickening": 0.174129918217659,
+    "Hernia": 0.011752462014555931
+  },
+  "test_mean_auroc_densenet": 0.8139,
+  "test_mean_auroc_convnext": 0.8141,
+  "test_mean_auroc_ensemble": 0.8213,
+  "n_official_test": 25596,
+  "n_unique_test_patients": 2797
+}

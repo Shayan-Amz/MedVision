@@ -1,0 +1,316 @@
+{
+  "hardware": "NVIDIA GeForce RTX 4080 Laptop GPU",
+  "base_model": "./qwen7b_local",
+  "stage1_sft": {
+    "train_samples": 5000,
+    "val_samples": 300,
+    "lora_r": 32,
+    "lora_alpha": 64,
+    "elapsed_sec": 2689.7,
+    "val_loss": 0.646,
+    "val_perplexity": 1.91,
+    "train_logs": [
+      {
+        "step": 10,
+        "epoch": 0.03,
+        "loss": 1.3046,
+        "vram_gb": 9.26
+      },
+      {
+        "step": 20,
+        "epoch": 0.06,
+        "loss": 0.6903,
+        "vram_gb": 9.46
+      },
+      {
+        "step": 30,
+        "epoch": 0.1,
+        "loss": 0.6846,
+        "vram_gb": 9.5
+      },
+      {
+        "step": 40,
+        "epoch": 0.13,
+        "loss": 0.6932,
+        "vram_gb": 9.5
+      },
+      {
+        "step": 50,
+        "epoch": 0.16,
+        "loss": 0.6835,
+        "vram_gb": 9.6
+      },
+      {
+        "step": 60,
+        "epoch": 0.19,
+        "loss": 0.6691,
+        "vram_gb": 9.6
+      },
+      {
+        "step": 70,
+        "epoch": 0.22,
+        "loss": 0.6884,
+        "vram_gb": 9.6
+      },
+      {
+        "step": 80,
+        "epoch": 0.26,
+        "loss": 0.6727,
+        "vram_gb": 9.6
+      },
+      {
+        "step": 90,
+        "epoch": 0.29,
+        "loss": 0.6735,
+        "vram_gb": 9.6
+      },
+      {
+        "step": 100,
+        "epoch": 0.32,
+        "loss": 0.6479,
+        "vram_gb": 9.6
+      },
+      {
+        "step": 110,
+        "epoch": 0.35,
+        "loss": 0.6733,
+        "vram_gb": 9.6
+      },
+      {
+        "step": 120,
+        "epoch": 0.38,
+        "loss": 0.6765,
+        "vram_gb": 9.6
+      },
+      {
+        "step": 130,
+        "epoch": 0.42,
+        "loss": 0.6862,
+        "vram_gb": 9.6
+      },
+      {
+        "step": 140,
+        "epoch": 0.45,
+        "loss": 0.6553,
+        "vram_gb": 9.6
+      },
+      {
+        "step": 150,
+        "epoch": 0.48,
+        "loss": 0.672,
+        "vram_gb": 9.77
+      },
+      {
+        "step": 160,
+        "epoch": 0.51,
+        "loss": 0.6488,
+        "vram_gb": 9.77
+      },
+      {
+        "step": 170,
+        "epoch": 0.54,
+        "loss": 0.6488,
+        "vram_gb": 9.77
+      },
+      {
+        "step": 180,
+        "epoch": 0.58,
+        "loss": 0.6611,
+        "vram_gb": 9.77
+      },
+      {
+        "step": 190,
+        "epoch": 0.61,
+        "loss": 0.6607,
+        "vram_gb": 9.77
+      },
+      {
+        "step": 200,
+        "epoch": 0.64,
+        "loss": 0.6735,
+        "vram_gb": 9.77
+      },
+      {
+        "step": 210,
+        "epoch": 0.67,
+        "loss": 0.665,
+        "vram_gb": 9.77
+      },
+      {
+        "step": 220,
+        "epoch": 0.7,
+        "loss": 0.6541,
+        "vram_gb": 9.77
+      },
+      {
+        "step": 230,
+        "epoch": 0.74,
+        "loss": 0.6374,
+        "vram_gb": 9.77
+      },
+      {
+        "step": 240,
+        "epoch": 0.77,
+        "loss": 0.6758,
+        "vram_gb": 9.77
+      },
+      {
+        "step": 250,
+        "epoch": 0.8,
+        "loss": 0.6642,
+        "vram_gb": 9.77
+      },
+      {
+        "step": 260,
+        "epoch": 0.83,
+        "loss": 0.6413,
+        "vram_gb": 9.77
+      },
+      {
+        "step": 270,
+        "epoch": 0.86,
+        "loss": 0.6485,
+        "vram_gb": 9.77
+      },
+      {
+        "step": 280,
+        "epoch": 0.9,
+        "loss": 0.6616,
+        "vram_gb": 9.77
+      },
+      {
+        "step": 290,
+        "epoch": 0.93,
+        "loss": 0.6657,
+        "vram_gb": 9.77
+      },
+      {
+        "step": 300,
+        "epoch": 0.96,
+        "loss": 0.669,
+        "vram_gb": 9.77
+      },
+      {
+        "step": 310,
+        "epoch": 0.99,
+        "loss": 0.6739,
+        "vram_gb": 9.77
+      }
+    ],
+    "eval_logs": [
+      {
+        "step": 50,
+        "epoch": 0.16,
+        "eval_loss": 0.674,
+        "perplexity": 1.96,
+        "vram_gb": 9.6
+      },
+      {
+        "step": 100,
+        "epoch": 0.32,
+        "eval_loss": 0.6627,
+        "perplexity": 1.94,
+        "vram_gb": 9.6
+      },
+      {
+        "step": 150,
+        "epoch": 0.48,
+        "eval_loss": 0.6538,
+        "perplexity": 1.92,
+        "vram_gb": 9.77
+      },
+      {
+        "step": 200,
+        "epoch": 0.64,
+        "eval_loss": 0.6503,
+        "perplexity": 1.92,
+        "vram_gb": 9.77
+      },
+      {
+        "step": 250,
+        "epoch": 0.8,
+        "eval_loss": 0.6463,
+        "perplexity": 1.91,
+        "vram_gb": 9.77
+      },
+      {
+        "step": 300,
+        "epoch": 0.96,
+        "eval_loss": 0.6459,
+        "perplexity": 1.91,
+        "vram_gb": 9.77
+      },
+      {
+        "step": 313,
+        "epoch": 1.0,
+        "eval_loss": 0.646,
+        "perplexity": 1.91,
+        "vram_gb": 9.77
+      },
+      {
+        "step": 313,
+        "epoch": 1.0,
+        "eval_loss": 0.646,
+        "perplexity": 1.91,
+        "vram_gb": 9.77
+      }
+    ]
+  },
+  "stage2_dpo": {
+    "dpo_pairs": 32,
+    "elapsed_sec": 91.5,
+    "final_dpo_loss": 0.0947,
+    "train_logs": [
+      {
+        "step": 1,
+        "epoch": 0.25,
+        "loss": 0.6931,
+        "vram_gb": 11.5
+      },
+      {
+        "step": 2,
+        "epoch": 0.5,
+        "loss": 0.0518,
+        "vram_gb": 11.51
+      },
+      {
+        "step": 3,
+        "epoch": 0.75,
+        "loss": 0.0099,
+        "vram_gb": 11.52
+      },
+      {
+        "step": 4,
+        "epoch": 1.0,
+        "loss": 0.0013,
+        "vram_gb": 11.52
+      },
+      {
+        "step": 5,
+        "epoch": 1.25,
+        "loss": 0.0005,
+        "vram_gb": 11.52
+      },
+      {
+        "step": 6,
+        "epoch": 1.5,
+        "loss": 0.0003,
+        "vram_gb": 11.52
+      },
+      {
+        "step": 7,
+        "epoch": 1.75,
+        "loss": 0.0002,
+        "vram_gb": 11.52
+      },
+      {
+        "step": 8,
+        "epoch": 2.0,
+        "loss": 0.0001,
+        "vram_gb": 11.52
+      }
+    ]
+  },
+  "peak_vram_gb": 11.52,
+  "final_checkpoint": "C:\\Users\\shaya\\Downloads\\medvision-ai-studio-full-project\\medvision-ai-studio\\backend\\checkpoints\\medvision-7b-stage2-dpo-final"
+}

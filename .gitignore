@@ -1,0 +1,62 @@
+﻿# Python & Virtual Environments
+.venv/
+.venv_gpu/
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.pytest_cache/
+
+# Secrets & Local Runtime Data
+.env
+*.db
+*.sqlite
+*.sqlite3
+*.log
+backend/study_cache/
+backend/app/main_v3_backup.py
+
+# Heavy Model Weights, Datasets, Wheels & Binary Indices (Excluded from Git)
+*.whl
+*.pth
+*.pt
+*.bin
+*.safetensors
+*.onnx
+*.faiss
+*.index
+*.parquet
+*.zip
+backend/qwen7b_local/
+backend/nih_cxr14_cache/
+backend/medical_rag_index/
+backend/medical_rag_index_full/*
+!backend/medical_rag_index_full/corpus_manifest.json
+
+# Keep lightweight JSON metrics & split manifests in checkpoints; exclude heavy weights/NPZ
+backend/checkpoints/*
+!backend/checkpoints/*.json
+!backend/checkpoints/medmcqa_predictions.csv
+
+# Exclude temporary one-off formatting/patch helper scripts
+backend/fix_*.py
+backend/polish_*.py
+backend/patch_*.py
+backend/run_*.py
+backend/sync_*.py
+backend/final_clean_polish_v4.py
+backend/rerender_final_v4_figures.py
+
+# OS & IDE
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# Exclude superseded legacy figures, duplicate docs/figures copy & local test images
+docs/figures/
+**/fig3_learning_curve_and_regression.png
+**/fig5_perplexity_and_vram.png
+**/fig7_reviewer2_ci_and_e2e.png
+backend/*.jpg
+backend/*.png

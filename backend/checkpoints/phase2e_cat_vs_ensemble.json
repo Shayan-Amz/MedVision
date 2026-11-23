@@ -1,0 +1,12 @@
+{
+  "cat_50": {
+    "pubmedqa": 77.0,
+    "medmcqa": 55.0
+  },
+  "best_prob_ensemble": {
+    "w_v2": 0.6,
+    "pubmedqa": 78.0,
+    "medmcqa": 54.0,
+    "avg": 66.0
+  }
+}

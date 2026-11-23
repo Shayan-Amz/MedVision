@@ -1,0 +1,97 @@
+{
+  "name": "MedVision 01 - Emergency Clinical Triage & Specialist Dispatch",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "medvision-emergency-triage",
+        "responseMode": "onReceived",
+        "options": {}
+      },
+      "id": "node-webhook-triage",
+      "name": "FastAPI Critical Finding Webhook",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 1,
+      "position": [220, 300]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "number": [
+            {
+              "value1": "={{$json.body.confidence_score}}",
+              "operation": "largerEqual",
+              "value2": 0.82
+            }
+          ],
+          "string": [
+            {
+              "value1": "={{$json.body.urgency}}",
+              "value2": "CRITICAL"
+            }
+          ]
+        }
+      },
+      "id": "node-if-critical",
+      "name": "Verify Critical Threshold (>=82%)",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 1,
+      "position": [460, 300]
+    },
+    {
+      "parameters": {
+        "calendar": "radiology-emergency@hospital.org",
+        "start": "={{$now.plus({minutes: 15}).toISO()}}",
+        "end": "={{$now.plus({minutes: 45}).toISO()}}",
+        "additionalFields": {
+          "summary": "STAT Consult: {{$json.body.primary_finding}} - {{$json.body.patient_name}} ({{$json.body.patient_mrn}})",
+          "description": "Grad-CAM Confidence: {{$json.body.confidence_score}}\nImpression: {{$json.body.clinical_impression}}"
+        }
+      },
+      "id": "node-gcal-stat",
+      "name": "Book STAT Specialist Slot (Google Calendar)",
+      "type": "n8n-nodes-base.googleCalendar",
+      "typeVersion": 1,
+      "position": [720, 180]
+    },
+    {
+      "parameters": {
+        "chatId": "@OnCallThoracicRadiology",
+        "text": "🚨 *STAT RADIOLOGY TRIAGE ALERT*\n*Patient:* {{$json.body.patient_name}} (`{{$json.body.patient_mrn}}`)\n*Finding:* {{$json.body.primary_finding}} ({{Math.round($json.body.confidence_score * 100)}}%)\n*Vitals:* SpO2 {{$json.body.vitals.spO2}} | HR {{$json.body.vitals.hr}}\n*AI Impression:* {{$json.body.clinical_impression}}",
+        "additionalFields": {
+          "parse_mode": "Markdown"
+        }
+      },
+      "id": "node-telegram-alert",
+      "name": "Dispatch Specialist Pager (Telegram/Slack)",
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1,
+      "position": [720, 320]
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "INSERT INTO n8n_audit_logs (workflow_name, trigger_event, payload, execution_status, response_time_ms) VALUES ('MedVision_Emergency_Triage_v2', 'CRITICAL_RADIOLOGY_FINDING', '{{$json.body}}'::jsonb, 'DISPATCHED', 142);"
+      },
+      "id": "node-pg-audit",
+      "name": "Log Triage Execution in PostgreSQL",
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2,
+      "position": [720, 460]
+    }
+  ],
+  "connections": {
+    "FastAPI Critical Finding Webhook": {
+      "main": [[{"node": "Verify Critical Threshold (>=82%)", "type": "main", "index": 0}]]
+    },
+    "Verify Critical Threshold (>=82%)": {
+      "main": [
+        [
+          {"node": "Book STAT Specialist Slot (Google Calendar)", "type": "main", "index": 0},
+          {"node": "Dispatch Specialist Pager (Telegram/Slack)", "type": "main", "index": 0},
+          {"node": "Log Triage Execution in PostgreSQL", "type": "main", "index": 0}
+        ]
+      ]
+    }
+  }
+}

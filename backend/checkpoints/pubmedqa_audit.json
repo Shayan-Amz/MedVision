@@ -1,0 +1,3447 @@
+{
+  "dataset": "qiaojin/PubMedQA (pqa_labeled)",
+  "split_protocol": "shuffle(seed=42).select(range(0, 200)) strictly disjoint from phase2a train range(200, 1000)",
+  "train_test_pubid_overlap": 0,
+  "n_test": 200,
+  "rag_used": false,
+  "base_model": "./qwen7b_local",
+  "ft_checkpoint": "./checkpoints/medvision-7b-v2-multitask-sft",
+  "base_acc_pct": 39.5,
+  "base_ci95_wilson": [
+    32.98,
+    46.41
+  ],
+  "base_macro_f1_pct": 33.51,
+  "base_per_class_f1": {
+    "yes": 66.28,
+    "no": 10.26,
+    "maybe": 24.0
+  },
+  "base_pred_dist": {
+    "maybe": 125,
+    "no": 6,
+    "yes": 69
+  },
+  "ft_acc_pct": 78.5,
+  "ft_ci95_wilson": [
+    72.3,
+    83.63
+  ],
+  "ft_macro_f1_pct": 60.05,
+  "ft_per_class_f1": {
+    "yes": 86.12,
+    "no": 80.25,
+    "maybe": 13.79
+  },
+  "ft_pred_dist": {
+    "no": 90,
+    "maybe": 4,
+    "yes": 106
+  },
+  "mcnemar_b01": 94,
+  "mcnemar_b10": 16,
+  "mcnemar_exact_p": 1.289766e-14,
+  "items": [
+    {
+      "idx": 0,
+      "pubid": "15483019",
+      "gold": "yes",
+      "base_pred": "maybe",
+      "base_logits": {
+        "yes": 18.625,
+        "no": 33.0,
+        "maybe": 33.5
+      },
+      "ft_pred": "no",
+      "ft_logits": {
+        "yes": 16.375,
+        "no": 20.5,
+        "maybe": 17.75
+      }
+    },
+    {
+      "idx": 1,
+      "pubid": "24450673",
+      "gold": "no",
+      "base_pred": "maybe",
+      "base_logits": {
+        "yes": 13.75,
+        "no": 24.125,
+        "maybe": 33.75
+      },
+      "ft_pred": "no",
+      "ft_logits": {
+        "yes": 16.0,
+        "no": 20.75,
+        "maybe": 19.125
+      }
+    },
+    {
+      "idx": 2,
+      "pubid": "9582182",
+      "gold": "yes",
+      "base_pred": "no",
+      "base_logits": {
+        "yes": 15.0625,
+        "no": 32.0,
+        "maybe": 30.75
+      },
+      "ft_pred": "no",
+      "ft_logits": {
+        "yes": 17.25,
+        "no": 20.5,
+        "maybe": 17.875
+      }
+    },
+    {
+      "idx": 3,
+      "pubid": "25636371",
+      "gold": "maybe",
+      "base_pred": "maybe",
+      "base_logits": {
+        "yes": 19.125,
+        "no": 17.75,
+        "maybe": 33.25
+      },
+      "ft_pred": "maybe",
+      "ft_logits": {
+        "yes": 16.75,
+        "no": 17.625,
+        "maybe": 17.75
+      }
+    },
+    {
+      "idx": 4,
+      "pubid": "25987398",
+      "gold": "maybe",
+      "base_pred": "yes",
+      "base_logits": {
+        "yes": 34.5,
+        "no": 18.75,
+        "maybe": 33.25
+      },
+      "ft_pred": "no",
+      "ft_logits": {
+        "yes": 18.125,
+        "no": 18.75,
+        "maybe": 18.5
+      }
+    },
+    {
+      "idx": 5,
+      "pubid": "23571528",
+      "gold": "no",
+      "base_pred": "maybe",
+      "base_logits": {
+        "yes": 17.375,
+        "no": 16.75,
+        "maybe": 32.5
+      },
+      "ft_pred": "no",
+      "ft_logits": {
+        "yes": 17.875,
+        "no": 19.875,
+        "maybe": 19.75
+      }
+    },
+    {
+      "idx": 6,
+      "pubid": "20101129",
+      "gold": "maybe",
+      "base_pred": "maybe",
+      "base_logits": {
+        "yes": 17.0,
+        "no": 22.25,
+        "maybe": 32.75
+      },
+      "ft_pred": "no",
+      "ft_logits": {
+        "yes": 16.5,
+        "no": 19.0,
+        "maybe": 18.25
+      }
+    },
+    {
+      "idx": 7,
+      "pubid": "25940336",
+      "gold": "yes",
+      "base_pred": "maybe",
+      "base_logits": {
+        "yes": 31.375,
+        "no": 13.625,
+        "maybe": 32.25
+      },
+      "ft_pred": "yes",
+      "ft_logits": {
+        "yes": 18.875,
+        "no": 17.875,
+        "maybe": 18.0
+      }
+    },
+    {
+      "idx": 8,
+      "pubid": "11411430",
+      "gold": "maybe",
+      "base_pred": "yes",
+      "base_logits": {
+        "yes": 35.5,
+        "no": 24.375,
+        "maybe": 33.75
+      },
+      "ft_pred": "yes",
+      "ft_logits": {
+        "yes": 20.375,
+        "no": 18.0,
+        "maybe": 18.125
+      }
+    },
+    {
+      "idx": 9,
+      "pubid": "23002947",
+      "gold": "no",
+      "base_pred": "maybe",
+      "base_logits": {
+        "yes": 12.5,
+        "no": 33.5,
+        "maybe": 34.0
+      },
+      "ft_pred": "no",
+      "ft_logits": {
+        "yes": 16.625,
+        "no": 22.125,
+        "maybe": 18.875
+      }
+    },
+    {
+      "idx": 10,
+      "pubid": "12970636",
+      "gold": "no",
+      "base_pred": "maybe",
+      "base_logits": {
+        "yes": 22.0,
+        "no": 23.5,
+        "maybe": 31.375
+      },
+      "ft_pred": "yes",
+      "ft_logits": {
+        "yes": 19.375,
+        "no": 18.25,
+        "maybe": 17.25
+      }
+    },
+    {
+      "idx": 11,
+      "pubid": "23719685",
+      "gold": "no",
+      "base_pred": "maybe",
+      "base_logits": {
+        "yes": 13.1875,
+        "no": 21.125,
+        "maybe": 33.75
+      },
+      "ft_pred": "no",
+      "ft_logits": {
+        "yes": 16.375,
+        "no": 19.75,
+        "maybe": 18.625
+      }
+    },
+    {
+      "idx": 12,
+      "pubid": "10340286",
+      "gold": "maybe",
+      "base_pred": "maybe",
+      "base_logits": {
+        "yes": 26.875,
+        "no": 23.5,
+        "maybe": 31.25
+      },
+      "ft_pred": "no",
+      "ft_logits": {
+        "yes": 17.125,
+        "no": 18.375,
+        "maybe": 16.75
+      }
+    },
+    {
+      "idx": 13,
+      "pubid": "10456814",
+      "gold": "no",
+      "base_pred": "maybe",
+      "base_logits": {
+        "yes": 28.125,
+        "no": 28.125,
+        "maybe": 29.875
+      },
+      "ft_pred": "no",
+      "ft_logits": {
+        "yes": 17.75,
+        "no": 17.875,
+        "maybe": 16.125
+      }
+    },
+    {
+      "idx": 14,
+      "pubid": "18403944",
+      "gold": "maybe",
+      "base_pred": "maybe",
+      "base_logits": {
+        "yes": 31.875,
+        "no": 22.25,
+        "maybe": 34.75
+      },
+      "ft_pred": "yes",
+      "ft_logits": {
+        "yes": 18.875,
+        "no": 17.75,
+        "maybe": 18.0
+      }
+    },
+    {
+      "idx": 15,
+      "pubid": "15112004",
+      "gold": "no",
+      "base_pred": "maybe",
+      "base_logits": {
+        "yes": 14.1875,
+        "no": 24.75,
+        "maybe": 33.25
+      },
+      "ft_pred": "no",
+      "ft_logits": {
+        "yes": 16.375,
+        "no": 19.25,
+        "maybe": 18.125
+      }
+    },
+    {
+      "idx": 16,
+      "pubid": "11555508",
+      "gold": "yes",
+      "base_pred": "yes",
+      "base_logits": {
+        "yes": 36.0,
+        "no": 17.625,
+        "maybe": 29.375
+      },
+      "ft_pred": "yes",
+      "ft_logits": {
+        "yes": 20.375,
+        "no": 17.375,
+        "maybe": 17.0
+      }
+    },
+    {
+      "idx": 17,
+      "pubid": "22656647",
+      "gold": "yes",
+      "base_pred": "yes",
+      "base_logits": {
+        "yes": 35.75,
+        "no": 20.375,
+        "maybe": 35.0
+      },
+      "ft_pred": "yes",
+      "ft_logits": {
+        "yes": 19.75,
+        "no": 17.875,
+        "maybe": 18.375
+      }
+    },
+    {
+      "idx": 18,
+      "pubid": "25475395",
+      "gold": "yes",
+      "base_pred": "maybe",
+      "base_logits": {
+        "yes": 28.125,
+        "no": 15.5,
+        "maybe": 31.75
+      },
+      "ft_pred": "yes",
+      "ft_logits": {
+        "yes": 18.875,
+        "no": 17.25,
+        "maybe": 17.25
+      }
+    },
+    {
+      "idx": 19,
+      "pubid": "27643961",
+      "gold": "no",
+      "base_pred": "yes",
+      "base_logits": {
+        "yes": 35.0,
+        "no": 17.75,
+        "maybe": 28.875
+      },
+      "ft_pred": "yes",
+      "ft_logits": {
+        "yes": 17.875,
+        "no": 17.5,
+        "maybe": 17.375
+      }
+    },
+    {
+      "idx": 20,
+      "pubid": "27909738",
+      "gold": "no",
+      "base_pred": "no",
+      "base_logits": {
+        "yes": 18.625,
+        "no": 39.5,
+        "maybe": 31.125
+      },
+      "ft_pred": "no",
+      "ft_logits": {
+        "yes": 16.25,
+        "no": 20.375,
+        "maybe": 17.5
+      }
+    },
+    {
+      "idx": 21,
+      "pubid": "18926458",
+      "gold": "no",
+      "base_pred": "yes",
+      "base_logits": {
+        "yes": 33.25,
+        "no": 21.875,
+        "maybe": 32.0
+      },
+      "ft_pred": "no",
+      "ft_logits": {
+        "yes": 16.125,
+        "no": 21.125,
+        "maybe": 17.375
+      }
+    },
+    {
+      "idx": 22,
+      "pubid": "9381529",
+      "gold": "yes",
+      "base_pred": "yes",
+      "base_logits": {
+        "yes": 35.25,
+        "no": 11.625,
+        "maybe": 25.0
+      },
+      "ft_pred": "yes",
+      "ft_logits": {
+        "yes": 21.125,
+        "no": 17.125,
+        "maybe": 17.75
+      }
+    },
+    {
+      "idx": 23,
+      "pubid": "17224424",
+      "gold": "yes",
+      "base_pred": "yes",
+      "base_logits": {
+        "yes": 31.75,
+        "no": 17.0,
+        "maybe": 30.875
+      },
+      "ft_pred": "yes",
+      "ft_logits": {
+        "yes": 20.875,
+        "no": 17.875,
+        "maybe": 17.875
+      }
+    },
+    {
+      "idx": 24,
+      "pubid": "26079501",
+      "gold": "no",
+      "base_pred": "maybe",
+      "base_logits": {
+        "yes": 14.0,
+        "no": 23.875,
+        "maybe": 33.5
+      },
+      "ft_pred": "no",
+      "ft_logits": {
+        "yes": 16.375,
+        "no": 20.0,
+        "maybe": 18.375
+      }
+    },
+    {
+      "idx": 25,
+      "pubid": "9488747",
+      "gold": "yes",
+      "base_pred": "maybe",
+      "base_logits": {
+        "yes": 32.0,
+        "no": 24.625,
+        "maybe": 32.5
+      },
+      "ft_pred": "yes",
+      "ft_logits": {
+        "yes": 20.25,
+        "no": 17.625,
+        "maybe": 17.625
+      }
+    },
+    {
+      "idx": 26,
+      "pubid": "10430303",
+      "gold": "yes",
+      "base_pred": "maybe",
+      "base_logits": {
+        "yes": 31.125,
+        "no": 27.0,
+        "maybe": 31.75
+      },
+      "ft_pred": "no",
+      "ft_logits": {
+        "yes": 17.25,
+        "no": 18.625,
+        "maybe": 16.5
+      }
+    },
+    {
+      "idx": 27,
+      "pubid": "26852225",
+      "gold": "no",
+      "base_pred": "yes",
+      "base_logits": {
+        "yes": 38.25,
+        "no": 20.5,
+        "maybe": 32.75
+      },
+      "ft_pred": "yes",
+      "ft_logits": {
+        "yes": 20.0,
+        "no": 18.0,
+        "maybe": 17.875
+      }
+    },
+    {
+      "idx": 28,
+      "pubid": "22970993",
+      "gold": "yes",
+      "base_pred": "yes",
+      "base_logits": {
+        "yes": 39.75,
+        "no": 16.5,
+        "maybe": 17.125
+      },
+      "ft_pred": "yes",
+      "ft_logits": {
+        "yes": 21.75,
+        "no": 17.75,
+        "maybe": 17.25
+      }
+    },
+    {
+      "idx": 29,
+      "pubid": "17192736",
+      "gold": "no",
+      "base_pred": "maybe",
+      "base_logits": {
+        "yes": 16.5,
+        "no": 32.75,
+        "maybe": 35.0
+      },
+      "ft_pred": "no",
+      "ft_logits": {
+        "yes": 17.125,
+        "no": 19.875,
+        "maybe": 17.625
+      }
+    },
+    {
+      "idx": 30,
+      "pubid": "26606599",
+      "gold": "maybe",
+      "base_pred": "yes",
+      "base_logits": {
+        "yes": 39.75,
+        "no": 21.125,
+        "maybe": 26.0
+      },
+      "ft_pred": "yes",
+      "ft_logits": {
+        "yes": 20.875,
+        "no": 18.625,
+        "maybe": 18.375
+      }
+    },
+    {
+      "idx": 31,
+      "pubid": "22154448",
+      "gold": "no",
+      "base_pred": "maybe",
+      "base_logits": {
+        "yes": 13.5,
+        "no": 27.0,
+        "maybe": 33.5
+      },
+      "ft_pred": "no",
+      "ft_logits": {
+        "yes": 16.75,
+        "no": 19.875,
+        "maybe": 17.75
+      }
+    },
+    {
+      "idx": 32,
+      "pubid": "24139705",
+      "gold": "yes",
+      "base_pred": "maybe",
+      "base_logits": {
+        "yes": 11.1875,
+        "no": 18.0,
+        "maybe": 31.375
+      },
+      "ft_pred": "no",
+      "ft_logits": {
+        "yes": 16.25,
+        "no": 18.625,
+        "maybe": 18.125
+      }
+    },
+    {
+      "idx": 33,
+      "pubid": "22564465",
+      "gold": "yes",
+      "base_pred": "maybe",
+      "base_logits": {
+        "yes": 24.625,
+        "no": 27.5,
+        "maybe": 32.25
+      },
+      "ft_pred": "yes",
+      "ft_logits": {
+        "yes": 18.25,
+        "no": 18.0,
+        "maybe": 17.375
+      }
+    },
+    {
+      "idx": 34,
+      "pubid": "25985014",
+      "gold": "no",
+      "base_pred": "maybe",
+      "base_logits": {
+        "yes": 11.625,
+        "no": 18.375,
+        "maybe": 33.25
+      },
+      "ft_pred": "no",
+      "ft_logits": {
+        "yes": 15.9375,
+        "no": 19.125,
+        "maybe": 18.125
+      }
+    },
+    {
+      "idx": 35,
+      "pubid": "15943725",
+      "gold": "yes",
+      "base_pred": "maybe",
+      "base_logits": {
+        "yes": 29.75,
+        "no": 22.375,
+        "maybe": 34.75
+      },
+      "ft_pred": "yes",
+      "ft_logits": {
+        "yes": 19.0,
+        "no": 17.875,
+        "maybe": 17.375
+      }
+    },
+    {
+      "idx": 36,
+      "pubid": "16432652",
+      "gold": "yes",
+      "base_pred": "yes",
+      "base_logits": {
+        "yes": 35.25,
+        "no": 11.1875,
+        "maybe": 22.0
+      },
+      "ft_pred": "yes",
+      "ft_logits": {
+        "yes": 21.75,
+        "no": 17.75,
+        "maybe": 18.75
+      }
+    },
+    {
+      "idx": 37,
+      "pubid": "11977907",
+      "gold": "yes",
+      "base_pred": "maybe",
+      "base_logits": {
+        "yes": 29.125,
+        "no": 28.625,
+        "maybe": 34.25
+      },
+      "ft_pred": "yes",
+      "ft_logits": {
+        "yes": 19.25,
+        "no": 19.0,
+        "maybe": 18.0
+      }
+    },
+    {
+      "idx": 38,
+      "pubid": "25588461",
+      "gold": "yes",
+      "base_pred": "maybe",
+      "base_logits": {
+        "yes": 31.125,
+        "no": 19.5,
+        "maybe": 33.5
+      },
+      "ft_pred": "yes",
+      "ft_logits": {
+        "yes": 19.875,
+        "no": 18.5,
+        "maybe": 18.375
+      }
+    },
+    {
+      "idx": 39,
+      "pubid": "16816043",
+      "gold": "maybe",
+      "base_pred": "yes",
+      "base_logits": {
+        "yes": 35.75,
+        "no": 18.75,
+        "maybe": 30.625
+      },
+      "ft_pred": "yes",
+      "ft_logits": {
+        "yes": 20.0,
+        "no": 17.125,
+        "maybe": 17.625
+      }
+    },
+    {
+      "idx": 40,
+      "pubid": "24973051",
+      "gold": "no",
+      "base_pred": "maybe",
+      "base_logits": {
+        "yes": 27.875,
+        "no": 18.375,
+        "maybe": 31.375
+      },
+      "ft_pred": "yes",
+      "ft_logits": {
+        "yes": 18.25,
+        "no": 17.375,
+        "maybe": 17.25
+      }
+    },
+    {
+      "idx": 41,
+      "pubid": "17342562",
+      "gold": "no",
+      "base_pred": "maybe",
+      "base_logits": {
+        "yes": 27.25,
+        "no": 27.25,
+        "maybe": 35.0
+      },
+      "ft_pred": "no",
+      "ft_logits": {
+        "yes": 16.25,
+        "no": 19.5,
+        "maybe": 17.5
+      }
+    },
+    {
+      "idx": 42,
+      "pubid": "24476003",
+      "gold": "no",
+      "base_pred": "maybe",
+      "base_logits": {
+        "yes": 31.625,
+        "no": 25.625,
+        "maybe": 33.75
+      },
+      "ft_pred": "no",
+      "ft_logits": {
+        "yes": 17.625,
+        "no": 18.375,
+        "maybe": 16.625
+      }
+    },
+    {
+      "idx": 43,
+      "pubid": "9745063",
+      "gold": "yes",
+      "base_pred": "yes",
+      "base_logits": {
+        "yes": 34.0,
+        "no": 16.875,
+        "maybe": 28.75
+      },
+      "ft_pred": "yes",
+      "ft_logits": {
+        "yes": 20.375,
+        "no": 17.75,
+        "maybe": 17.875
+      }
+    },
+    {
+      "idx": 44,
+      "pubid": "20197761",
+      "gold": "maybe",
+      "base_pred": "no",
+      "base_logits": {
+        "yes": 16.625,
+        "no": 37.0,
+        "maybe": 31.25
+      },
+      "ft_pred": "no",
+      "ft_logits": {
+        "yes": 16.0,
+        "no": 19.5,
+        "maybe": 16.625
+      }
+    },
+    {
+      "idx": 45,
+      "pubid": "22534881",
+      "gold": "no",
+      "base_pred": "maybe",
+      "base_logits": {
+        "yes": 17.875,
+        "no": 24.625,
+        "maybe": 31.5
+      },
+      "ft_pred": "no",
+      "ft_logits": {
+        "yes": 15.4375,
+        "no": 18.25,
+        "maybe": 17.5
+      }
+    },
+    {
+      "idx": 46,
+      "pubid": "24614851",
+      "gold": "yes",
+      "base_pred": "yes",
+      "base_logits": {
+        "yes": 39.25,
+        "no": 17.0,
+        "maybe": 27.0
+      },
+      "ft_pred": "yes",
+      "ft_logits": {
+        "yes": 20.75,
+        "no": 18.125,
+        "maybe": 17.625
+      }
+    },
+    {
+      "idx": 47,
+      "pubid": "18274917",
+      "gold": "no",
+      "base_pred": "maybe",
+      "base_logits": {
+        "yes": 13.0625,
+        "no": 27.75,
+        "maybe": 33.25
+      },
+      "ft_pred": "no",
+      "ft_logits": {
+        "yes": 16.125,
+        "no": 19.25,
+        "maybe": 18.125
+      }
+    },
+    {
+      "idx": 48,
+      "pubid": "27050505",
+      "gold": "yes",
+      "base_pred": "maybe",
+      "base_logits": {
+        "yes": 31.0,
+        "no": 15.0625,
+        "maybe": 31.375
+      },
+      "ft_pred": "yes",
+      "ft_logits": {
+        "yes": 19.75,
+        "no": 17.5,
+        "maybe": 17.75
+      }
+    },
+    {
+      "idx": 49,
+      "pubid": "10966943",
+      "gold": "no",
+      "base_pred": "maybe",
+      "base_logits": {
+        "yes": 23.0,
+        "no": 30.25,
+        "maybe": 35.75
+      },
+      "ft_pred": "no",
+      "ft_logits": {
+        "yes": 16.75,
+        "no": 19.25,
+        "maybe": 17.875
+      }
+    },
+    {
+      "idx": 50,
+      "pubid": "16392897",
+      "gold": "maybe",
+      "base_pred": "maybe",
+      "base_logits": {
+        "yes": 30.875,
+        "no": 17.875,
+        "maybe": 31.75
+      },
+      "ft_pred": "yes",
+      "ft_logits": {
+        "yes": 20.375,
+        "no": 17.5,
+        "maybe": 17.875
+      }
+    },
+    {
+      "idx": 51,
+      "pubid": "12765819",
+      "gold": "yes",
+      "base_pred": "yes",
+      "base_logits": {
+        "yes": 37.5,
+        "no": 22.25,
+        "maybe": 29.75
+      },
+      "ft_pred": "yes",
+      "ft_logits": {
+        "yes": 21.0,
+        "no": 18.0,
+        "maybe": 18.0
+      }
+    },
+    {
+      "idx": 52,
+      "pubid": "27131771",
+      "gold": "yes",
+      "base_pred": "yes",
+      "base_logits": {
+        "yes": 31.125,
+        "no": 17.0,
+        "maybe": 27.5
+      },
+      "ft_pred": "yes",
+      "ft_logits": {
+        "yes": 20.375,
+        "no": 17.875,
+        "maybe": 17.25
+      }
+    },
+    {
+      "idx": 53,
+      "pubid": "20594006",
+      "gold": "no",
+      "base_pred": "maybe",
+      "base_logits": {
+        "yes": 13.5,
+        "no": 25.125,
+        "maybe": 34.0
+      },
+      "ft_pred": "no",
+      "ft_logits": {
+        "yes": 16.0,
+        "no": 20.375,
+        "maybe": 18.875
+      }
+    },
+    {
+      "idx": 54,
+      "pubid": "22900881",
+      "gold": "no",
+      "base_pred": "maybe",
+      "base_logits": {
+        "yes": 11.875,
+        "no": 23.25,
+        "maybe": 33.5
+      },
+      "ft_pred": "no",
+      "ft_logits": {
+        "yes": 17.0,
+        "no": 18.25,
+        "maybe": 17.75
+      }
+    },
+    {
+      "idx": 55,
+      "pubid": "22504515",
+      "gold": "no",
+      "base_pred": "maybe",
+      "base_logits": {
+        "yes": 18.0,
+        "no": 31.5,
+        "maybe": 34.5
+      },
+      "ft_pred": "no",
+      "ft_logits": {
+        "yes": 18.25,
+        "no": 20.0,
+        "maybe": 18.25
+      }
+    },
+    {
+      "idx": 56,
+      "pubid": "11970923",
+      "gold": "yes",
+      "base_pred": "maybe",
+      "base_logits": {
+        "yes": 27.625,
+        "no": 25.5,
+        "maybe": 35.25
+      },
+      "ft_pred": "no",
+      "ft_logits": {
+        "yes": 16.5,
+        "no": 19.25,
+        "maybe": 18.0
+      }
+    },
+    {
+      "idx": 57,
+      "pubid": "21745056",
+      "gold": "yes",
+      "base_pred": "maybe",
+      "base_logits": {
+        "yes": 30.625,
+        "no": 19.125,
+        "maybe": 32.5
+      },
+      "ft_pred": "yes",
+      "ft_logits": {
+        "yes": 19.625,
+        "no": 18.5,
+        "maybe": 18.0
+      }
+    },
+    {
+      "idx": 58,
+      "pubid": "19237087",
+      "gold": "no",
+      "base_pred": "maybe",
+      "base_logits": {
+        "yes": 20.125,
+        "no": 26.25,
+        "maybe": 33.0
+      },
+      "ft_pred": "no",
+      "ft_logits": {
+        "yes": 16.25,
+        "no": 18.375,
+        "maybe": 17.125
+      }
+    },
+    {
+      "idx": 59,
+      "pubid": "23360491",
+      "gold": "maybe",
+      "base_pred": "yes",
+      "base_logits": {
+        "yes": 35.5,
+        "no": 13.4375,
+        "maybe": 21.375
+      },
+      "ft_pred": "yes",
+      "ft_logits": {
+        "yes": 20.25,
+        "no": 17.375,
+        "maybe": 17.875
+      }
+    },
+    {
+      "idx": 60,
+      "pubid": "23222920",
+      "gold": "yes",
+      "base_pred": "yes",
+      "base_logits": {
+        "yes": 36.0,
+        "no": 15.8125,
+        "maybe": 26.875
+      },
+      "ft_pred": "yes",
+      "ft_logits": {
+        "yes": 21.625,
+        "no": 17.25,
+        "maybe": 17.625
+      }
+    },
+    {
+      "idx": 61,
+      "pubid": "17610439",
+      "gold": "yes",
+      "base_pred": "yes",
+      "base_logits": {
+        "yes": 33.75,
+        "no": 20.25,
+        "maybe": 33.75
+      },
+      "ft_pred": "yes",
+      "ft_logits": {
+        "yes": 21.75,
+        "no": 17.375,
+        "maybe": 18.25
+      }
+    },
+    {
+      "idx": 62,
+      "pubid": "27096199",
+      "gold": "no",
+      "base_pred": "maybe",
+      "base_logits": {
+        "yes": 16.0,
+        "no": 26.625,
+        "maybe": 31.875
+      },
+      "ft_pred": "no",
+      "ft_logits": {
+        "yes": 16.625,
+        "no": 20.0,
+        "maybe": 17.25
+      }
+    },
+    {
+      "idx": 63,
+      "pubid": "25982163",
+      "gold": "no",
+      "base_pred": "maybe",
+      "base_logits": {
+        "yes": 27.375,
+        "no": 26.0,
+        "maybe": 34.5
+      },
+      "ft_pred": "no",
+      "ft_logits": {
+        "yes": 17.0,
+        "no": 20.0,
+        "maybe": 18.25
+      }
+    },
+    {
+      "idx": 64,
+      "pubid": "16809243",
+      "gold": "no",
+      "base_pred": "no",
+      "base_logits": {
+        "yes": 22.0,
+        "no": 38.75,
+        "maybe": 32.5
+      },
+      "ft_pred": "no",
+      "ft_logits": {
+        "yes": 17.0,
+        "no": 20.625,
+        "maybe": 17.875
+      }
+    },
+    {
+      "idx": 65,
+      "pubid": "16991071",
+      "gold": "yes",
+      "base_pred": "maybe",
+      "base_logits": {
+        "yes": 25.5,
+        "no": 15.8125,
+        "maybe": 34.25
+      },
+      "ft_pred": "yes",
+      "ft_logits": {
+        "yes": 20.375,
+        "no": 18.75,
+        "maybe": 18.5
+      }
+    },
+    {
+      "idx": 66,
+      "pubid": "25986020",
+      "gold": "yes",
+      "base_pred": "maybe",
+      "base_logits": {
+        "yes": 29.625,
+        "no": 19.875,
+        "maybe": 32.0
+      },
+      "ft_pred": "yes",
+      "ft_logits": {
+        "yes": 20.0,
+        "no": 18.0,
+        "maybe": 18.125
+      }
+    },
+    {
+      "idx": 67,
+      "pubid": "16498158",
+      "gold": "yes",
+      "base_pred": "maybe",
+      "base_logits": {
+        "yes": 15.4375,
+        "no": 21.875,
+        "maybe": 34.0
+      },
+      "ft_pred": "no",
+      "ft_logits": {
+        "yes": 16.5,
+        "no": 19.125,
+        "maybe": 17.875
+      }
+    },
+    {
+      "idx": 68,
+      "pubid": "18378554",
+      "gold": "no",
+      "base_pred": "maybe",
+      "base_logits": {
+        "yes": 13.3125,
+        "no": 23.375,
+        "maybe": 32.5
+      },
+      "ft_pred": "no",
+      "ft_logits": {
+        "yes": 16.75,
+        "no": 18.125,
+        "maybe": 17.125
+      }
+    },
+    {
+      "idx": 69,
+      "pubid": "22117569",
+      "gold": "yes",
+      "base_pred": "yes",
+      "base_logits": {
+        "yes": 39.25,
+        "no": 13.875,
+        "maybe": 21.625
+      },
+      "ft_pred": "yes",
+      "ft_logits": {
+        "yes": 22.875,
+        "no": 18.25,
+        "maybe": 19.125
+      }
+    },
+    {
+      "idx": 70,
+      "pubid": "19575104",
+      "gold": "no",
+      "base_pred": "yes",
+      "base_logits": {
+        "yes": 35.5,
+        "no": 25.375,
+        "maybe": 29.75
+      },
+      "ft_pred": "yes",
+      "ft_logits": {
+        "yes": 19.375,
+        "no": 17.625,
+        "maybe": 16.875
+      }
+    },
+    {
+      "idx": 71,
+      "pubid": "11867487",
+      "gold": "maybe",
+      "base_pred": "maybe",
+      "base_logits": {
+        "yes": 5.7812,
+        "no": 13.1875,
+        "maybe": 28.875
+      },
+      "ft_pred": "no",
+      "ft_logits": {
+        "yes": 15.0,
+        "no": 21.125,
+        "maybe": 19.625
+      }
+    },
+    {
+      "idx": 72,
+      "pubid": "8200238",
+      "gold": "no",
+      "base_pred": "maybe",
+      "base_logits": {
+        "yes": 18.125,
+        "no": 32.25,
+        "maybe": 35.75
+      },
+      "ft_pred": "no",
+      "ft_logits": {
+        "yes": 16.75,
+        "no": 20.125,
+        "maybe": 18.125
+      }
+    },
+    {
+      "idx": 73,
+      "pubid": "25043083",
+      "gold": "yes",
+      "base_pred": "yes",
+      "base_logits": {
+        "yes": 41.75,
+        "no": 16.0,
+        "maybe": 19.5
+      },
+      "ft_pred": "yes",
+      "ft_logits": {
+        "yes": 22.0,
+        "no": 17.25,
+        "maybe": 17.5
+      }
+    },
+    {
+      "idx": 74,
+      "pubid": "25571931",
+      "gold": "maybe",
+      "base_pred": "maybe",
+      "base_logits": {
+        "yes": 12.4375,
+        "no": 23.875,
+        "maybe": 33.0
+      },
+      "ft_pred": "no",
+      "ft_logits": {
+        "yes": 15.125,
+        "no": 19.75,
+        "maybe": 18.25
+      }
+    },
+    {
+      "idx": 75,
+      "pubid": "16778275",
+      "gold": "no",
+      "base_pred": "maybe",
+      "base_logits": {
+        "yes": 19.125,
+        "no": 20.375,
+        "maybe": 32.75
+      },
+      "ft_pred": "no",
+      "ft_logits": {
+        "yes": 16.375,
+        "no": 19.75,
+        "maybe": 18.875
+      }
+    },
+    {
+      "idx": 76,
+      "pubid": "25394614",
+      "gold": "maybe",
+      "base_pred": "maybe",
+      "base_logits": {
+        "yes": 28.25,
+        "no": 27.375,
+        "maybe": 32.5
+      },
+      "ft_pred": "no",
+      "ft_logits": {
+        "yes": 16.875,
+        "no": 19.125,
+        "maybe": 17.625
+      }
+    },
+    {
+      "idx": 77,
+      "pubid": "15369037",
+      "gold": "yes",
+      "base_pred": "yes",
+      "base_logits": {
+        "yes": 38.75,
+        "no": 17.625,
+        "maybe": 24.125
+      },
+      "ft_pred": "yes",
+      "ft_logits": {
+        "yes": 21.625,
+        "no": 17.375,
+        "maybe": 18.0
+      }
+    },
+    {
+      "idx": 78,
+      "pubid": "18784527",
+      "gold": "no",
+      "base_pred": "maybe",
+      "base_logits": {
+        "yes": 31.0,
+        "no": 24.125,
+        "maybe": 33.75
+      },
+      "ft_pred": "no",
+      "ft_logits": {
+        "yes": 17.625,
+        "no": 18.25,
+        "maybe": 17.125
+      }
+    },
+    {
+      "idx": 79,
+      "pubid": "12095973",
+      "gold": "no",
+      "base_pred": "maybe",
+      "base_logits": {
+        "yes": 16.25,
+        "no": 20.5,
+        "maybe": 33.0
+      },
+      "ft_pred": "no",
+      "ft_logits": {
+        "yes": 17.0,
+        "no": 18.75,
+        "maybe": 18.25
+      }
+    },
+    {
+      "idx": 80,
+      "pubid": "25274085",
+      "gold": "no",
+      "base_pred": "yes",
+      "base_logits": {
+        "yes": 32.75,
+        "no": 18.0,
+        "maybe": 31.25
+      },
+      "ft_pred": "no",
+      "ft_logits": {
+        "yes": 17.625,
+        "no": 19.25,
+        "maybe": 18.25
+      }
+    },
+    {
+      "idx": 81,
+      "pubid": "15125825",
+      "gold": "yes",
+      "base_pred": "maybe",
+      "base_logits": {
+        "yes": 31.0,
+        "no": 20.625,
+        "maybe": 33.0
+      },
+      "ft_pred": "yes",
+      "ft_logits": {
+        "yes": 18.5,
+        "no": 17.0,
+        "maybe": 17.125
+      }
+    },
+    {
+      "idx": 82,
+      "pubid": "10331115",
+      "gold": "yes",
+      "base_pred": "maybe",
+      "base_logits": {
+        "yes": 33.25,
+        "no": 22.25,
+        "maybe": 33.75
+      },
+      "ft_pred": "yes",
+      "ft_logits": {
+        "yes": 18.5,
+        "no": 18.0,
+        "maybe": 17.0
+      }
+    },
+    {
+      "idx": 83,
+      "pubid": "7547656",
+      "gold": "no",
+      "base_pred": "no",
+      "base_logits": {
+        "yes": 19.25,
+        "no": 36.75,
+        "maybe": 30.25
+      },
+      "ft_pred": "no",
+      "ft_logits": {
+        "yes": 17.25,
+        "no": 20.0,
+        "maybe": 16.25
+      }
+    },
+    {
+      "idx": 84,
+      "pubid": "12163782",
+      "gold": "yes",
+      "base_pred": "maybe",
+      "base_logits": {
+        "yes": 28.875,
+        "no": 11.6875,
+        "maybe": 31.375
+      },
+      "ft_pred": "yes",
+      "ft_logits": {
+        "yes": 21.5,
+        "no": 17.625,
+        "maybe": 18.375
+      }
+    },
+    {
+      "idx": 85,
+      "pubid": "16151770",
+      "gold": "yes",
+      "base_pred": "maybe",
+      "base_logits": {
+        "yes": 32.5,
+        "no": 16.875,
+        "maybe": 34.0
+      },
+      "ft_pred": "yes",
+      "ft_logits": {
+        "yes": 20.5,
+        "no": 17.625,
+        "maybe": 18.0
+      }
+    },
+    {
+      "idx": 86,
+      "pubid": "17593459",
+      "gold": "yes",
+      "base_pred": "yes",
+      "base_logits": {
+        "yes": 37.25,
+        "no": 14.6875,
+        "maybe": 26.125
+      },
+      "ft_pred": "yes",
+      "ft_logits": {
+        "yes": 22.5,
+        "no": 16.875,
+        "maybe": 18.25
+      }
+    },
+    {
+      "idx": 87,
+      "pubid": "20629769",
+      "gold": "yes",
+      "base_pred": "maybe",
+      "base_logits": {
+        "yes": 27.75,
+        "no": 15.9375,
+        "maybe": 33.0
+      },
+      "ft_pred": "yes",
+      "ft_logits": {
+        "yes": 21.0,
+        "no": 17.875,
+        "maybe": 18.875
+      }
+    },
+    {
+      "idx": 88,
+      "pubid": "12836106",
+      "gold": "yes",
+      "base_pred": "yes",
+      "base_logits": {
+        "yes": 37.75,
+        "no": 20.875,
+        "maybe": 23.875
+      },
+      "ft_pred": "yes",
+      "ft_logits": {
+        "yes": 21.125,
+        "no": 17.625,
+        "maybe": 17.5
+      }
+    },
+    {
+      "idx": 89,
+      "pubid": "11079675",
+      "gold": "yes",
+      "base_pred": "maybe",
+      "base_logits": {
+        "yes": 22.25,
+        "no": 24.5,
+        "maybe": 33.5
+      },
+      "ft_pred": "no",
+      "ft_logits": {
+        "yes": 17.75,
+        "no": 18.375,
+        "maybe": 18.0
+      }
+    },
+    {
+      "idx": 90,
+      "pubid": "23379759",
+      "gold": "yes",
+      "base_pred": "maybe",
+      "base_logits": {
+        "yes": 17.0,
+        "no": 21.125,
+        "maybe": 32.25
+      },
+      "ft_pred": "yes",
+      "ft_logits": {
+        "yes": 19.875,
+        "no": 18.375,
+        "maybe": 18.125
+      }
+    },
+    {
+      "idx": 91,
+      "pubid": "10749257",
+      "gold": "yes",
+      "base_pred": "yes",
+      "base_logits": {
+        "yes": 39.5,
+        "no": 18.625,
+        "maybe": 27.125
+      },
+      "ft_pred": "yes",
+      "ft_logits": {
+        "yes": 21.375,
+        "no": 17.625,
+        "maybe": 17.875
+      }
+    },
+    {
+      "idx": 92,
+      "pubid": "24374414",
+      "gold": "yes",
+      "base_pred": "yes",
+      "base_logits": {
+        "yes": 39.25,
+        "no": 15.625,
+        "maybe": 18.875
+      },
+      "ft_pred": "yes",
+      "ft_logits": {
+        "yes": 22.75,
+        "no": 17.125,
+        "maybe": 18.125
+      }
+    },
+    {
+      "idx": 93,
+      "pubid": "8921484",
+      "gold": "no",
+      "base_pred": "maybe",
+      "base_logits": {
+        "yes": 20.0,
+        "no": 23.75,
+        "maybe": 32.0
+      },
+      "ft_pred": "no",
+      "ft_logits": {
+        "yes": 17.625,
+        "no": 18.875,
+        "maybe": 17.75
+      }
+    },
+    {
+      "idx": 94,
+      "pubid": "8847047",
+      "gold": "no",
+      "base_pred": "maybe",
+      "base_logits": {
+        "yes": 17.75,
+        "no": 24.75,
+        "maybe": 33.25
+      },
+      "ft_pred": "no",
+      "ft_logits": {
+        "yes": 17.375,
+        "no": 18.875,
+        "maybe": 17.375
+      }
+    },
+    {
+      "idx": 95,
+      "pubid": "19230985",
+      "gold": "yes",
+      "base_pred": "yes",
+      "base_logits": {
+        "yes": 43.5,
+        "no": 23.0,
+        "maybe": 22.125
+      },
+      "ft_pred": "yes",
+      "ft_logits": {
+        "yes": 21.5,
+        "no": 17.375,
+        "maybe": 16.75
+      }
+    },
+    {
+      "idx": 96,
+      "pubid": "17453263",
+      "gold": "yes",
+      "base_pred": "maybe",
+      "base_logits": {
+        "yes": 30.125,
+        "no": 21.75,
+        "maybe": 32.75
+      },
+      "ft_pred": "yes",
+      "ft_logits": {
+        "yes": 20.5,
+        "no": 17.375,
+        "maybe": 17.75
+      }
+    },
+    {
+      "idx": 97,
+      "pubid": "18375490",
+      "gold": "no",
+      "base_pred": "maybe",
+      "base_logits": {
+        "yes": 13.0625,
+        "no": 26.0,
+        "maybe": 34.25
+      },
+      "ft_pred": "no",
+      "ft_logits": {
+        "yes": 16.75,
+        "no": 19.5,
+        "maybe": 18.25
+      }
+    },
+    {
+      "idx": 98,
+      "pubid": "18708308",
+      "gold": "no",
+      "base_pred": "maybe",
+      "base_logits": {
+        "yes": 17.875,
+        "no": 24.0,
+        "maybe": 35.0
+      },
+      "ft_pred": "no",
+      "ft_logits": {
+        "yes": 16.5,
+        "no": 20.0,
+        "maybe": 18.625
+      }
+    },
+    {
+      "idx": 99,
+      "pubid": "12790890",
+      "gold": "maybe",
+      "base_pred": "maybe",
+      "base_logits": {
+        "yes": 15.9375,
+        "no": 26.0,
+        "maybe": 33.5
+      },
+      "ft_pred": "no",
+      "ft_logits": {
+        "yes": 16.25,
+        "no": 18.75,
+        "maybe": 17.375
+      }
+    },
+    {
+      "idx": 100,
+      "pubid": "21848798",
+      "gold": "yes",
+      "base_pred": "maybe",
+      "base_logits": {
+        "yes": 31.75,
+        "no": 25.75,
+        "maybe": 32.0
+      },
+      "ft_pred": "yes",
+      "ft_logits": {
+        "yes": 18.25,
+        "no": 17.5,
+        "maybe": 17.625
+      }
+    },
+    {
+      "idx": 101,
+      "pubid": "19398929",
+      "gold": "no",
+      "base_pred": "maybe",
+      "base_logits": {
+        "yes": 17.875,
+        "no": 25.5,
+        "maybe": 34.0
+      },
+      "ft_pred": "no",
+      "ft_logits": {
+        "yes": 16.875,
+        "no": 20.25,
+        "maybe": 18.0
+      }
+    },
+    {
+      "idx": 102,
+      "pubid": "17276182",
+      "gold": "yes",
+      "base_pred": "maybe",
+      "base_logits": {
+        "yes": 31.75,
+        "no": 11.8125,
+        "maybe": 33.0
+      },
+      "ft_pred": "yes",
+      "ft_logits": {
+        "yes": 21.0,
+        "no": 17.75,
+        "maybe": 18.5
+      }
+    },
+    {
+      "idx": 103,
+      "pubid": "20084845",
+      "gold": "yes",
+      "base_pred": "yes",
+      "base_logits": {
+        "yes": 34.25,
+        "no": 12.6875,
+        "maybe": 28.375
+      },
+      "ft_pred": "yes",
+      "ft_logits": {
+        "yes": 22.75,
+        "no": 17.0,
+        "maybe": 18.875
+      }
+    },
+    {
+      "idx": 104,
+      "pubid": "28011794",
+      "gold": "maybe",
+      "base_pred": "maybe",
+      "base_logits": {
+        "yes": 25.75,
+        "no": 20.375,
+        "maybe": 31.0
+      },
+      "ft_pred": "yes",
+      "ft_logits": {
+        "yes": 18.625,
+        "no": 18.0,
+        "maybe": 16.875
+      }
+    },
+    {
+      "idx": 105,
+      "pubid": "17429333",
+      "gold": "no",
+      "base_pred": "maybe",
+      "base_logits": {
+        "yes": 22.125,
+        "no": 30.625,
+        "maybe": 34.0
+      },
+      "ft_pred": "no",
+      "ft_logits": {
+        "yes": 16.875,
+        "no": 19.0,
+        "maybe": 17.25
+      }
+    },
+    {
+      "idx": 106,
+      "pubid": "18319270",
+      "gold": "no",
+      "base_pred": "maybe",
+      "base_logits": {
+        "yes": 9.1875,
+        "no": 20.375,
+        "maybe": 31.5
+      },
+      "ft_pred": "no",
+      "ft_logits": {
+        "yes": 16.375,
+        "no": 19.625,
+        "maybe": 18.375
+      }
+    },
+    {
+      "idx": 107,
+      "pubid": "11146778",
+      "gold": "yes",
+      "base_pred": "maybe",
+      "base_logits": {
+        "yes": 14.8125,
+        "no": 24.75,
+        "maybe": 33.5
+      },
+      "ft_pred": "no",
+      "ft_logits": {
+        "yes": 16.375,
+        "no": 19.5,
+        "maybe": 17.75
+      }
+    },
+    {
+      "idx": 108,
+      "pubid": "10223070",
+      "gold": "maybe",
+      "base_pred": "maybe",
+      "base_logits": {
+        "yes": 25.875,
+        "no": 12.6875,
+        "maybe": 32.5
+      },
+      "ft_pred": "maybe",
+      "ft_logits": {
+        "yes": 17.375,
+        "no": 18.25,
+        "maybe": 18.375
+      }
+    },
+    {
+      "idx": 109,
+      "pubid": "24245816",
+      "gold": "yes",
+      "base_pred": "yes",
+      "base_logits": {
+        "yes": 41.0,
+        "no": 17.75,
+        "maybe": 25.125
+      },
+      "ft_pred": "yes",
+      "ft_logits": {
+        "yes": 21.75,
+        "no": 17.375,
+        "maybe": 17.875
+      }
+    },
+    {
+      "idx": 110,
+      "pubid": "27146470",
+      "gold": "maybe",
+      "base_pred": "maybe",
+      "base_logits": {
+        "yes": 21.0,
+        "no": 28.625,
+        "maybe": 35.25
+      },
+      "ft_pred": "no",
+      "ft_logits": {
+        "yes": 15.9375,
+        "no": 20.375,
+        "maybe": 18.5
+      }
+    },
+    {
+      "idx": 111,
+      "pubid": "8985020",
+      "gold": "yes",
+      "base_pred": "yes",
+      "base_logits": {
+        "yes": 37.25,
+        "no": 13.8125,
+        "maybe": 28.25
+      },
+      "ft_pred": "yes",
+      "ft_logits": {
+        "yes": 19.375,
+        "no": 17.375,
+        "maybe": 17.75
+      }
+    },
+    {
+      "idx": 112,
+      "pubid": "21726930",
+      "gold": "yes",
+      "base_pred": "yes",
+      "base_logits": {
+        "yes": 38.5,
+        "no": 14.3125,
+        "maybe": 17.75
+      },
+      "ft_pred": "yes",
+      "ft_logits": {
+        "yes": 22.5,
+        "no": 17.125,
+        "maybe": 17.125
+      }
+    },
+    {
+      "idx": 113,
+      "pubid": "12612531",
+      "gold": "yes",
+      "base_pred": "yes",
+      "base_logits": {
+        "yes": 37.75,
+        "no": 23.0,
+        "maybe": 34.5
+      },
+      "ft_pred": "yes",
+      "ft_logits": {
+        "yes": 21.375,
+        "no": 17.75,
+        "maybe": 18.375
+      }
+    },
+    {
+      "idx": 114,
+      "pubid": "24013712",
+      "gold": "yes",
+      "base_pred": "yes",
+      "base_logits": {
+        "yes": 37.0,
+        "no": 18.625,
+        "maybe": 26.375
+      },
+      "ft_pred": "yes",
+      "ft_logits": {
+        "yes": 19.5,
+        "no": 17.625,
+        "maybe": 17.625
+      }
+    },
+    {
+      "idx": 115,
+      "pubid": "24851767",
+      "gold": "no",
+      "base_pred": "maybe",
+      "base_logits": {
+        "yes": 28.375,
+        "no": 25.0,
+        "maybe": 32.75
+      },
+      "ft_pred": "no",
+      "ft_logits": {
+        "yes": 17.25,
+        "no": 17.75,
+        "maybe": 16.875
+      }
+    },
+    {
+      "idx": 116,
+      "pubid": "27448572",
+      "gold": "yes",
+      "base_pred": "yes",
+      "base_logits": {
+        "yes": 37.0,
+        "no": 18.375,
+        "maybe": 28.125
+      },
+      "ft_pred": "yes",
+      "ft_logits": {
+        "yes": 19.125,
+        "no": 18.0,
+        "maybe": 17.875
+      }
+    },
+    {
+      "idx": 117,
+      "pubid": "12484580",
+      "gold": "yes",
+      "base_pred": "yes",
+      "base_logits": {
+        "yes": 38.75,
+        "no": 18.375,
+        "maybe": 24.875
+      },
+      "ft_pred": "yes",
+      "ft_logits": {
+        "yes": 22.25,
+        "no": 17.75,
+        "maybe": 18.625
+      }
+    },
+    {
+      "idx": 118,
+      "pubid": "23568387",
+      "gold": "no",
+      "base_pred": "maybe",
+      "base_logits": {
+        "yes": 11.6875,
+        "no": 30.625,
+        "maybe": 32.75
+      },
+      "ft_pred": "no",
+      "ft_logits": {
+        "yes": 16.625,
+        "no": 21.125,
+        "maybe": 18.625
+      }
+    },
+    {
+      "idx": 119,
+      "pubid": "19923859",
+      "gold": "yes",
+      "base_pred": "yes",
+      "base_logits": {
+        "yes": 35.5,
+        "no": 22.625,
+        "maybe": 34.25
+      },
+      "ft_pred": "yes",
+      "ft_logits": {
+        "yes": 19.625,
+        "no": 18.625,
+        "maybe": 17.875
+      }
+    },
+    {
+      "idx": 120,
+      "pubid": "9199905",
+      "gold": "yes",
+      "base_pred": "yes",
+      "base_logits": {
+        "yes": 34.0,
+        "no": 21.125,
+        "maybe": 31.875
+      },
+      "ft_pred": "yes",
+      "ft_logits": {
+        "yes": 19.375,
+        "no": 18.0,
+        "maybe": 17.5
+      }
+    },
+    {
+      "idx": 121,
+      "pubid": "24625433",
+      "gold": "no",
+      "base_pred": "no",
+      "base_logits": {
+        "yes": 16.125,
+        "no": 37.0,
+        "maybe": 32.25
+      },
+      "ft_pred": "no",
+      "ft_logits": {
+        "yes": 16.0,
+        "no": 19.625,
+        "maybe": 17.125
+      }
+    },
+    {
+      "idx": 122,
+      "pubid": "26215326",
+      "gold": "yes",
+      "base_pred": "yes",
+      "base_logits": {
+        "yes": 39.75,
+        "no": 14.8125,
+        "maybe": 21.0
+      },
+      "ft_pred": "yes",
+      "ft_logits": {
+        "yes": 21.875,
+        "no": 18.375,
+        "maybe": 18.375
+      }
+    },
+    {
+      "idx": 123,
+      "pubid": "17089900",
+      "gold": "yes",
+      "base_pred": "yes",
+      "base_logits": {
+        "yes": 38.75,
+        "no": 12.75,
+        "maybe": 13.9375
+      },
+      "ft_pred": "yes",
+      "ft_logits": {
+        "yes": 22.0,
+        "no": 16.375,
+        "maybe": 17.125
+      }
+    },
+    {
+      "idx": 124,
+      "pubid": "27050489",
+      "gold": "yes",
+      "base_pred": "maybe",
+      "base_logits": {
+        "yes": 16.625,
+        "no": 15.9375,
+        "maybe": 34.75
+      },
+      "ft_pred": "yes",
+      "ft_logits": {
+        "yes": 19.25,
+        "no": 18.0,
+        "maybe": 18.75
+      }
+    },
+    {
+      "idx": 125,
+      "pubid": "16155169",
+      "gold": "no",
+      "base_pred": "maybe",
+      "base_logits": {
+        "yes": 15.8125,
+        "no": 26.75,
+        "maybe": 35.0
+      },
+      "ft_pred": "no",
+      "ft_logits": {
+        "yes": 16.625,
+        "no": 19.5,
+        "maybe": 18.375
+      }
+    },
+    {
+      "idx": 126,
+      "pubid": "17601244",
+      "gold": "yes",
+      "base_pred": "yes",
+      "base_logits": {
+        "yes": 37.5,
+        "no": 14.6875,
+        "maybe": 16.375
+      },
+      "ft_pred": "yes",
+      "ft_logits": {
+        "yes": 21.75,
+        "no": 17.625,
+        "maybe": 16.875
+      }
+    },
+    {
+      "idx": 127,
+      "pubid": "21979183",
+      "gold": "no",
+      "base_pred": "maybe",
+      "base_logits": {
+        "yes": 21.0,
+        "no": 26.375,
+        "maybe": 34.75
+      },
+      "ft_pred": "no",
+      "ft_logits": {
+        "yes": 16.625,
+        "no": 20.375,
+        "maybe": 18.25
+      }
+    },
+    {
+      "idx": 128,
+      "pubid": "25752725",
+      "gold": "yes",
+      "base_pred": "maybe",
+      "base_logits": {
+        "yes": 31.125,
+        "no": 16.125,
+        "maybe": 32.75
+      },
+      "ft_pred": "yes",
+      "ft_logits": {
+        "yes": 20.5,
+        "no": 17.875,
+        "maybe": 18.25
+      }
+    },
+    {
+      "idx": 129,
+      "pubid": "24142776",
+      "gold": "yes",
+      "base_pred": "maybe",
+      "base_logits": {
+        "yes": 22.25,
+        "no": 31.125,
+        "maybe": 33.0
+      },
+      "ft_pred": "no",
+      "ft_logits": {
+        "yes": 16.625,
+        "no": 19.5,
+        "maybe": 17.375
+      }
+    },
+    {
+      "idx": 130,
+      "pubid": "17715311",
+      "gold": "yes",
+      "base_pred": "yes",
+      "base_logits": {
+        "yes": 36.75,
+        "no": 15.8125,
+        "maybe": 30.875
+      },
+      "ft_pred": "yes",
+      "ft_logits": {
+        "yes": 20.25,
+        "no": 17.75,
+        "maybe": 18.0
+      }
+    },
+    {
+      "idx": 131,
+      "pubid": "26285789",
+      "gold": "yes",
+      "base_pred": "yes",
+      "base_logits": {
+        "yes": 34.5,
+        "no": 15.0,
+        "maybe": 28.25
+      },
+      "ft_pred": "yes",
+      "ft_logits": {
+        "yes": 18.75,
+        "no": 18.125,
+        "maybe": 18.0
+      }
+    },
+    {
+      "idx": 132,
+      "pubid": "25859857",
+      "gold": "no",
+      "base_pred": "maybe",
+      "base_logits": {
+        "yes": 24.625,
+        "no": 26.5,
+        "maybe": 31.875
+      },
+      "ft_pred": "yes",
+      "ft_logits": {
+        "yes": 18.75,
+        "no": 18.125,
+        "maybe": 17.75
+      }
+    },
+    {
+      "idx": 133,
+      "pubid": "15708048",
+      "gold": "yes",
+      "base_pred": "yes",
+      "base_logits": {
+        "yes": 35.25,
+        "no": 18.125,
+        "maybe": 29.5
+      },
+      "ft_pred": "yes",
+      "ft_logits": {
+        "yes": 20.75,
+        "no": 18.25,
+        "maybe": 17.875
+      }
+    },
+    {
+      "idx": 134,
+      "pubid": "21952349",
+      "gold": "yes",
+      "base_pred": "maybe",
+      "base_logits": {
+        "yes": 16.5,
+        "no": 13.0,
+        "maybe": 29.125
+      },
+      "ft_pred": "no",
+      "ft_logits": {
+        "yes": 17.125,
+        "no": 18.125,
+        "maybe": 17.375
+      }
+    },
+    {
+      "idx": 135,
+      "pubid": "23899611",
+      "gold": "yes",
+      "base_pred": "yes",
+      "base_logits": {
+        "yes": 39.0,
+        "no": 15.25,
+        "maybe": 19.125
+      },
+      "ft_pred": "yes",
+      "ft_logits": {
+        "yes": 22.75,
+        "no": 16.875,
+        "maybe": 18.0
+      }
+    },
+    {
+      "idx": 136,
+      "pubid": "16564683",
+      "gold": "no",
+      "base_pred": "maybe",
+      "base_logits": {
+        "yes": 28.625,
+        "no": 22.25,
+        "maybe": 35.0
+      },
+      "ft_pred": "no",
+      "ft_logits": {
+        "yes": 17.0,
+        "no": 19.5,
+        "maybe": 18.875
+      }
+    },
+    {
+      "idx": 137,
+      "pubid": "26471488",
+      "gold": "no",
+      "base_pred": "maybe",
+      "base_logits": {
+        "yes": 18.625,
+        "no": 21.75,
+        "maybe": 32.75
+      },
+      "ft_pred": "no",
+      "ft_logits": {
+        "yes": 16.5,
+        "no": 19.125,
+        "maybe": 17.875
+      }
+    },
+    {
+      "idx": 138,
+      "pubid": "17914515",
+      "gold": "yes",
+      "base_pred": "maybe",
+      "base_logits": {
+        "yes": 22.75,
+        "no": 21.5,
+        "maybe": 33.5
+      },
+      "ft_pred": "yes",
+      "ft_logits": {
+        "yes": 20.25,
+        "no": 17.75,
+        "maybe": 18.125
+      }
+    },
+    {
+      "idx": 139,
+      "pubid": "22668712",
+      "gold": "no",
+      "base_pred": "maybe",
+      "base_logits": {
+        "yes": 24.125,
+        "no": 25.0,
+        "maybe": 34.5
+      },
+      "ft_pred": "no",
+      "ft_logits": {
+        "yes": 17.75,
+        "no": 19.875,
+        "maybe": 18.875
+      }
+    },
+    {
+      "idx": 140,
+      "pubid": "28127977",
+      "gold": "no",
+      "base_pred": "maybe",
+      "base_logits": {
+        "yes": 14.625,
+        "no": 31.0,
+        "maybe": 33.25
+      },
+      "ft_pred": "no",
+      "ft_logits": {
+        "yes": 16.5,
+        "no": 20.5,
+        "maybe": 17.5
+      }
+    },
+    {
+      "idx": 141,
+      "pubid": "8566975",
+      "gold": "no",
+      "base_pred": "maybe",
+      "base_logits": {
+        "yes": 12.9375,
+        "no": 30.125,
+        "maybe": 35.25
+      },
+      "ft_pred": "no",
+      "ft_logits": {
+        "yes": 16.5,
+        "no": 20.625,
+        "maybe": 18.375
+      }
+    },
+    {
+      "idx": 142,
+      "pubid": "26601554",
+      "gold": "yes",
+      "base_pred": "maybe",
+      "base_logits": {
+        "yes": 29.5,
+        "no": 15.125,
+        "maybe": 32.5
+      },
+      "ft_pred": "yes",
+      "ft_logits": {
+        "yes": 20.375,
+        "no": 17.375,
+        "maybe": 19.0
+      }
+    },
+    {
+      "idx": 143,
+      "pubid": "18783922",
+      "gold": "yes",
+      "base_pred": "maybe",
+      "base_logits": {
+        "yes": 30.75,
+        "no": 14.3125,
+        "maybe": 32.75
+      },
+      "ft_pred": "yes",
+      "ft_logits": {
+        "yes": 19.125,
+        "no": 17.875,
+        "maybe": 18.625
+      }
+    },
+    {
+      "idx": 144,
+      "pubid": "18948835",
+      "gold": "yes",
+      "base_pred": "yes",
+      "base_logits": {
+        "yes": 38.5,
+        "no": 23.75,
+        "maybe": 28.125
+      },
+      "ft_pred": "yes",
+      "ft_logits": {
+        "yes": 21.5,
+        "no": 17.75,
+        "maybe": 17.25
+      }
+    },
+    {
+      "idx": 145,
+      "pubid": "24061619",
+      "gold": "no",
+      "base_pred": "maybe",
+      "base_logits": {
+        "yes": 29.25,
+        "no": 21.5,
+        "maybe": 34.0
+      },
+      "ft_pred": "no",
+      "ft_logits": {
+        "yes": 16.75,
+        "no": 19.75,
+        "maybe": 18.625
+      }
+    },
+    {
+      "idx": 146,
+      "pubid": "12805495",
+      "gold": "maybe",
+      "base_pred": "maybe",
+      "base_logits": {
+        "yes": 14.0,
+        "no": 24.125,
+        "maybe": 32.75
+      },
+      "ft_pred": "no",
+      "ft_logits": {
+        "yes": 15.875,
+        "no": 18.125,
+        "maybe": 17.75
+      }
+    },
+    {
+      "idx": 147,
+      "pubid": "20304513",
+      "gold": "no",
+      "base_pred": "maybe",
+      "base_logits": {
+        "yes": 15.375,
+        "no": 17.625,
+        "maybe": 31.625
+      },
+      "ft_pred": "no",
+      "ft_logits": {
+        "yes": 16.5,
+        "no": 18.875,
+        "maybe": 18.25
+      }
+    },
+    {
+      "idx": 148,
+      "pubid": "18955431",
+      "gold": "yes",
+      "base_pred": "yes",
+      "base_logits": {
+        "yes": 37.0,
+        "no": 22.0,
+        "maybe": 30.0
+      },
+      "ft_pred": "yes",
+      "ft_logits": {
+        "yes": 19.625,
+        "no": 18.375,
+        "maybe": 17.75
+      }
+    },
+    {
+      "idx": 149,
+      "pubid": "23916653",
+      "gold": "yes",
+      "base_pred": "yes",
+      "base_logits": {
+        "yes": 33.0,
+        "no": 13.4375,
+        "maybe": 31.375
+      },
+      "ft_pred": "yes",
+      "ft_logits": {
+        "yes": 21.375,
+        "no": 16.75,
+        "maybe": 18.375
+      }
+    },
+    {
+      "idx": 150,
+      "pubid": "21845457",
+      "gold": "yes",
+      "base_pred": "yes",
+      "base_logits": {
+        "yes": 36.25,
+        "no": 18.0,
+        "maybe": 25.625
+      },
+      "ft_pred": "yes",
+      "ft_logits": {
+        "yes": 19.5,
+        "no": 18.5,
+        "maybe": 17.125
+      }
+    },
+    {
+      "idx": 151,
+      "pubid": "19542542",
+      "gold": "maybe",
+      "base_pred": "maybe",
+      "base_logits": {
+        "yes": 16.5,
+        "no": 30.375,
+        "maybe": 31.5
+      },
+      "ft_pred": "no",
+      "ft_logits": {
+        "yes": 16.625,
+        "no": 19.125,
+        "maybe": 17.0
+      }
+    },
+    {
+      "idx": 152,
+      "pubid": "28196511",
+      "gold": "no",
+      "base_pred": "maybe",
+      "base_logits": {
+        "yes": 12.875,
+        "no": 23.25,
+        "maybe": 36.0
+      },
+      "ft_pred": "no",
+      "ft_logits": {
+        "yes": 15.8125,
+        "no": 20.75,
+        "maybe": 19.875
+      }
+    },
+    {
+      "idx": 153,
+      "pubid": "26999038",
+      "gold": "yes",
+      "base_pred": "yes",
+      "base_logits": {
+        "yes": 36.5,
+        "no": 18.5,
+        "maybe": 32.25
+      },
+      "ft_pred": "yes",
+      "ft_logits": {
+        "yes": 21.125,
+        "no": 17.75,
+        "maybe": 18.625
+      }
+    },
+    {
+      "idx": 154,
+      "pubid": "21593045",
+      "gold": "no",
+      "base_pred": "maybe",
+      "base_logits": {
+        "yes": 14.375,
+        "no": 31.875,
+        "maybe": 34.25
+      },
+      "ft_pred": "no",
+      "ft_logits": {
+        "yes": 16.625,
+        "no": 21.125,
+        "maybe": 18.375
+      }
+    },
+    {
+      "idx": 155,
+      "pubid": "27690714",
+      "gold": "yes",
+      "base_pred": "yes",
+      "base_logits": {
+        "yes": 38.75,
+        "no": 19.875,
+        "maybe": 25.0
+      },
+      "ft_pred": "yes",
+      "ft_logits": {
+        "yes": 20.625,
+        "no": 17.125,
+        "maybe": 17.875
+      }
+    },
+    {
+      "idx": 156,
+      "pubid": "22186742",
+      "gold": "no",
+      "base_pred": "maybe",
+      "base_logits": {
+        "yes": 19.5,
+        "no": 29.0,
+        "maybe": 33.0
+      },
+      "ft_pred": "no",
+      "ft_logits": {
+        "yes": 16.375,
+        "no": 20.75,
+        "maybe": 18.375
+      }
+    },
+    {
+      "idx": 157,
+      "pubid": "25592625",
+      "gold": "no",
+      "base_pred": "yes",
+      "base_logits": {
+        "yes": 36.0,
+        "no": 16.125,
+        "maybe": 30.5
+      },
+      "ft_pred": "no",
+      "ft_logits": {
+        "yes": 17.5,
+        "no": 18.25,
+        "maybe": 17.5
+      }
+    },
+    {
+      "idx": 158,
+      "pubid": "20011163",
+      "gold": "yes",
+      "base_pred": "maybe",
+      "base_logits": {
+        "yes": 23.25,
+        "no": 20.75,
+        "maybe": 33.75
+      },
+      "ft_pred": "yes",
+      "ft_logits": {
+        "yes": 19.625,
+        "no": 18.125,
+        "maybe": 18.5
+      }
+    },
+    {
+      "idx": 159,
+      "pubid": "19593710",
+      "gold": "yes",
+      "base_pred": "maybe",
+      "base_logits": {
+        "yes": 29.125,
+        "no": 17.875,
+        "maybe": 34.5
+      },
+      "ft_pred": "yes",
+      "ft_logits": {
+        "yes": 18.125,
+        "no": 17.875,
+        "maybe": 18.0
+      }
+    },
+    {
+      "idx": 160,
+      "pubid": "25725704",
+      "gold": "yes",
+      "base_pred": "maybe",
+      "base_logits": {
+        "yes": 28.25,
+        "no": 13.9375,
+        "maybe": 32.75
+      },
+      "ft_pred": "yes",
+      "ft_logits": {
+        "yes": 20.625,
+        "no": 17.875,
+        "maybe": 18.75
+      }
+    },
+    {
+      "idx": 161,
+      "pubid": "22205377",
+      "gold": "yes",
+      "base_pred": "yes",
+      "base_logits": {
+        "yes": 38.75,
+        "no": 16.5,
+        "maybe": 20.375
+      },
+      "ft_pred": "yes",
+      "ft_logits": {
+        "yes": 21.75,
+        "no": 17.0,
+        "maybe": 18.0
+      }
+    },
+    {
+      "idx": 162,
+      "pubid": "8165771",
+      "gold": "yes",
+      "base_pred": "maybe",
+      "base_logits": {
+        "yes": 29.125,
+        "no": 15.8125,
+        "maybe": 31.25
+      },
+      "ft_pred": "yes",
+      "ft_logits": {
+        "yes": 19.25,
+        "no": 18.25,
+        "maybe": 17.875
+      }
+    },
+    {
+      "idx": 163,
+      "pubid": "8422202",
+      "gold": "no",
+      "base_pred": "maybe",
+      "base_logits": {
+        "yes": 16.75,
+        "no": 22.625,
+        "maybe": 33.75
+      },
+      "ft_pred": "no",
+      "ft_logits": {
+        "yes": 17.625,
+        "no": 20.5,
+        "maybe": 19.125
+      }
+    },
+    {
+      "idx": 164,
+      "pubid": "11413427",
+      "gold": "no",
+      "base_pred": "maybe",
+      "base_logits": {
+        "yes": 16.375,
+        "no": 27.5,
+        "maybe": 33.5
+      },
+      "ft_pred": "no",
+      "ft_logits": {
+        "yes": 15.75,
+        "no": 17.75,
+        "maybe": 17.5
+      }
+    },
+    {
+      "idx": 165,
+      "pubid": "17335331",
+      "gold": "yes",
+      "base_pred": "maybe",
+      "base_logits": {
+        "yes": 18.375,
+        "no": 21.75,
+        "maybe": 33.75
+      },
+      "ft_pred": "no",
+      "ft_logits": {
+        "yes": 17.25,
+        "no": 18.875,
+        "maybe": 18.375
+      }
+    },
+    {
+      "idx": 166,
+      "pubid": "21914194",
+      "gold": "maybe",
+      "base_pred": "maybe",
+      "base_logits": {
+        "yes": 28.125,
+        "no": 15.9375,
+        "maybe": 32.0
+      },
+      "ft_pred": "yes",
+      "ft_logits": {
+        "yes": 20.0,
+        "no": 17.5,
+        "maybe": 17.875
+      }
+    },
+    {
+      "idx": 167,
+      "pubid": "22108230",
+      "gold": "yes",
+      "base_pred": "yes",
+      "base_logits": {
+        "yes": 39.25,
+        "no": 13.6875,
+        "maybe": 19.625
+      },
+      "ft_pred": "yes",
+      "ft_logits": {
+        "yes": 21.75,
+        "no": 17.5,
+        "maybe": 17.875
+      }
+    },
+    {
+      "idx": 168,
+      "pubid": "22658587",
+      "gold": "yes",
+      "base_pred": "yes",
+      "base_logits": {
+        "yes": 33.5,
+        "no": 19.625,
+        "maybe": 31.75
+      },
+      "ft_pred": "yes",
+      "ft_logits": {
+        "yes": 21.25,
+        "no": 17.75,
+        "maybe": 18.125
+      }
+    },
+    {
+      "idx": 169,
+      "pubid": "11926574",
+      "gold": "no",
+      "base_pred": "maybe",
+      "base_logits": {
+        "yes": 18.875,
+        "no": 15.75,
+        "maybe": 33.0
+      },
+      "ft_pred": "no",
+      "ft_logits": {
+        "yes": 16.875,
+        "no": 18.875,
+        "maybe": 18.625
+      }
+    },
+    {
+      "idx": 170,
+      "pubid": "12920330",
+      "gold": "maybe",
+      "base_pred": "maybe",
+      "base_logits": {
+        "yes": 24.0,
+        "no": 18.25,
+        "maybe": 30.75
+      },
+      "ft_pred": "yes",
+      "ft_logits": {
+        "yes": 18.375,
+        "no": 18.25,
+        "maybe": 17.875
+      }
+    },
+    {
+      "idx": 171,
+      "pubid": "11481599",
+      "gold": "yes",
+      "base_pred": "yes",
+      "base_logits": {
+        "yes": 31.25,
+        "no": 14.1875,
+        "maybe": 30.875
+      },
+      "ft_pred": "yes",
+      "ft_logits": {
+        "yes": 18.875,
+        "no": 18.375,
+        "maybe": 18.375
+      }
+    },
+    {
+      "idx": 172,
+      "pubid": "2503176",
+      "gold": "yes",
+      "base_pred": "yes",
+      "base_logits": {
+        "yes": 37.25,
+        "no": 19.0,
+        "maybe": 32.0
+      },
+      "ft_pred": "yes",
+      "ft_logits": {
+        "yes": 21.25,
+        "no": 18.0,
+        "maybe": 18.25
+      }
+    },
+    {
+      "idx": 173,
+      "pubid": "19268855",
+      "gold": "no",
+      "base_pred": "maybe",
+      "base_logits": {
+        "yes": 27.75,
+        "no": 22.75,
+        "maybe": 34.75
+      },
+      "ft_pred": "no",
+      "ft_logits": {
+        "yes": 18.125,
+        "no": 18.875,
+        "maybe": 18.25
+      }
+    },
+    {
+      "idx": 174,
+      "pubid": "15041506",
+      "gold": "yes",
+      "base_pred": "yes",
+      "base_logits": {
+        "yes": 38.5,
+        "no": 18.5,
+        "maybe": 30.375
+      },
+      "ft_pred": "yes",
+      "ft_logits": {
+        "yes": 22.0,
+        "no": 17.5,
+        "maybe": 18.125
+      }
+    },
+    {
+      "idx": 175,
+      "pubid": "16147837",
+      "gold": "yes",
+      "base_pred": "yes",
+      "base_logits": {
+        "yes": 38.75,
+        "no": 20.25,
+        "maybe": 26.5
+      },
+      "ft_pred": "yes",
+      "ft_logits": {
+        "yes": 20.25,
+        "no": 18.25,
+        "maybe": 17.625
+      }
+    },
+    {
+      "idx": 176,
+      "pubid": "23497210",
+      "gold": "no",
+      "base_pred": "maybe",
+      "base_logits": {
+        "yes": 25.875,
+        "no": 24.5,
+        "maybe": 32.75
+      },
+      "ft_pred": "no",
+      "ft_logits": {
+        "yes": 16.875,
+        "no": 18.625,
+        "maybe": 17.625
+      }
+    },
+    {
+      "idx": 177,
+      "pubid": "11481172",
+      "gold": "yes",
+      "base_pred": "yes",
+      "base_logits": {
+        "yes": 36.5,
+        "no": 22.5,
+        "maybe": 25.125
+      },
+      "ft_pred": "yes",
+      "ft_logits": {
+        "yes": 20.0,
+        "no": 17.75,
+        "maybe": 17.25
+      }
+    },
+    {
+      "idx": 178,
+      "pubid": "18534072",
+      "gold": "no",
+      "base_pred": "maybe",
+      "base_logits": {
+        "yes": 20.125,
+        "no": 25.25,
+        "maybe": 33.25
+      },
+      "ft_pred": "no",
+      "ft_logits": {
+        "yes": 18.5,
+        "no": 19.75,
+        "maybe": 18.25
+      }
+    },
+    {
+      "idx": 179,
+      "pubid": "26864326",
+      "gold": "yes",
+      "base_pred": "maybe",
+      "base_logits": {
+        "yes": 23.125,
+        "no": 32.5,
+        "maybe": 34.75
+      },
+      "ft_pred": "no",
+      "ft_logits": {
+        "yes": 16.375,
+        "no": 18.375,
+        "maybe": 16.75
+      }
+    },
+    {
+      "idx": 180,
+      "pubid": "22876568",
+      "gold": "no",
+      "base_pred": "maybe",
+      "base_logits": {
+        "yes": 16.625,
+        "no": 28.875,
+        "maybe": 33.25
+      },
+      "ft_pred": "no",
+      "ft_logits": {
+        "yes": 16.625,
+        "no": 18.625,
+        "maybe": 17.0
+      }
+    },
+    {
+      "idx": 181,
+      "pubid": "11570976",
+      "gold": "maybe",
+      "base_pred": "maybe",
+      "base_logits": {
+        "yes": 9.25,
+        "no": 23.75,
+        "maybe": 30.125
+      },
+      "ft_pred": "no",
+      "ft_logits": {
+        "yes": 16.5,
+        "no": 19.625,
+        "maybe": 17.625
+      }
+    },
+    {
+      "idx": 182,
+      "pubid": "28359277",
+      "gold": "no",
+      "base_pred": "maybe",
+      "base_logits": {
+        "yes": 22.875,
+        "no": 23.25,
+        "maybe": 33.25
+      },
+      "ft_pred": "no",
+      "ft_logits": {
+        "yes": 17.125,
+        "no": 18.875,
+        "maybe": 17.375
+      }
+    },
+    {
+      "idx": 183,
+      "pubid": "17259061",
+      "gold": "yes",
+      "base_pred": "yes",
+      "base_logits": {
+        "yes": 35.75,
+        "no": 19.875,
+        "maybe": 28.375
+      },
+      "ft_pred": "yes",
+      "ft_logits": {
+        "yes": 21.625,
+        "no": 17.375,
+        "maybe": 18.5
+      }
+    },
+    {
+      "idx": 184,
+      "pubid": "11458136",
+      "gold": "maybe",
+      "base_pred": "maybe",
+      "base_logits": {
+        "yes": 14.125,
+        "no": 25.875,
+        "maybe": 32.0
+      },
+      "ft_pred": "no",
+      "ft_logits": {
+        "yes": 17.125,
+        "no": 19.375,
+        "maybe": 18.25
+      }
+    },
+    {
+      "idx": 185,
+      "pubid": "18179827",
+      "gold": "yes",
+      "base_pred": "maybe",
+      "base_logits": {
+        "yes": 26.5,
+        "no": 27.875,
+        "maybe": 31.375
+      },
+      "ft_pred": "yes",
+      "ft_logits": {
+        "yes": 19.75,
+        "no": 18.0,
+        "maybe": 16.75
+      }
+    },
+    {
+      "idx": 186,
+      "pubid": "25810292",
+      "gold": "yes",
+      "base_pred": "yes",
+      "base_logits": {
+        "yes": 36.75,
+        "no": 14.1875,
+        "maybe": 20.25
+      },
+      "ft_pred": "yes",
+      "ft_logits": {
+        "yes": 22.875,
+        "no": 17.5,
+        "maybe": 18.0
+      }
+    },
+    {
+      "idx": 187,
+      "pubid": "15222284",
+      "gold": "yes",
+      "base_pred": "maybe",
+      "base_logits": {
+        "yes": 33.75,
+        "no": 25.75,
+        "maybe": 35.5
+      },
+      "ft_pred": "yes",
+      "ft_logits": {
+        "yes": 19.875,
+        "no": 17.875,
+        "maybe": 18.0
+      }
+    },
+    {
+      "idx": 188,
+      "pubid": "17682349",
+      "gold": "yes",
+      "base_pred": "yes",
+      "base_logits": {
+        "yes": 37.75,
+        "no": 20.125,
+        "maybe": 29.375
+      },
+      "ft_pred": "yes",
+      "ft_logits": {
+        "yes": 20.875,
+        "no": 17.375,
+        "maybe": 17.625
+      }
+    },
+    {
+      "idx": 189,
+      "pubid": "26867834",
+      "gold": "yes",
+      "base_pred": "maybe",
+      "base_logits": {
+        "yes": 32.25,
+        "no": 19.375,
+        "maybe": 33.75
+      },
+      "ft_pred": "yes",
+      "ft_logits": {
+        "yes": 21.25,
+        "no": 18.5,
+        "maybe": 18.25
+      }
+    },
+    {
+      "idx": 190,
+      "pubid": "27592038",
+      "gold": "yes",
+      "base_pred": "yes",
+      "base_logits": {
+        "yes": 37.75,
+        "no": 14.75,
+        "maybe": 21.0
+      },
+      "ft_pred": "yes",
+      "ft_logits": {
+        "yes": 21.0,
+        "no": 17.625,
+        "maybe": 17.75
+      }
+    },
+    {
+      "idx": 191,
+      "pubid": "26363639",
+      "gold": "yes",
+      "base_pred": "yes",
+      "base_logits": {
+        "yes": 39.5,
+        "no": 12.75,
+        "maybe": 13.875
+      },
+      "ft_pred": "yes",
+      "ft_logits": {
+        "yes": 22.0,
+        "no": 17.0,
+        "maybe": 16.875
+      }
+    },
+    {
+      "idx": 192,
+      "pubid": "24446763",
+      "gold": "no",
+      "base_pred": "maybe",
+      "base_logits": {
+        "yes": 12.25,
+        "no": 28.25,
+        "maybe": 31.0
+      },
+      "ft_pred": "no",
+      "ft_logits": {
+        "yes": 16.25,
+        "no": 20.25,
+        "maybe": 17.0
+      }
+    },
+    {
+      "idx": 193,
+      "pubid": "19836806",
+      "gold": "no",
+      "base_pred": "maybe",
+      "base_logits": {
+        "yes": 19.75,
+        "no": 31.5,
+        "maybe": 35.25
+      },
+      "ft_pred": "no",
+      "ft_logits": {
+        "yes": 16.375,
+        "no": 20.75,
+        "maybe": 18.0
+      }
+    },
+    {
+      "idx": 194,
+      "pubid": "26037986",
+      "gold": "maybe",
+      "base_pred": "yes",
+      "base_logits": {
+        "yes": 38.75,
+        "no": 14.5,
+        "maybe": 25.125
+      },
+      "ft_pred": "yes",
+      "ft_logits": {
+        "yes": 21.5,
+        "no": 17.125,
+        "maybe": 17.75
+      }
+    },
+    {
+      "idx": 195,
+      "pubid": "19108857",
+      "gold": "yes",
+      "base_pred": "maybe",
+      "base_logits": {
+        "yes": 15.4375,
+        "no": 14.9375,
+        "maybe": 30.25
+      },
+      "ft_pred": "maybe",
+      "ft_logits": {
+        "yes": 18.125,
+        "no": 17.875,
+        "maybe": 18.75
+      }
+    },
+    {
+      "idx": 196,
+      "pubid": "24799031",
+      "gold": "no",
+      "base_pred": "maybe",
+      "base_logits": {
+        "yes": 17.125,
+        "no": 23.875,
+        "maybe": 34.5
+      },
+      "ft_pred": "no",
+      "ft_logits": {
+        "yes": 16.75,
+        "no": 19.0,
+        "maybe": 17.875
+      }
+    },
+    {
+      "idx": 197,
+      "pubid": "2224269",
+      "gold": "yes",
+      "base_pred": "maybe",
+      "base_logits": {
+        "yes": 25.0,
+        "no": 16.25,
+        "maybe": 34.75
+      },
+      "ft_pred": "yes",
+      "ft_logits": {
+        "yes": 19.5,
+        "no": 17.75,
+        "maybe": 18.875
+      }
+    },
+    {
+      "idx": 198,
+      "pubid": "27928673",
+      "gold": "yes",
+      "base_pred": "yes",
+      "base_logits": {
+        "yes": 38.75,
+        "no": 19.875,
+        "maybe": 25.5
+      },
+      "ft_pred": "yes",
+      "ft_logits": {
+        "yes": 21.25,
+        "no": 17.875,
+        "maybe": 17.625
+      }
+    },
+    {
+      "idx": 199,
+      "pubid": "18847643",
+      "gold": "no",
+      "base_pred": "maybe",
+      "base_logits": {
+        "yes": 13.5625,
+        "no": 16.125,
+        "maybe": 33.75
+      },
+      "ft_pred": "maybe",
+      "ft_logits": {
+        "yes": 17.625,
+        "no": 19.125,
+        "maybe": 19.25
+      }
+    }
+  ],
+  "mcnemar_p_display": "1.29e-14 (< 0.0001)"
+}

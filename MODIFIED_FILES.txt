@@ -1,0 +1,19 @@
+README.md
+FINAL_CHANGELOG.md
+SCIENTIFIC_LIMITATIONS.md
+final_consistency_audit_report.txt
+MODIFIED_FILES.txt
+presentation/MedVision_Academic_Report.md
+presentation/MedVision_Academic_Report.html
+presentation/MedVision_Academic_Report_Standalone.html
+presentation/CV_SOP_Bullets.md
+presentation/figures/*.png (7 original figures packaged)
+backend/final_release_consistency_audit.py
+backend/app/services/clinical_safety.py
+backend/app/services/clinical_llm_rag.py
+backend/tests/test_clinical_safety_guardrail.py
+backend/verify_manifests_reproducible.py
+backend/checkpoints/pubmedqa_split_manifest.json
+backend/checkpoints/iu_xray_split_manifest.json
+backend/checkpoints/iu_xray_e2e_audit.json
+backend/medical_rag_index_full/corpus_manifest.json

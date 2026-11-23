@@ -1,0 +1,31 @@
+{
+  "dataset": "ykumards/open-i (IU-Xray UID-Disjoint: 3080 Train / 250 Test)",
+  "train_seconds": 2118.4,
+  "base_qwen25_7b": {
+    "clinical_micro_f1_pct": 58.08,
+    "clinical_macro_f1_pct": 39.64,
+    "clinical_precision_pct": 45.72,
+    "clinical_recall_pct": 79.61,
+    "negation_specificity_pct": 91.22,
+    "rouge_l_pct": 15.07,
+    "sample_pred": "Impression: Cardiac and mediastinal contours within normal limits. Thoracic spondylosis. History of prior granulomatous disease. Lungs clear.",
+    "sample_ref": "No acute findings."
+  },
+  "medvision_7b_radiologist": {
+    "clinical_micro_f1_pct": 79.32,
+    "clinical_macro_f1_pct": 60.45,
+    "clinical_precision_pct": 76.84,
+    "clinical_recall_pct": 81.96,
+    "negation_specificity_pct": 97.7,
+    "rouge_l_pct": 63.76,
+    "sample_pred": "No acute findings.",
+    "sample_ref": "No acute findings."
+  },
+  "gains": {
+    "clinical_micro_f1_delta": 21.24,
+    "clinical_macro_f1_delta": 20.81,
+    "negation_specificity_delta": 6.48,
+    "rouge_l_delta": 48.69
+  },
+  "checkpoint": "C:\\Users\\shaya\\Downloads\\medvision-ai-studio-full-project\\medvision-ai-studio\\backend\\checkpoints\\medvision-7b-iu-xray-radiologist"
+}

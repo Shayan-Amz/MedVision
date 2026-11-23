@@ -1,0 +1,49 @@
+{
+  "name": "MedVision 02 - Continual DPO Alignment Flywheel (RTX 4080 Auto-Trainer)",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "medvision-auto-retrain",
+        "responseMode": "onReceived"
+      },
+      "id": "node-webhook-retrain",
+      "name": "DPO Vault Threshold Webhook",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 1,
+      "position": [220, 300]
+    },
+    {
+      "parameters": {
+        "url": "http://backend:8000/api/v1/training/start",
+        "method": "POST",
+        "jsonParameters": true,
+        "bodyParametersJson": "={\n  \"run_name\": \"qwen2.5-7b-clinical-dpo-auto-{{$now.toFormat('yyyyMMdd-HHmm')}}\",\n  \"base_model\": \"Qwen/Qwen2.5-7B-Instruct\",\n  \"method\": \"QLoRA-DPO\",\n  \"lora_r\": 16,\n  \"lora_alpha\": 32,\n  \"dpo_beta\": 0.1,\n  \"num_epochs\": 3\n}"
+      },
+      "id": "node-trigger-qlora",
+      "name": "Launch RTX 4080 QLoRA-DPO Job",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 3,
+      "position": [500, 300]
+    },
+    {
+      "parameters": {
+        "chatId": "@MLOpsEngineeringChannel",
+        "text": "🧬 *Continual DPO Alignment Started on RTX 4080*\n*Job:* `{{$json.config.run_name}}`\n*Method:* 4-bit NF4 QLoRA + DPO (Beta=0.1)\n*Physician Pairs:* 25 verified clinical reports"
+      },
+      "id": "node-notify-mlops",
+      "name": "Notify MLOps & Research Team",
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1,
+      "position": [780, 300]
+    }
+  ],
+  "connections": {
+    "DPO Vault Threshold Webhook": {
+      "main": [[{"node": "Launch RTX 4080 QLoRA-DPO Job", "type": "main", "index": 0}]]
+    },
+    "Launch RTX 4080 QLoRA-DPO Job": {
+      "main": [[{"node": "Notify MLOps & Research Team", "type": "main", "index": 0}]]
+    }
+  }
+}

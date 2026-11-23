@@ -1,0 +1,30 @@
+{
+  "rag_audit": {
+    "rag_corpus_size": 175413,
+    "medmcqa_val_size": 4183,
+    "exact_question_matches": 6,
+    "exact_match_rate_pct": 0.143,
+    "ngram8_overlap_questions": 16,
+    "ngram8_overlap_rate_pct": 0.383,
+    "audit_time_sec": 8.1
+  },
+  "e2e_250": {
+    "n_evaluated": 250,
+    "ood_skipped": 0,
+    "mean_e2e_latency_ms": 2390.4,
+    "cross_modal_contradiction_rate_pct": 0.0,
+    "ctr_gt_050_total": 60,
+    "ctr_gt_050_reported_by_llm_pct": 75.0,
+    "normal_gt_cases": 146,
+    "abnormal_gt_cases": 104,
+    "er_triage_mode": {
+      "abnormal_sensitivity_pct": 82.7,
+      "normal_specificity_pct": 36.3
+    },
+    "balanced_mode": {
+      "abnormal_sensitivity_pct": 70.2,
+      "normal_agreement_pct": 90.4
+    },
+    "peak_vram_gb": 6.52
+  }
+}

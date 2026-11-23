@@ -1,0 +1,49 @@
+{
+  "nih14_boot2000": {
+    "B_valid": 2000,
+    "densenet_ci95": [
+      0.8085,
+      0.8178
+    ],
+    "convnext_ci95": [
+      0.8092,
+      0.8181
+    ],
+    "ensemble_ci95": [
+      0.8164,
+      0.825
+    ],
+    "ensemble_wins_vs_dn": "2000/2000",
+    "ensemble_wins_vs_cn": "2000/2000",
+    "p_upper_bound": "< 0.0005 (p < 0.001)"
+  },
+  "xai_chance_baselines": {
+    "n_bboxes": 278,
+    "uniform_full_image_energy_pct": 7.66,
+    "uniform_inside_lung_mask_energy_pct": 17.85,
+    "ours_finding_aware_gradcam_energy_pct": 27.44,
+    "gain_over_uniform_lung_chance_pct": 9.59
+  },
+  "iu_xray_external_auroc": {
+    "n_studies": 250,
+    "abnormal_vs_normal_auroc": 0.7619,
+    "ci95": [
+      0.6998,
+      0.8196
+    ]
+  },
+  "pubmedqa_f1": {
+    "base_macro_f1_pct": 36.93,
+    "base_per_class_f1_pct": {
+      "yes": 69.79,
+      "no": 10.34,
+      "maybe": 30.67
+    },
+    "v2_macro_f1_pct": 53.93,
+    "v2_per_class_f1_pct": {
+      "yes": 85.59,
+      "no": 76.19,
+      "maybe": 0.0
+    }
+  }
+}

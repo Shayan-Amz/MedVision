@@ -1,0 +1,13 @@
+{
+  "n_evaluated": 238,
+  "guardrail_module": "app/services/clinical_safety.py (zero ML/FAISS dependencies)",
+  "before_guardrail": {
+    "malignancy_claims": 12,
+    "biopsy_directives": 9,
+    "other_invasive_or_admission_directives": 0,
+    "total_unique_reports_flagged": 12
+  },
+  "after_guardrail": {
+    "flagged_reports_remaining": 0
+  }
+}

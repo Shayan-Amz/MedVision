@@ -1,0 +1,9 @@
+{
+  "model": "MedVision-7B-v2-MultiTask (12k samples, 2.6M tokens, Val PPL 1.89)",
+  "pubmedqa_unseen_200_acc_pct": 77.5,
+  "pubmedqa_preds": {
+    "no": 87,
+    "yes": 113
+  },
+  "medmcqa_4choice_200_acc_pct": 52.0
+}

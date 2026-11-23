@@ -1,0 +1,47 @@
+{
+  "xai_3stage": {
+    "n_bboxes": 278,
+    "raw_energy_pct": 18.09,
+    "raw_pg_pct": 42.45,
+    "lung_only_energy_pct": 27.16,
+    "lung_only_pg_pct": 42.81,
+    "finding_aware_energy_pct": 27.44,
+    "finding_aware_pg_pct": 42.81
+  },
+  "ood_audit": {
+    "color_non_xray_rejected": "50/50 (100.0%)",
+    "grayscale_non_medical_rejected": "50/50 (100.0%)",
+    "non_medical_combined_trr_pct": 100.0,
+    "lateral_cxr_rejected": "3/50 (6.0%)",
+    "valid_frontal_cxr_false_reject_pct": 0.0
+  },
+  "pubmedqa_distribution": {
+    "gold": {
+      "yes": 112,
+      "no": 53,
+      "maybe": 35
+    },
+    "base_qwen7b": {
+      "yes": 80,
+      "no": 5,
+      "maybe": 115
+    },
+    "medvision_v2": {
+      "yes": 124,
+      "no": 73,
+      "maybe": 3
+    }
+  },
+  "medmcqa_full4183_closed_book": {
+    "n_total": 4183,
+    "base_qwen7b_acc_pct": 55.99,
+    "v3_supermodel_closed_book_acc_pct": 59.45,
+    "worst_case_dedup_n4167_lower_bound_pct": 64.84
+  },
+  "verifier_ablation": {
+    "n_positive_vision_cases": 60,
+    "raw_radiologist_adapter_contradiction_pct": 3.3,
+    "strict_clinical_qa_before_verifier_pct": 0.0,
+    "after_cross_modal_verifier_pct": 0.0
+  }
+}

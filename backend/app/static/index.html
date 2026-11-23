@@ -1,0 +1,774 @@
+﻿<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MedVision AI Studio v3.2 — Clinical Radiology Workstation</title>
+  <script src="https://cdn.tailwindcss.com/3.4.17">
+
+    </script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: { sans: ['Inter', 'sans-serif'], mono: ['JetBrains Mono', 'monospace'] },
+          colors: { slate950: '#060a12', slate900: '#0d1424' }
+        }
+      }
+    };
+
+    let dpoPage = 1, n8nPage = 1;
+    async function loadDpoFromDb() {
+      const q = document.getElementById("dpoSearchInput")?.value || "";
+      try {
+        const r = await fetch(`http://127.0.0.1:8000/api/v1/dpo/list?q=${encodeURIComponent(q)}&page=${dpoPage}&page_size=6`);
+        const d = await r.json();
+        document.getElementById("vaultCountBadge").textContent = d.total;
+        document.getElementById("vaultSessionTotal").textContent = d.total;
+        const maxPage = Math.max(1, Math.ceil(d.total / 6));
+        document.getElementById("dpoPageIndicator").textContent = `Page ${dpoPage} of ${maxPage}`;
+        document.getElementById("dpoPrevBtn").disabled = dpoPage <= 1;
+        document.getElementById("dpoNextBtn").disabled = dpoPage >= maxPage;
+        const el = document.getElementById("dpoPairsContainer");
+        if (!d.pairs || d.pairs.length === 0) {
+          el.innerHTML = `<div class="bg-slate-900/60 border border-slate-800 rounded-2xl p-8 text-center text-xs text-slate-400">No matching DPO records found.</div>`;
+          return;
+        }
+        el.innerHTML = d.pairs.map(p => `
+          <div class="bg-slate-900/85 border border-slate-800 rounded-2xl p-4 space-y-2 text-xs font-mono">
+            <div class="flex justify-between items-center text-cyan-300">
+              <span>${p.finding || "Clinical"} &bull; ${p.created_at}</span>
+              <button onclick="deleteDpoRecord('${p.id}')" class="px-2 py-0.5 rounded bg-rose-500/15 text-rose-300 border border-rose-500/30 hover:bg-rose-500/30 text-[11px]">Delete</button>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+              <div class="p-3 rounded-xl bg-slate-950 border border-rose-500/30 text-slate-400"><div class="text-rose-400 text-[10px] mb-1">REJECTED (Raw 7B)</div>${p.rejected}</div>
+              <div class="p-3 rounded-xl bg-slate-950 border border-emerald-500/40 text-slate-200"><div class="text-emerald-400 text-[10px] mb-1">CHOSEN (Clinician Verified)</div>${p.chosen}</div>
+            </div>
+          </div>
+        `).join("");
+      } catch (e) {}
+    }
+
+    async function deleteDpoRecord(id) {
+      await fetch(`http://127.0.0.1:8000/api/v1/dpo/${id}`, { method: "DELETE" });
+      loadDpoFromDb();
+      showToast("Deleted DPO record from SQLite database.");
+    }
+
+    async function loadN8nFromDb() {
+      const q = document.getElementById("n8nSearchInput")?.value || "";
+      const st = document.getElementById("n8nStatusFilter")?.value || "";
+      try {
+        const r = await fetch(`http://127.0.0.1:8000/api/v1/n8n/logs?q=${encodeURIComponent(q)}&status=${encodeURIComponent(st)}&page=${n8nPage}&page_size=10`);
+        const d = await r.json();
+        const el = document.getElementById("n8nLogsContainer");
+        if (!d.logs || d.logs.length === 0) {
+          el.innerHTML = `<div class="text-xs text-slate-500 font-mono py-4 text-center">No matching n8n logs found.</div>`;
+          return;
+        }
+        el.innerHTML = d.logs.map(l => `
+          <div class="p-3 rounded-xl bg-slate-950 border border-slate-800 flex flex-wrap items-center justify-between gap-2 text-xs font-mono">
+            <span class="text-slate-200">[${l.created_at}] ${l.event}</span>
+            <div class="flex items-center gap-2">
+              <span class="text-emerald-300">${l.status}</span>
+              <button onclick="deleteN8nRecord(${l.id})" class="px-2 py-0.5 rounded bg-rose-500/15 text-rose-300 border border-rose-500/30 hover:bg-rose-500/30 text-[10px]">Delete</button>
+            </div>
+          </div>
+        `).join("");
+      } catch (e) {}
+    }
+
+    async function deleteN8nRecord(id) {
+      await fetch(`http://127.0.0.1:8000/api/v1/n8n/logs/${id}`, { method: "DELETE" });
+      loadN8nFromDb();
+    }
+
+    window.addEventListener("DOMContentLoaded", () => {
+      document.getElementById("dpoSearchInput")?.addEventListener("input", () => { dpoPage = 1; loadDpoFromDb(); });
+      document.getElementById("dpoPrevBtn")?.addEventListener("click", () => { if (dpoPage > 1) { dpoPage--; loadDpoFromDb(); } });
+      document.getElementById("dpoNextBtn")?.addEventListener("click", () => { dpoPage++; loadDpoFromDb(); });
+      document.getElementById("n8nSearchInput")?.addEventListener("input", () => { n8nPage = 1; loadN8nFromDb(); });
+      document.getElementById("n8nStatusFilter")?.addEventListener("change", () => { n8nPage = 1; loadN8nFromDb(); });
+      document.getElementById("tabBtn-dpo")?.addEventListener("click", loadDpoFromDb);
+      document.getElementById("tabBtn-metrics")?.addEventListener("click", loadN8nFromDb);
+      loadDpoFromDb();
+      loadN8nFromDb();
+    });
+  </script>
+  <style>
+    body { background-color: #060a12; color: #e2e8f0; font-family: 'Inter', sans-serif; }
+    .custom-scroll::-webkit-scrollbar { width: 6px; height: 6px; }
+    .custom-scroll::-webkit-scrollbar-track { background: #0d1424; }
+    .custom-scroll::-webkit-scrollbar-thumb { background: #334155; border-radius: 9999px; }
+  </style>
+</head>
+<body class="min-h-screen flex flex-col selection:bg-cyan-500/30 selection:text-cyan-200">
+
+  <!-- Top Header -->
+  <header class="sticky top-0 z-30 border-b border-slate-800/80 bg-slate-950/90 backdrop-blur-md px-4 lg:px-6 py-3">
+    <div class="max-w-7xl mx-auto flex flex-wrap items-center justify-between gap-3">
+      <div class="flex items-center gap-3">
+        <div class="w-9 h-9 rounded-xl bg-gradient-to-br from-cyan-500 to-blue-600 flex items-center justify-center shadow-lg shadow-cyan-500/20">
+          <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2zM9 9h6v6H9V9z" />
+          </svg>
+        </div>
+        <div>
+          <div class="flex items-center gap-2">
+            <h1 class="text-base font-semibold tracking-tight text-white">MedVision AI Studio</h1>
+            <span class="px-2 py-0.5 text-[10px] font-mono font-medium rounded-full bg-emerald-500/15 text-emerald-300 border border-emerald-500/30">v4.0 RTX 4080</span>
+          </div>
+          <p class="text-[11px] text-slate-400">NIH-14 Ensemble 0.8213 Mean AUROC (DenseNet-121 + ConvNeXt-Small, 25.5k Test) + 87.0% Lung Dice + Lung-Gated Grad-CAM++ &bull; MedVision-7B Dual-Adapter (78.50% PubMedQA, 64.98% MedMCQA, 79.32% IU-Xray F1)</p>
+        </div>
+      </div>
+
+      <!-- Clean 3-Tab Navigation -->
+      <nav class="flex items-center gap-1 bg-slate-900/90 p-1 rounded-xl border border-slate-800" role="tablist">
+        <button id="tabBtn-workstation" data-tab="workstation" class="tab-btn px-3.5 py-1.5 rounded-lg text-xs font-medium transition-all bg-cyan-600 text-white shadow">
+          Radiology Workstation
+        </button>
+        <button id="tabBtn-dpo" data-tab="dpo" class="tab-btn px-3.5 py-1.5 rounded-lg text-xs font-medium transition-all text-slate-300 hover:text-white">
+          DPO Alignment Vault (<span id="vaultCountBadge">0</span>)
+        </button>
+        <button id="tabBtn-metrics" data-tab="metrics" class="tab-btn px-3.5 py-1.5 rounded-lg text-xs font-medium transition-all text-slate-300 hover:text-white">
+          7B Benchmarks &amp; n8n
+        </button>
+      </nav>
+
+      <div class="hidden xl:flex items-center gap-2 bg-slate-900/90 border border-slate-800 px-3 py-1.5 rounded-xl text-xs">
+        <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+        <span class="font-mono text-slate-300">RTX 4080 (12GB) Active</span>
+      </div>
+    </div>
+  </header>
+
+  <!-- Toast Banner -->
+  <div id="toastBanner" class="fixed bottom-5 right-5 z-50 hidden max-w-md rounded-xl border border-cyan-500/40 bg-slate-900/95 px-4 py-3 shadow-2xl backdrop-blur-md">
+    <div class="flex items-start gap-3">
+      <div class="mt-1 w-2 h-2 rounded-full bg-cyan-400 shrink-0"></div>
+      <div class="text-xs leading-relaxed text-slate-200" id="toastMessage">Ready.</div>
+    </div>
+  </div>
+
+  <main class="flex-1 max-w-7xl w-full mx-auto px-4 lg:px-6 py-5 space-y-5">
+
+    <!-- ==================== TAB 1: WORKSTATION ==================== -->
+    <section id="panel-workstation" class="space-y-4">
+
+      <!-- Clean User-Friendly Patient Context Bar -->
+      <div class="bg-slate-900/85 border border-slate-800 rounded-2xl p-4">
+        <div class="flex flex-wrap items-center justify-between gap-3">
+          <div class="flex flex-wrap items-center gap-2.5 flex-1">
+            <!-- Quick Patient Profile Chips -->
+            <div class="flex items-center gap-1.5 bg-slate-950 border border-slate-800 rounded-xl px-3 py-1.5">
+              <span class="text-[11px] text-slate-400">Age:</span>
+              <input id="inAge" type="number" min="0" max="120" inputmode="numeric" value="58" class="w-12 bg-transparent text-xs font-mono text-white focus:outline-none" />
+              <select id="inSex" class="bg-transparent text-xs font-mono text-cyan-300 focus:outline-none cursor-pointer">
+                <option value="Male" class="bg-slate-900">Male</option>
+                <option value="Female" class="bg-slate-900">Female</option>
+              </select>
+            </div>
+
+            <div class="flex items-center gap-1.5 bg-slate-950 border border-slate-800 rounded-xl px-3 py-1.5">
+              <span class="text-[11px] text-slate-400">SpO2 (%):</span>
+              <input id="inSpo2" list="spo2Presets" type="number" min="0" max="100" inputmode="numeric" value="91" class="w-14 bg-transparent text-xs font-mono text-white focus:outline-none" />
+              <datalist id="spo2Presets">
+                <option value="98" label="Normal (98%)" />
+                <option value="95" label="Borderline (95%)" />
+                <option value="91" label="Hypoxic (91%)" />
+                <option value="86" label="Severe Hypoxia (86%)" />
+              </datalist>
+            </div>
+
+            <div class="flex items-center gap-1.5 bg-slate-950 border border-slate-800 rounded-xl px-3 py-1.5 flex-1 min-w-[240px]">
+              <span class="text-[11px] text-slate-400 shrink-0">Clinical Context:</span>
+              <input id="inHistory" list="historyPresets" type="text" value="Fever + cough (4d), Type 2 Diabetes" placeholder="Type or select history..." class="w-full bg-transparent text-xs text-white focus:outline-none" />
+              <datalist id="historyPresets">
+                <option value="Fever + cough (4d), Type 2 Diabetes" />
+                <option value="Acute dyspnea, chest pain, no comorbidities" />
+                <option value="Routine outpatient screening, asymptomatic" />
+                <option value="Chronic Kidney Disease Stage 3b, orthopnea" />
+                <option value="Penicillin allergy, high fever, productive sputum" />
+              </datalist>
+            </div>
+          </div>
+
+          <div class="flex items-center gap-2 shrink-0">
+            <select id="operatingModeSelect" title="Clinical Operating Mode" class="px-2.5 py-2 rounded-xl text-xs font-mono bg-slate-950 text-cyan-300 border border-slate-700/80 focus:border-cyan-400 focus:outline-none"><option value="triage">Mode: ER Triage (High Sens)</option><option value="balanced">Mode: Balanced (Low Alarm)</option></select>
+            <input type="file" id="realXrayFileInput" accept="image/*,.dcm" class="hidden" />
+            <button id="uploadXrayBtn" class="px-4 py-2 rounded-xl text-xs font-semibold bg-gradient-to-r from-emerald-500 to-cyan-600 hover:from-emerald-400 hover:to-cyan-500 text-white shadow-lg shadow-emerald-500/20 transition">
+              + Upload Chest X-Ray &amp; Analyze
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Main 12-Col Clinical Workspace -->
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-5">
+
+        <!-- Left 5 Cols: Radiograph + Grad-CAM++ + Pathology Probabilities -->
+        <div class="lg:col-span-5 bg-slate-900/85 border border-slate-800 rounded-2xl p-4 flex flex-col justify-between space-y-4">
+          <div class="flex items-center justify-between">
+            <div>
+              <h2 class="text-sm font-semibold text-white">Spatial Attribution &amp; Lesion ROI</h2>
+              <p class="text-[11px] font-mono text-slate-400" id="scanTelemetryMeta">Waiting for radiograph upload...</p>
+            </div>
+            <span id="urgencyBadge" class="px-2.5 py-1 rounded-full text-[11px] font-mono font-semibold bg-slate-800 text-slate-300 border border-slate-700">
+              STANDBY
+            </span>
+          </div>
+
+          <div id="viewportDropzone" class="relative w-full aspect-square max-h-[370px] mx-auto rounded-xl overflow-hidden bg-slate-950 border border-dashed border-slate-700 flex items-center justify-center cursor-pointer hover:border-cyan-500/60 transition">
+            <div id="loadingOverlay" class="hidden absolute inset-0 z-20 bg-slate-950/85 backdrop-blur-sm flex flex-col items-center justify-center p-6 text-center space-y-3">
+              <div class="w-10 h-10 border-4 border-cyan-500/30 border-t-cyan-400 rounded-full animate-spin"></div>
+              <div class="text-xs font-semibold text-cyan-300">Analyzing Radiograph on RTX 4080...</div>
+              <div class="text-[11px] font-mono text-slate-400">Running DenseNet-121 Grad-CAM++ &amp; MedVision-7B-QLoRA</div>
+            </div>
+            <div id="emptyViewportState" class="text-center p-6 space-y-2">
+              <div class="w-12 h-12 rounded-2xl bg-slate-900 border border-slate-800 mx-auto flex items-center justify-center text-cyan-400">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12" />
+                </svg>
+              </div>
+              <div class="text-sm font-medium text-slate-200">Click to Upload Chest X-Ray (PNG / JPG / DICOM .dcm)</div>
+              <p class="text-xs text-slate-500 max-w-xs mx-auto">Runs DenseNet-121 + Lung-Gated Grad-CAM++ and MedVision-7B-QLoRA on RTX 4080.</p>
+            </div>
+
+            <div id="liveUploadViewport" class="hidden relative w-full h-full">
+              <img id="liveOrigImg" class="w-full h-full object-contain" alt="Original Radiograph" />
+              <img id="liveHeatmapImg" class="absolute inset-0 w-full h-full object-contain transition-opacity duration-150" style="opacity: 0.85;" alt="Grad-CAM++ Attribution" />
+            </div>
+          </div>
+
+          <div class="space-y-3 bg-slate-950/75 p-3.5 rounded-xl border border-slate-800/80">
+            <div class="flex items-center justify-between gap-3">
+              <label for="heatmapOpacitySlider" class="text-xs font-medium text-slate-300">
+                Grad-CAM++ Opacity: <span id="heatmapOpacityVal" class="font-mono text-cyan-400">85%</span>
+              </label>
+              <input id="heatmapOpacitySlider" type="range" min="0" max="100" value="85" class="w-36 accent-cyan-400 cursor-pointer" />
+            </div>
+            <div id="probabilityBarsContainer" class="space-y-2 pt-1">
+              <div class="text-xs text-slate-500 font-mono text-center py-2">Pathology probabilities will appear here after scan upload.</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right 7 Cols: Read-Only AI Output + Authorized Clinician Revision + Live Q&A -->
+        <div class="lg:col-span-7 bg-slate-900/85 border border-slate-800 rounded-2xl p-4 flex flex-col justify-between space-y-4">
+          <div class="flex flex-wrap items-center justify-between gap-2 pb-3 border-b border-slate-800">
+            <div>
+              <h2 class="text-sm font-semibold text-white">MedVision-7B-QLoRA Clinical Synthesis</h2>
+              <p class="text-[11px] font-mono text-cyan-300">Dual-Adapter: Radiologist (79.32% F1, 97.70% Negation) &bull; Clinical QA (78.50% PubMedQA, 64.98% MedMCQA n=4,183 &bull; Val PPL 1.89)</p>
+            </div>
+            <span id="n8nStatusPill" class="px-2.5 py-1 rounded-lg text-[11px] font-mono bg-slate-950 text-slate-400 border border-slate-800">
+              n8n Triage: Idle
+            </span>
+          </div>
+          <div id="riskScoreBanner" class="hidden mt-2 mb-3 rounded-xl bg-slate-950/90 border border-slate-700/80 px-3.5 py-2.5 text-xs">
+            <div class="flex items-center justify-between gap-2">
+              <span class="font-semibold text-slate-200">Multimodal Clinical Risk Engine</span>
+              <span id="riskScoreBadge" class="font-mono font-bold text-cyan-300">-- / 100</span>
+            </div>
+            <div id="riskRationaleList" class="mt-1 text-[11px] font-mono text-slate-400 leading-relaxed"></div>
+          </div>
+
+          <!-- 1. LOCKED READ-ONLY AI OUTPUT BOX -->
+          <div class="space-y-1.5">
+            <div class="flex items-center justify-between">
+              <span class="text-xs font-semibold text-slate-300 flex items-center gap-1.5">
+                <svg class="w-3.5 h-3.5 text-cyan-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+                </svg>
+                <span>AI Model Output (Read-Only)</span>
+              </span>
+              <span class="text-[10px] font-mono text-slate-500">Locked &bull; Preserved as DPO Baseline</span>
+            </div>
+            <div id="aiOutputReadOnly" class="w-full min-h-[96px] rounded-xl bg-slate-950/90 border border-slate-800 p-3.5 text-xs font-mono leading-relaxed text-cyan-100 select-text">
+              Upload a Chest X-Ray to generate a real-time clinical report from your fine-tuned Qwen2.5-7B model...
+            </div>
+          </div>
+
+          <!-- 2. AUTHORIZED PHYSICIAN REVISION BOX -->
+          <div class="space-y-1.5">
+            <div class="flex items-center justify-between">
+              <label for="physicianCorrectionInput" class="text-xs font-semibold text-emerald-300">
+                Clinician Correction / Notes (Editable &rarr; Logs DPO Preference Pair):
+              </label>
+              <span class="text-[11px] font-mono text-slate-400" id="editDeltaBadge">Optional refinement</span>
+            </div>
+            <textarea id="physicianCorrectionInput" rows="3" placeholder="If the AI missed a nuance or dosage constraint, write your corrected clinical impression here to train the next DPO cycle..." class="w-full rounded-xl bg-slate-950 border border-emerald-500/30 focus:border-emerald-400 focus:outline-none p-3 text-xs font-mono leading-relaxed text-slate-100 custom-scroll"></textarea>
+
+            <div class="flex flex-wrap items-center justify-between gap-2.5 pt-1">
+              <button id="saveDpoPairBtn" class="px-4 py-2 rounded-xl text-xs font-semibold bg-emerald-600 hover:bg-emerald-500 text-white shadow-lg shadow-emerald-600/20 transition disabled:opacity-40" disabled>
+                Approve &amp; Save to DPO Vault (+1)
+              </button>
+              <div class="flex flex-wrap items-center gap-2">
+                <button id="downloadReportBtn" class="px-3.5 py-2 rounded-xl text-xs font-semibold bg-slate-800 hover:bg-slate-700 text-cyan-300 border border-slate-700 transition disabled:opacity-40" disabled>
+                  Print / Save PDF Report (With Scans)
+                </button>
+                <button id="dispatchN8nTriageBtn" class="px-4 py-2 rounded-xl text-xs font-semibold bg-rose-600/90 hover:bg-rose-500 text-white border border-rose-400/30 transition disabled:opacity-40" disabled>
+                  Send STAT Alert via n8n
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- 3. INTERACTIVE FOLLOW-UP Q&A WITH 7B MODEL -->
+          <div class="border-t border-slate-800 pt-3 space-y-2">
+            <div class="text-xs font-semibold text-slate-300">Ask Follow-Up Clinical Question (Live 7B Model)</div>
+            <div class="flex gap-2">
+              <input id="followupQuestionInput" type="text" placeholder="e.g., Suggest alternative antibiotic if patient has penicillin allergy..." class="flex-1 rounded-xl bg-slate-950 border border-slate-700/80 px-3 py-2 text-xs text-white focus:border-cyan-400 focus:outline-none" />
+              <button id="askFollowupBtn" class="px-4 py-2 rounded-xl text-xs font-semibold bg-cyan-600 hover:bg-cyan-500 text-white transition">
+                Ask 7B
+              </button>
+            </div>
+            <div id="followupAnswerBox" class="hidden rounded-xl bg-slate-950 border border-cyan-500/30 p-3 text-xs font-mono text-cyan-100 leading-relaxed"></div>
+            <div id="ragEvidenceGrid" class="hidden grid grid-cols-1 md:grid-cols-3 gap-2 mt-2"></div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ==================== TAB 2: DPO ALIGNMENT VAULT ==================== -->
+    <section id="panel-dpo" class="hidden space-y-4">
+      <div class="bg-slate-900/85 border border-slate-800 rounded-2xl p-4 flex flex-wrap items-center justify-between gap-3">
+        <div>
+          <h2 class="text-sm font-semibold text-white">Physician Preference Vault (DPO Tuples)</h2>
+          <p class="text-xs text-slate-400">Search, filter, manage, or export verified <code class="font-mono text-cyan-300">(chosen, rejected)</code> pairs as JSONL.</p>
+        </div>
+        <div class="flex flex-wrap items-center gap-2">
+          <input id="dpoSearchInput" type="text" placeholder="Search findings or text..." class="rounded-xl bg-slate-950 border border-slate-700 px-3 py-1.5 text-xs text-white focus:border-cyan-400 focus:outline-none" />
+          <a href="http://127.0.0.1:8000/api/v1/dpo/export-jsonl" class="px-3 py-1.5 rounded-xl text-xs font-semibold bg-cyan-600 hover:bg-cyan-500 text-white transition">Export .JSONL</a>
+          <span class="px-3 py-1.5 rounded-xl text-xs font-mono bg-slate-950 border border-slate-800 text-cyan-300">Total: <strong id="vaultSessionTotal">0</strong></span>
+        </div>
+      </div>
+      <div id="dpoPairsContainer" class="space-y-3"></div>
+      <div class="flex items-center justify-between text-xs font-mono text-slate-400 pt-1">
+        <button id="dpoPrevBtn" class="px-3 py-1.5 rounded-lg bg-slate-900 border border-slate-800 hover:text-white disabled:opacity-40">&larr; Prev</button>
+        <span id="dpoPageIndicator">Page 1</span>
+        <button id="dpoNextBtn" class="px-3 py-1.5 rounded-lg bg-slate-900 border border-slate-800 hover:text-white disabled:opacity-40">Next &rarr;</button>
+      </div>
+    </section>
+
+    <!-- ==================== TAB 3: REAL 7B RESEARCH BENCHMARKS & n8n ==================== -->
+    <section id="panel-metrics" class="hidden space-y-5">
+      <div class="grid grid-cols-2 sm:grid-cols-4 gap-3">
+        <div class="bg-slate-900/85 border border-slate-800 rounded-2xl p-4">
+          <div class="text-[11px] text-slate-400">Baseline Val Perplexity</div>
+          <div class="text-xl font-mono font-semibold text-slate-300 mt-1">22.51</div>
+          <div class="text-[10px] text-slate-500 mt-0.5">Base Qwen2.5-7B (n=300)</div>
+        </div>
+        <div class="bg-slate-900/85 border border-slate-800 rounded-2xl p-4">
+          <div class="text-[11px] text-slate-400">Fine-Tuned Val Perplexity</div>
+          <div class="text-xl font-mono font-semibold text-emerald-400 mt-1">1.89 (-91.6%)</div>
+          <div class="text-[10px] text-slate-500 mt-0.5">12,000 Multi-Task Samples (2.6M Tokens)</div>
+        </div>
+        <div class="bg-slate-900/85 border border-slate-800 rounded-2xl p-4">
+          <div class="text-[11px] text-slate-400">PubMedQA Unseen Accuracy</div>
+          <div class="text-xl font-mono font-semibold text-cyan-400 mt-1">78.50% (+27.0%)</div>
+          <div class="text-[10px] text-slate-500 mt-0.5">vs 39.50% Base / 78.0% Human</div>
+        </div>
+        <div class="bg-slate-900/85 border border-slate-800 rounded-2xl p-4">
+          <div class="text-[11px] text-slate-400">Peak RTX 4080 VRAM</div>
+          <div class="text-xl font-mono font-semibold text-amber-300 mt-1">11.52 / 12.0 GB</div>
+          <div class="text-[10px] text-slate-500 mt-0.5">4-bit NF4 + BF16 Compute</div>
+        </div>
+      </div>
+
+      <div class="bg-slate-900/85 border border-slate-800 rounded-2xl p-4 space-y-3">
+        <div class="flex flex-wrap items-center justify-between gap-2">
+          <h3 class="text-xs font-semibold uppercase tracking-wider text-slate-300">n8n Workflow Execution Log</h3>
+          <div class="flex flex-wrap items-center gap-2">
+            <input id="n8nSearchInput" type="text" placeholder="Search event..." class="rounded-lg bg-slate-950 border border-slate-700 px-2.5 py-1 text-xs text-white focus:border-cyan-400 focus:outline-none" />
+            <select id="n8nStatusFilter" class="rounded-lg bg-slate-950 border border-slate-700 px-2.5 py-1 text-xs text-slate-200 focus:outline-none">
+              <option value="">All Statuses</option>
+              <option value="SUCCESS">SUCCESS</option>
+              <option value="SIMULATED">SIMULATED</option>
+              <option value="DISPATCHED">DISPATCHED</option>
+            </select>
+          </div>
+        </div>
+        <div id="n8nLogsContainer" class="space-y-2 max-h-72 overflow-y-auto custom-scroll">
+          <div class="text-xs text-slate-500 font-mono py-4 text-center">No n8n dispatches triggered yet in this session.</div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <script>
+    let currentStudy = null;
+    let rawAiDraft = "";
+    const dpoPairs = [];
+    const n8nLogs = [];
+
+    function showToast(msg) {
+      const b = document.getElementById("toastBanner");
+      document.getElementById("toastMessage").textContent = msg;
+      b.classList.remove("hidden");
+      setTimeout(() => b.classList.add("hidden"), 4500);
+    }
+
+    function switchTab(tab) {
+      ["workstation", "dpo", "metrics"].forEach(t => {
+        const panel = document.getElementById(`panel-${t}`);
+        const btn = document.getElementById(`tabBtn-${t}`);
+        if (t === tab) {
+          panel.classList.remove("hidden");
+          btn.className = "tab-btn px-3.5 py-1.5 rounded-lg text-xs font-medium transition-all bg-cyan-600 text-white shadow";
+        } else {
+          panel.classList.add("hidden");
+          btn.className = "tab-btn px-3.5 py-1.5 rounded-lg text-xs font-medium transition-all text-slate-300 hover:text-white";
+        }
+      });
+    }
+
+    async function handleXrayUpload(file) {
+      if (!file) return;
+      document.getElementById("loadingOverlay").classList.remove("hidden"); const upBtn=document.getElementById("uploadXrayBtn"); upBtn.disabled=true; upBtn.textContent="Analyzing on RTX 4080..."; showToast(`Analyzing ${file.name} on RTX 4080...`);
+      document.getElementById("scanTelemetryMeta").textContent = "Running CUDA Vision + 7B LLM...";
+
+      const age = document.getElementById("inAge").value || "58";
+      const sex = document.getElementById("inSex").value || "Male";
+      const spo2 = document.getElementById("inSpo2").value || "91%";
+      const hist = document.getElementById("inHistory").value || "None";
+
+      const fd = new FormData();
+      fd.append("file", file);
+      fd.append("patient_name", `${age}yo ${sex} (SpO2: ${String(spo2).replace(/[^0-9.]/g, "")}%)`);
+      fd.append("patient_mrn", `SpO2 ${spo2} | ${hist}`);
+      fd.append("age", String(age || ""));
+      fd.append("spo2", String(spo2 || ""));
+      fd.append("clinical_context", String(hist || ""));
+      const modeEl = document.getElementById("operatingModeSelect");
+      fd.append("operating_mode", modeEl ? modeEl.value : "triage");
+
+      try {
+        const resp = await fetch("http://127.0.0.1:8000/api/v1/studies/upload-analyze", { method: "POST", body: fd });
+        if (!resp.ok) throw new Error(`HTTP ${resp.status}`);
+        const data = await resp.json();
+        currentStudy = data;
+        rawAiDraft = data.clinical_impression;
+
+        document.getElementById("emptyViewportState").classList.add("hidden");
+        document.getElementById("liveUploadViewport").classList.remove("hidden");
+        document.getElementById("liveOrigImg").src = data.original_image_b64;
+        document.getElementById("liveHeatmapImg").src = data.heatmap_image_b64;
+
+        const ctrTxt = data.ctr_ratio ? ` | CTR: ${data.ctr_ratio} (${data.ctr_ratio > 0.50 ? "Enlarged" : "Normal"})` : ""; document.getElementById("scanTelemetryMeta").textContent = `${data.filename} | ${data.latency_ms}ms${ctrTxt}`;
+        const urg = document.getElementById("urgencyBadge");
+        urg.textContent = `${data.urgency} TRIAGE`;
+        urg.className = (data.urgency === "STAT" || data.urgency === "CRITICAL")
+          ? "px-2.5 py-1 rounded-full text-[11px] font-mono font-semibold bg-rose-500/20 text-rose-300 border border-rose-500/40"
+          : data.urgency === "HIGH"
+          ? "px-2.5 py-1 rounded-full text-[11px] font-mono font-semibold bg-amber-500/20 text-amber-300 border border-amber-500/40"
+          : "px-2.5 py-1 rounded-full text-[11px] font-mono font-semibold bg-emerald-500/20 text-emerald-300 border border-emerald-500/40";
+
+        document.getElementById("probabilityBarsContainer").innerHTML = Object.entries(data.class_probabilities).map(([k, v]) => {
+          const pct = (v * 100).toFixed(1);
+          const color = v >= 0.65 ? "bg-rose-500" : v >= 0.50 ? "bg-amber-500" : "bg-cyan-500";
+          return `<div class="space-y-1"><div class="flex justify-between text-xs"><span class="text-slate-300">${k}</span><span class="font-mono font-semibold text-white">${pct}%</span></div><div class="w-full h-1.5 bg-slate-800 rounded-full overflow-hidden"><div class="${color} h-full rounded-full" style="width:${pct}%"></div></div></div>`;
+        }).join("");
+
+        document.getElementById("aiOutputReadOnly").textContent = rawAiDraft;
+        document.getElementById("physicianCorrectionInput").value = "";
+        document.getElementById("editDeltaBadge").textContent = "Ready for clinician review";
+        document.getElementById("saveDpoPairBtn").disabled = false;
+        document.getElementById("dispatchN8nTriageBtn").disabled = false; document.getElementById("downloadReportBtn").disabled = false;
+
+        if (data.clinical_risk_score !== undefined) {
+          const rb = document.getElementById("riskScoreBanner");
+          const rBadge = document.getElementById("riskScoreBadge");
+          const rList = document.getElementById("riskRationaleList");
+          if (rb && rBadge && rList) {
+            rb.classList.remove("hidden");
+            const sc = Number(data.clinical_risk_score);
+            const tier = data.triage_tier || data.urgency || "";
+            rBadge.textContent = `${sc.toFixed(1)} / 100 (${tier})`;
+            rBadge.className = sc >= 65 ? "font-mono font-bold text-rose-400" : (sc >= 40 ? "font-mono font-bold text-amber-300" : "font-mono font-bold text-emerald-400");
+            const items = Array.isArray(data.risk_rationale) ? data.risk_rationale : [];
+            rList.innerHTML = items.map(x => `<div>&bull; ${String(x).replace(/</g,"&lt;")}</div>`).join("");
+          }
+        }
+        if (data.n8n_automation) {
+          document.getElementById("n8nStatusPill").textContent = `n8n: ${data.n8n_automation.execution_status}`;
+          n8nLogs.unshift({ ts: new Date().toLocaleTimeString(), event: `${data.primary_finding} (${(data.confidence_score*100).toFixed(1)}%)`, status: data.n8n_automation.execution_status });
+          renderN8nLogs();
+        }
+        document.getElementById("loadingOverlay").classList.add("hidden"); upBtn.disabled=false; upBtn.textContent="+ Upload Chest X-Ray & Analyze"; showToast(`Analysis complete: ${data.primary_finding} (${(data.confidence_score*100).toFixed(1)}%)`);
+      } catch (err) {
+        document.getElementById("loadingOverlay").classList.add("hidden"); upBtn.disabled=false; upBtn.textContent="+ Upload Chest X-Ray & Analyze"; showToast("Backend unreachable at http://127.0.0.1:8000. Run Start_MedVision.bat first.");
+      }
+    }
+
+    function renderDpoVault() {
+      document.getElementById("vaultCountBadge").textContent = dpoPairs.length;
+      document.getElementById("vaultSessionTotal").textContent = dpoPairs.length;
+      const el = document.getElementById("dpoPairsContainer");
+      if (dpoPairs.length === 0) return;
+      el.innerHTML = dpoPairs.map(p => `
+        <div class="bg-slate-900/85 border border-slate-800 rounded-2xl p-4 space-y-2 text-xs font-mono">
+          <div class="flex justify-between text-cyan-300"><span>${p.filename} (${p.finding})</span><span>${p.ts}</span></div>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+            <div class="p-3 rounded-xl bg-slate-950 border border-rose-500/30 text-slate-400"><div class="text-rose-400 text-[10px] mb-1">REJECTED (Raw 7B)</div>${p.rejected}</div>
+            <div class="p-3 rounded-xl bg-slate-950 border border-emerald-500/40 text-slate-200"><div class="text-emerald-400 text-[10px] mb-1">CHOSEN (Clinician Verified)</div>${p.chosen}</div>
+          </div>
+        </div>
+      `).join("");
+    }
+
+    function renderN8nLogs() {
+      const el = document.getElementById("n8nLogsContainer");
+      if (n8nLogs.length === 0) return;
+      el.innerHTML = n8nLogs.map(l => `
+        <div class="p-3 rounded-xl bg-slate-950 border border-slate-800 flex justify-between text-xs font-mono">
+          <span class="text-slate-200">[${l.ts}] ${l.event}</span>
+          <span class="text-emerald-300">${l.status}</span>
+        </div>
+      `).join("");
+    }
+
+    window.addEventListener("DOMContentLoaded", () => {
+      document.querySelectorAll(".tab-btn").forEach(b => b.addEventListener("click", () => switchTab(b.getAttribute("data-tab"))));
+
+      const fi = document.getElementById("realXrayFileInput");
+      document.getElementById("uploadXrayBtn").addEventListener("click", () => fi.click());
+      document.getElementById("viewportDropzone").addEventListener("click", () => fi.click());
+      fi.addEventListener("change", e => handleXrayUpload(e.target.files[0]));
+
+      document.getElementById("heatmapOpacitySlider").addEventListener("input", e => {
+        document.getElementById("heatmapOpacityVal").textContent = `${e.target.value}%`;
+        document.getElementById("liveHeatmapImg").style.opacity = (e.target.value / 100).toString();
+      });
+
+      document.getElementById("saveDpoPairBtn").addEventListener("click", async () => {
+        if (!currentStudy) return;
+        const corr = document.getElementById("physicianCorrectionInput").value.trim();
+        if (!corr) {
+          showToast("Please write a clinician correction in the green box first to log a valid (Chosen vs Rejected) DPO pair.");
+          return;
+        }
+        const chosen = corr;
+        dpoPairs.unshift({ filename: currentStudy.filename, finding: currentStudy.primary_finding, rejected: rawAiDraft, chosen, ts: new Date().toLocaleTimeString() });
+        renderDpoVault();
+        try {
+          await fetch("http://127.0.0.1:8000/api/v1/feedback/dpo-pair", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ study_id: currentStudy.study_id, report_id: currentStudy.study_id, physician_name: "Attending Clinician", edited_report_text: chosen, clinician_notes: rawAiDraft })
+          });
+        } catch (e) {}
+        showToast("Saved clinician-verified tuple to DPO Vault.");
+      });
+
+      document.getElementById("dispatchN8nTriageBtn").addEventListener("click", async () => {
+        if (!currentStudy) return;
+        showToast("Dispatching STAT Alert to n8n Webhook...");
+        try {
+          const r = await fetch("http://127.0.0.1:8000/api/v1/n8n/manual-alert", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+              study_id: currentStudy.study_id,
+              patient_info: `${document.getElementById("inAge").value}yo ${document.getElementById("inSex").value} (SpO2: ${String(document.getElementById("inSpo2").value).replace(/[^0-9.]/g, "")}%)`,
+              primary_finding: currentStudy.primary_finding,
+              confidence_score: currentStudy.confidence_score,
+              clinical_impression: (() => { const base = document.getElementById("aiOutputReadOnly").textContent; const corr = document.getElementById("physicianCorrectionInput").value.trim(); return corr ? `${base}\n\n[Attending Clinician Correction / Notes]: ${corr}` : base; })()
+            })
+          });
+          const d = await r.json();
+          n8nLogs.unshift({ ts: new Date().toLocaleTimeString(), event: `Manual STAT Alert (${currentStudy.primary_finding})`, status: d.execution_status });
+          renderN8nLogs();
+          document.getElementById("n8nStatusPill").textContent = `n8n: ${d.execution_status}`;
+          showToast(`n8n STAT Alert status: ${d.execution_status}`);
+        } catch (e) {
+          showToast("Failed to reach FastAPI /api/v1/n8n/manual-alert.");
+        }
+      });
+
+      document.getElementById("askFollowupBtn").addEventListener("click", async () => {
+        const q = document.getElementById("followupQuestionInput").value.trim();
+        if (!q) return;
+        const box = document.getElementById("followupAnswerBox");
+        box.classList.remove("hidden");
+        box.textContent = "Querying MedVision-7B on RTX 4080...";
+                    const evGrid = document.getElementById("ragEvidenceGrid");
+          if (evGrid && Array.isArray(d.evidence) && d.evidence.length > 0) {
+            evGrid.classList.remove("hidden");
+            evGrid.innerHTML = d.evidence.map(ev =>
+              `<div class="rounded-lg bg-slate-950/90 border border-slate-800 p-2.5 text-[11px] text-slate-300 leading-snug">` +
+              `<div class="font-mono text-cyan-400 font-semibold mb-1">[${ev.rank}] 175k RAG &bull; Score ${ev.rerank_score}</div>` +
+              `<div>${String(ev.snippet || "").slice(0, 180).replace(/</g,"&lt;")}...</div></div>`
+            ).join("");
+          } else if (evGrid) { evGrid.classList.add("hidden"); }
+        try {
+          const r = await fetch("http://127.0.0.1:8000/api/v1/clinical/followup", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+              question: q,
+              context: rawAiDraft || "No active scan yet.",
+              study_id: currentStudy.study_id,
+              patient_info: `${document.getElementById("inAge").value}yo ${document.getElementById("inSex").value}, SpO2 ${document.getElementById("inSpo2").value}, History: ${document.getElementById("inHistory").value}`
+            })
+          });
+          const d = await r.json();
+          box.textContent = d.answer;
+        } catch (err) {
+          box.textContent = "Backend unreachable on http://127.0.0.1:8000.";
+        }
+      });
+
+      // Load persistent DPO pairs and n8n logs from SQLite DB on page load
+      fetch("http://127.0.0.1:8000/api/v1/dpo/list").then(r => r.json()).then(d => {
+        if (d.pairs && d.pairs.length > 0) {
+          d.pairs.forEach(item => dpoPairs.push({ filename: item.study_id.slice(0,8), finding: item.finding, rejected: item.rejected, chosen: item.chosen, ts: item.created_at }));
+          renderDpoVault();
+        }
+      }).catch(() => {});
+      fetch("http://127.0.0.1:8000/api/v1/n8n/logs").then(r => r.json()).then(d => {
+        if (d.logs && d.logs.length > 0) {
+          d.logs.forEach(l => n8nLogs.push({ ts: l.created_at, event: l.event, status: l.status }));
+          renderN8nLogs();
+        }
+      }).catch(() => {});
+
+      document.getElementById("downloadReportBtn").addEventListener("click", () => {
+        if (!currentStudy) return;
+        const probsRows = Object.entries(currentStudy.class_probabilities)
+          .map(([k, v]) => `<tr><td style="padding:6px 10px;border-bottom:1px solid #e2e8f0;">${k}</td><td style="padding:6px 10px;border-bottom:1px solid #e2e8f0;font-family:monospace;font-weight:bold;">${(v*100).toFixed(1)}%</td></tr>`)
+          .join("");
+        const corr = document.getElementById("physicianCorrectionInput").value.trim();
+        const spo2Val = document.getElementById("inSpo2").value || "N/A";
+        const win = window.open("", "_blank", "width=900,height=1050");
+        win.document.write(`<!DOCTYPE html><html><head><meta charset="UTF-8" /><title>MedVision Clinical Report - ${currentStudy.filename}</title>
+          <style>body{font-family:Arial,sans-serif;color:#0f172a;padding:28px;max-width:840px;margin:auto;line-height:1.5;}
+          .hdr{border-bottom:2px solid #0284c7;padding-bottom:12px;margin-bottom:16px;display:flex;justify-content:space-between;align-items:center;}
+          .grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:16px 0;}
+          .card{border:1px solid #cbd5e1;border-radius:8px;padding:10px;background:#f8fafc;}
+          img{width:100%;border-radius:6px;background:#000;}
+          table{width:100%;border-collapse:collapse;font-size:13px;margin-top:8px;}
+          .badge{background:#fee2e2;color:#b91c1c;padding:4px 10px;border-radius:999px;font-weight:bold;font-size:12px;}
+          @media print{.no-print{display:none;}}</style></head><body>
+          <div class="hdr">
+            <div><h2 style="margin:0;color:#0369a1;">MedVision AI Studio &mdash; Radiology Dossier</h2>
+            <div style="font-size:12px;color:#475569;">Generated: ${new Date().toLocaleString()} | Engine: ${currentStudy.device_used} (${currentStudy.latency_ms}ms)</div></div>
+            <span class="badge">${currentStudy.urgency} TRIAGE</span>
+          </div>
+          <div class="card" style="font-size:13px;">
+            <strong>Patient:</strong> ${document.getElementById("inAge").value}yo ${document.getElementById("inSex").value} &nbsp;|&nbsp;
+            <strong>SpO2:</strong> ${spo2Val}% &nbsp;|&nbsp;
+            <strong>Clinical Context:</strong> ${document.getElementById("inHistory").value}
+          </div>
+          <div class="grid">
+            <div class="card"><div style="font-size:12px;font-weight:bold;margin-bottom:6px;">1. Original Thoracic Radiograph</div><img src="${currentStudy.original_image_b64}" /></div>
+            <div class="card"><div style="font-size:12px;font-weight:bold;margin-bottom:6px;">2. Lung-Gated Grad-CAM++ Attribution</div><img src="${currentStudy.heatmap_image_b64}" /></div>
+          </div>
+          <div class="card" style="margin-bottom:16px;">
+            <div style="font-size:13px;font-weight:bold;margin-bottom:6px;">Vision Classification Probabilities (DenseNet-121)</div>
+            <table>${probsRows}</table>
+          </div>
+          <div class="card">
+            <div style="font-size:13px;font-weight:bold;margin-bottom:6px;">MedVision-7B-QLoRA Clinical Impression &amp; Action Plan</div>
+            <p style="font-size:13px;white-space:pre-wrap;margin:0;">${document.getElementById("aiOutputReadOnly").textContent}</p>
+            ${corr ? `<hr style="margin:12px 0;border:none;border-top:1px solid #cbd5e1;"/><div style="font-size:12px;font-weight:bold;color:#047857;">Attending Physician Revision:</div><p style="font-size:13px;margin:4px 0 0;">${corr}</p>` : ""}
+          </div>
+          <div class="no-print" style="margin-top:18px;text-align:right;">
+            <button onclick="window.print()" style="background:#0284c7;color:#fff;border:none;padding:10px 18px;border-radius:6px;cursor:pointer;font-weight:bold;">Save as PDF / Print Report</button>
+          </div></body></html>`);
+        win.document.close();
+      });
+
+      function enforceNumericRange(el, minVal, maxVal) {
+        el.addEventListener("input", () => {
+          let raw = el.value.replace(/[^0-9]/g, "");
+          if (raw === "") { el.value = ""; return; }
+          let num = parseInt(raw, 10);
+          if (num > maxVal) num = maxVal;
+          el.value = String(num);
+        });
+        el.addEventListener("blur", () => {
+          let num = parseInt(el.value, 10);
+          if (isNaN(num) || num < minVal) el.value = String(minVal);
+        });
+      }
+      enforceNumericRange(document.getElementById("inSpo2"), 0, 100);
+      enforceNumericRange(document.getElementById("inAge"), 0, 120);
+    });
+  
+      // Deep-Link Auto-Loader (Bottom of Page, after DOM & functions ready)
+      window.addEventListener("load", async () => {
+        const sid = new URLSearchParams(window.location.search).get("study_id");
+        if (!sid) return;
+        try {
+          const r = await fetch(`http://127.0.0.1:8000/api/v1/studies/${encodeURIComponent(sid)}`);
+          if (!r.ok) { showToast("Study link expired (server restarted)."); return; }
+          const data = await r.json();
+          currentStudy = data;
+          rawAiDraft = data.clinical_impression || "";
+
+          const emptySt = document.getElementById("emptyViewportState");
+          const liveVp = document.getElementById("liveUploadViewport");
+          if (emptySt) emptySt.classList.add("hidden");
+          if (liveVp) liveVp.classList.remove("hidden");
+
+          const origImg = document.getElementById("liveOrigImg");
+          const heatImg = document.getElementById("liveHeatmapImg");
+          if (origImg) origImg.src = data.original_image_b64 || "";
+          if (heatImg) heatImg.src = data.heatmap_image_b64 || "";
+
+          const aiOut = document.getElementById("aiOutputReadOnly");
+          if (aiOut) aiOut.textContent = rawAiDraft;
+
+          const ctrTxt = data.ctr_ratio ? ` | CTR: ${data.ctr_ratio} (${data.ctr_ratio > 0.50 ? "Enlarged" : "Normal"})` : "";
+          const metaEl = document.getElementById("scanTelemetryMeta");
+          if (metaEl) metaEl.textContent = `${data.filename} | ${data.latency_ms}ms${ctrTxt}`;
+
+          const urg = document.getElementById("urgencyBadge");
+          if (urg) {
+            urg.textContent = `${data.urgency} TRIAGE`;
+            urg.className = (data.urgency === "STAT" || data.urgency === "CRITICAL")
+              ? "px-2.5 py-1 rounded-full text-[11px] font-mono font-semibold bg-rose-500/20 text-rose-300 border border-rose-500/40"
+              : data.urgency === "HIGH"
+              ? "px-2.5 py-1 rounded-full text-[11px] font-mono font-semibold bg-amber-500/20 text-amber-300 border border-amber-500/40"
+              : "px-2.5 py-1 rounded-full text-[11px] font-mono font-semibold bg-emerald-500/20 text-emerald-300 border border-emerald-500/40";
+          }
+
+          if (data.clinical_risk_score !== undefined) {
+            const rb = document.getElementById("riskScoreBanner");
+            const rBadge = document.getElementById("riskScoreBadge");
+            const rList = document.getElementById("riskRationaleList");
+            if (rb && rBadge && rList) {
+              rb.classList.remove("hidden");
+              rBadge.textContent = `${Number(data.clinical_risk_score).toFixed(1)} / 100 (${data.triage_tier || data.urgency})`;
+              rBadge.className = Number(data.clinical_risk_score) >= 65 ? "font-mono font-bold text-rose-400" : "font-mono font-bold text-amber-300";
+              rList.innerHTML = (data.risk_rationale || []).map(x => `<div>&bull; ${String(x).replace(/</g,"&lt;")}</div>`).join("");
+            }
+          }
+
+          const probsEl = document.getElementById("probabilityBarsContainer");
+          if (probsEl && data.class_probabilities) {
+            probsEl.innerHTML = Object.entries(data.class_probabilities)
+              .sort((a, b) => b[1] - a[1])
+              .slice(0, 6)
+              .map(([k, v]) => {
+                const pct = Math.round(v * 100);
+                const barCls = pct >= 70 ? "bg-rose-500" : pct >= 45 ? "bg-amber-400" : "bg-cyan-500";
+                return `<div class="space-y-1"><div class="flex justify-between text-xs"><span class="text-slate-300">${k}</span><span class="font-mono text-slate-400">${pct}%</span></div><div class="h-1.5 bg-slate-800 rounded-full overflow-hidden"><div class="h-full ${barCls} rounded-full" style="width:${pct}%"></div></div></div>`;
+              }).join("");
+          }
+
+          ["saveDpoPairBtn", "dispatchN8nTriageBtn", "downloadReportBtn"].forEach(id => {
+            const b = document.getElementById(id);
+            if (b) b.disabled = false;
+          });
+          showToast(`Loaded Patient Study: ${data.filename}`);
+        } catch (e) { console.error("DeepLink error:", e); }
+      });
+
+    </script>
+</body>
+</html>

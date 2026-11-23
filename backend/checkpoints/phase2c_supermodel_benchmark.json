@@ -1,0 +1,11 @@
+{
+  "model": "MedVision-7B-v3-SuperModel (24k Cumulative Medical Samples)",
+  "elapsed_sec": 5380.8,
+  "pubmedqa_unseen_200_acc_pct": 75.5,
+  "pubmedqa_preds": {
+    "no": 79,
+    "yes": 121
+  },
+  "medmcqa_unseen_200_acc_pct": 56.5,
+  "checkpoint": "C:\\Users\\shaya\\Downloads\\medvision-ai-studio-full-project\\medvision-ai-studio\\backend\\checkpoints\\medvision-7b-v3-supermodel"
+}

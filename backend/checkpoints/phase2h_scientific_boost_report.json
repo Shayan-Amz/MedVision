@@ -1,0 +1,11 @@
+{
+  "techniques": [
+    "Full Structured PubMed Abstracts (Official Section Headers, 1536 tokens)",
+    "Multi-Prompt + Multi-Adapter Softmax Ensemble (v2 + v3 + clinical-final)",
+    "Full Leak-Free Medical FAISS Corpus (175413 passages) + Neural Cross-Encoder Reranker (Top-20 -> Top-3)",
+    "4-Way Cyclic Option Permutation Debiasing (ICLR 2024 PriDE)"
+  ],
+  "pubmedqa_3adapter_ensemble_pct": 77.5,
+  "pubmedqa_v2_clin_ensemble_pct": 77.5,
+  "medmcqa_reranked_rag_cyclic4_pct": 61.0
+}

@@ -1,0 +1,16 @@
+{
+  "corpus_version": "medvision-rag-v1.0-trainbank",
+  "builder_script": "backend/phase2h_scientific_boost_80_60.py",
+  "faiss_filename": "full_faiss.index",
+  "docs_filename": "full_docs.json",
+  "doc_count": 175413,
+  "faiss_ntotal": 175413,
+  "faiss_index_sha256": "9b7b1f9e5109beaaed63756971f6d994da5b8348dc6a282ce32abbf3c8ba23d7",
+  "docs_json_sha256": "e18b26ab0ac15c6e8b1729da2d0fb761b14962c046bc7535a4f8de95ee29b471",
+  "source_datasets": [
+    "openlifescienceai/medmcqa (train split explanations only)",
+    "medalpaca/medical_meadow_medical_flashcards (clinical fact flashcards)"
+  ],
+  "encoder_model": "BAAI/bge-small-en-v1.5",
+  "reranker_model": "cross-encoder/ms-marco-MiniLM-L-6-v2"
+}

@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<title>MedVision &amp; Clinical LLM Studio v4.0 — Academic Evaluation Dossier</title>
+<style>
+  body { font-family: 'Segoe UI', system-ui, -apple-system, sans-serif; color: #0f172a; background: #f8fafc; margin: 0; padding: 32px; line-height: 1.6; }
+  .container { max-width: 1120px; margin: 0 auto; background: #ffffff; padding: 40px 48px; border-radius: 16px; box-shadow: 0 10px 30px rgba(15,23,42,0.08); }
+  h1 { font-size: 28px; margin-bottom: 6px; color: #0f172a; border-bottom: 3px solid #0284c7; padding-bottom: 10px; }
+  h2 { font-size: 20px; margin-top: 34px; color: #0369a1; border-left: 4px solid #0284c7; padding-left: 10px; }
+  .subtitle { color: #475569; font-size: 14px; margin-bottom: 24px; }
+  .kpi-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; margin: 22px 0; }
+  .kpi { background: #f1f5f9; border: 1px solid #cbd5e1; border-radius: 12px; padding: 14px 16px; }
+  .kpi .val { font-size: 24px; font-weight: 800; color: #059669; }
+  .kpi .lbl { font-size: 12px; color: #475569; font-weight: 600; text-transform: uppercase; }
+  .kpi .sub { font-size: 11px; color: #64748b; margin-top: 4px; }
+  table { width: 100%; border-collapse: collapse; margin: 16px 0; font-size: 13px; }
+  th, td { border: 1px solid #cbd5e1; padding: 8px 10px; text-align: center; }
+  th { background: #0f172a; color: #ffffff; font-weight: 600; }
+  tr:nth-child(even) { background: #f8fafc; }
+  .fig-box { margin: 24px 0; text-align: center; page-break-inside: avoid; }
+  .fig-box img { max-width: 100%; border: 1px solid #e2e8f0; border-radius: 10px; }
+  .fig-cap { font-size: 12.5px; color: #475569; margin-top: 6px; font-style: italic; }
+  .callout { background: #eff6ff; border-left: 4px solid #2563eb; padding: 14px 18px; border-radius: 8px; margin: 18px 0; font-size: 13.5px; }
+  @media print { body { background: #fff; padding: 0; } .container { box-shadow: none; padding: 12px; } }
+</style>
+</head>
+<body>
+<div class="container">
+  <h1>MedVision &amp; Clinical LLM Studio (v4.0)</h1>
+  <div class="subtitle">
+    Comprehensive Academic &amp; Engineering Evaluation Dossier &bull; Single RTX 4080 Laptop GPU (12 GB VRAM) &bull; NIH-14 Patient-Disjoint Verified (69,000 Train + 8,617 Val subsampled from official trainval for local SSD budget [24,846 pts]; 100% Official 25,596 Test [2,797 pts]; 27,643/30,805 total)
+  </div>
+
+  <div class="kpi-grid">
+    <div class="kpi"><div class="lbl">NIH-14 Official Test</div><div class="val">0.8213 AUROC</div><div class="sub">n=25,596 (2,797 pts) | 14/14 best | &Delta;+0.0074 vs DN</div></div>
+    <div class="kpi"><div class="lbl">PubMedQA Held-Out (n=200)</div><div class="val">78.50%</div><div class="sub">Maj. (yes) 51.5% | Base 39.50% | Macro-F1 60.05%</div></div>
+    <div class="kpi"><div class="lbl">MedMCQA Validation</div><div class="val">59.45% / 64.80%</div><div class="sub">Closed-Book (n=4,183) | Deduped Train-Bank RAG (n=4,136)</div></div>
+    <div class="kpi"><div class="lbl">IU-Xray Summarization</div><div class="val">79.32% F1</div><div class="sub">12-Class Lexicon Micro-F1 | 97.70% Negation Spec</div></div>
+  </div>
+
+  <div class="callout">
+    <b>Engineering &amp; Clinical Highlights:</b> All 4 neural backbones (<code>DenseNet-121</code>, <code>ConvNeXt-Small</code>, <code>PSPNet</code> lung segmenter, and 4-bit <code>Qwen2.5-7B</code> with Dual-LoRA adapters) run simultaneously in <b>6.52 GB VRAM</b> alongside a CPU-offloaded <b>175,413-passage FAISS + Cross-Encoder RAG</b>, automated <b>OOD non-X-ray Guardrail</b>, <b>Cross-Modal Contradiction Verifier</b>, and <b>SQLite + n8n Continual DPO</b> loop.
+  </div>
+
+  <h2>1. Clinical LLM &amp; Medical RAG Progression (Before vs. After)</h2>
+  <div class="fig-box">
+    <img src="figures/fig1_llm_progression_bar.png" alt="LLM Progression" />
+    <div class="fig-cap">Figure 1: Clinical LLM &amp; Disclosed Train-Bank RAG evaluation across two medical QA benchmarks: (Left) PubMedQA Held-Out (n=200, 0 overlap, 0 RAG; Majority-Class 51.5%, Base 39.50% &rarr; Fine-tuned 78.50%, Macro-F1 60.05%) and (Right) MedMCQA Validation (n=4,183; Base 55.99% &rarr; Closed-Book v3 59.45% &rarr; Train-Bank RAG 64.52% Single / 64.98% Cyclic-4; deduped n=4,136: 64.80%).</div>
+  </div>
+
+  <h2>2. Thoracic Vision Ensemble — 14-Class Official Test Evaluation (n=25,596)</h2>
+  <div class="fig-box">
+    <img src="figures/fig2_nih14_per_class_auroc.png" alt="NIH-14 Per Class AUROC" />
+    <div class="fig-cap">Figure 2: Ensemble (0.55 DenseNet-121 + 0.45 ConvNeXt-Small, 2-View TTA) outperforms both individual architectures on all 14/14 diseases.</div>
+  </div>
+
+  <table>
+    <thead>
+      <tr><th>Pathology</th><th>DenseNet-121</th><th>ConvNeXt-S</th><th>Ensemble AUROC</th><th>Sensitivity</th><th>Specificity</th><th>FPR (Error)</th><th>FNR (Miss)</th></tr>
+    </thead>
+    <tbody>
+      <tr><td><b>Hernia</b></td><td>0.9104</td><td>0.9027</td><td style='color:#059669;font-weight:700'>0.9204</td><td>79.1%</td><td>91.7%</td><td>8.3%</td><td>20.9%</td></tr>
+      <tr><td><b>Emphysema</b></td><td>0.9121</td><td>0.9016</td><td style='color:#059669;font-weight:700'>0.9138</td><td>88.0%</td><td>78.5%</td><td>21.5%</td><td>12.0%</td></tr>
+      <tr><td><b>Cardiomegaly</b></td><td>0.8906</td><td>0.8925</td><td style='color:#059669;font-weight:700'>0.8981</td><td>84.8%</td><td>77.2%</td><td>22.8%</td><td>15.2%</td></tr>
+      <tr><td><b>Pneumothorax</b></td><td>0.8619</td><td>0.8646</td><td style='color:#059669;font-weight:700'>0.8705</td><td>89.0%</td><td>66.7%</td><td>33.3%</td><td>11.0%</td></tr>
+      <tr><td><b>Edema</b></td><td>0.8470</td><td>0.8501</td><td style='color:#059669;font-weight:700'>0.8541</td><td>92.4%</td><td>58.5%</td><td>41.5%</td><td>7.6%</td></tr>
+      <tr><td><b>Fibrosis</b></td><td>0.8340</td><td>0.8284</td><td style='color:#059669;font-weight:700'>0.8400</td><td>81.8%</td><td>70.7%</td><td>29.3%</td><td>18.2%</td></tr>
+      <tr><td><b>Mass</b></td><td>0.8279</td><td>0.8263</td><td style='color:#059669;font-weight:700'>0.8337</td><td>83.9%</td><td>63.0%</td><td>37.0%</td><td>16.1%</td></tr>
+      <tr><td><b>Effusion</b></td><td>0.8266</td><td>0.8313</td><td style='color:#059669;font-weight:700'>0.8331</td><td>88.0%</td><td>59.8%</td><td>40.2%</td><td>12.0%</td></tr>
+      <tr><td><b>Pleural_Thickening</b></td><td>0.7776</td><td>0.7772</td><td style='color:#059669;font-weight:700'>0.7856</td><td>83.9%</td><td>57.0%</td><td>43.0%</td><td>16.1%</td></tr>
+      <tr><td><b>Atelectasis</b></td><td>0.7745</td><td>0.7798</td><td style='color:#059669;font-weight:700'>0.7832</td><td>83.4%</td><td>56.6%</td><td>43.4%</td><td>16.6%</td></tr>
+      <tr><td><b>Nodule</b></td><td>0.7563</td><td>0.7645</td><td style='color:#059669;font-weight:700'>0.7685</td><td>66.1%</td><td>73.0%</td><td>27.0%</td><td>33.9%</td></tr>
+      <tr><td><b>Consolidation</b></td><td>0.7554</td><td>0.7512</td><td style='color:#059669;font-weight:700'>0.7606</td><td>89.9%</td><td>44.6%</td><td>55.4%</td><td>10.1%</td></tr>
+      <tr><td><b>Pneumonia</b></td><td>0.7107</td><td>0.7117</td><td style='color:#059669;font-weight:700'>0.7200</td><td>76.2%</td><td>56.0%</td><td>44.0%</td><td>23.8%</td></tr>
+      <tr><td><b>Infiltration</b></td><td>0.7093</td><td>0.7156</td><td style='color:#059669;font-weight:700'>0.7169</td><td>88.2%</td><td>36.7%</td><td>63.3%</td><td>11.8%</td></tr>
+      <tr style="background:#e2e8f0;font-weight:800"><td>MEAN (14 Classes, n=25,596)</td><td>0.8139</td><td>0.8141</td><td style="color:#059669">0.8213</td><td>83.9%</td><td>63.6%</td><td>36.4%</td><td>16.1%</td></tr>
+    </tbody>
+  </table>
+
+  <h2>3. Training Convergence &amp; Official Test ROC Curves</h2>
+  <div class="fig-box">
+    <img src="figures/fig3_training_convergence.png" alt="ConvNeXt-Small Training Convergence" />
+    <div class="fig-cap">Figure 3: ConvNeXt-Small 8-epoch training loss &amp; validation AUROC progression (Val Ensemble = 0.8522; patient-level separation verified across Train=22,037, Val=2,809, and Official Test=2,797 patients with 0 overlap; observed gap vs. Official Test 0.8213 on the fixed official NIH-14 split).</div>
+  </div>
+
+  <div class="fig-box">
+    <img src="figures/fig6_nih14_ensemble_roc_300dpi.png" alt="ROC Curves" />
+    <div class="fig-cap">Figure 4: Official 25,596-image patient-disjoint ROC curves for primary thoracic pathologies.</div>
+  </div>
+
+  <h2>4. Off-the-Shelf Zero-Shot Lung Segmentation &amp; XAI Localization Ablation</h2>
+  <div class="fig-box">
+    <img src="figures/fig4_segmentation_and_xai_ablation.png" alt="Segmentation and XAI" />
+    <div class="fig-cap">Figure 5: (Left) PSPNet evaluation on 138 Montgomery manual lung masks (87.00% Combined Dice). (Right) Weakly-supervised Grad-CAM++ localization on 278 radiologist BBoxes (+51.7% relative BBox energy gain via Lung-Gating; 95.0% Pointing Game on Cardiomegaly).</div>
+  </div>
+
+  <h2>5. Single-GPU Hardware &amp; VRAM Footprint (RTX 4080, 12 GB)</h2>
+  <div class="fig-box">
+    <img src="figures/fig5_vram_footprint.png" alt="Single-GPU VRAM Footprint" />
+    <div class="fig-cap">Figure 6: Concurrent VRAM footprint across all 4 neural backbones and Dual-LoRA adapters on a single 12 GB RTX 4080 Laptop GPU (peak 6.52 GB VRAM, 2.53s end-to-end latency with CPU-offloaded 175k FAISS + Cross-Encoder RAG).</div>
+  </div>
+
+  <h2>6. Statistical Significance (95% CI / p-values), Weak-Label External Feasibility Evaluation (250 Selected / n=238 Evaluated) &amp; RAG Audit</h2>
+  <div class="fig-box">
+    <img src="figures/fig7_bootstrap_ci_and_external_e2e.png" alt="NIH-14 Bootstrap CIs and External IU-Xray Feasibility" />
+    <div class="fig-cap">Figure 7: (Left) NIH-14 Official Test (n=25,596; 2,797 unique patients) Patient-Level Cluster Paired Bootstrap (B=2,000, seed=42): Ensemble 0.8213 [0.8151, 0.8267] (official split; cf. Wang 0.745, Yao 0.761, Guendel 0.807), Paired &Delta;AUROC +0.0074 [+0.0055, +0.0096] vs. DenseNet &amp; +0.0072 [+0.0055, +0.0090] vs. ConvNeXt. (Right) External Weak-Label Feasibility Evaluation on IU-Xray (250 UID-disjoint studies selected / n=238 evaluated frontal CXRs; AUROC 0.7408 [0.6699, 0.8070], 2.53s latency, 6.52 GB VRAM).</div>
+  </div>
+  <table>
+    <thead><tr><th>Benchmark / Audit</th><th>Baseline / Reference</th><th>MedVision v4.0</th><th>95% CI / Verification</th></tr></thead>
+    <tbody>
+      <tr><td><b>NIH-14 Official Test (n=25,596; 2,797 pts)</b></td><td>Wang et al. (2017) 0.745 | Yao et al. (2018) 0.761 | Guendel et al. (2018) 0.807 <i>(official split; CheXNet ~0.84 used a random split)</i></td><td style="color:#059669;font-weight:700">0.8213 Ensemble (DN 0.8139 / CN 0.8141; 14/14 best)</td><td>Patient-Cluster CI [0.8151, 0.8267] | Paired &Delta;AUROC +0.0074 [+0.0055, +0.0096] vs. DN | Youden's J thresholds &amp; 0.55/0.45 weights tuned strictly on Val (n=8,617) and frozen</td></tr>
+      <tr><td><b>PubMedQA Held-Out (n=200; 0 RAG; 0 Overlap)</b></td><td>Majority-Class (&ldquo;yes&rdquo;) 51.5% | Base Fair Logit 39.50% (Macro-F1 33.51%)</td><td style="color:#059669;font-weight:700">78.50% Fair Logit (Macro-F1 60.05%)</td><td>Wilson CI [72.30, 83.63] | Exact McNemar vs. Base p = 1.29&times;10<sup>&minus;14</sup> | Maybe F1 13.79%</td></tr>
+      <tr><td><b>MedMCQA Validation (n=4,183; Deduped n=4,136)</b></td><td>Base Closed-Book 55.99% | v3 Closed-Book (0 RAG) 59.45%</td><td style="color:#059669;font-weight:700">64.52% Single / 64.98% Cyclic-4 (Deduped n=4,136: 64.34% / 64.80%)</td><td>Disclosed Train-Bank RAG (Top-3 audit: 40 exact / 13 8-gram / 47 union removed; gold option in ctx 28.19%); Cyclic-4 vs. Single n.s. (p = 0.356)</td></tr>
+      <tr><td><b>IU-Xray Summarization (n=250 Study/UID-Disjoint)</b></td><td>Base Qwen2.5-7B: 58.08% Micro-F1 / 91.22% Neg. Spec.</td><td style="color:#059669;font-weight:700">79.32% Micro-F1 / 60.45% Macro-F1 / 97.70% Neg. Spec.</td><td>Measured via custom 12-class negation-aware radiology lexicon extractor (not CheXbert/RadGraph); ROUGE-L 63.76% inflated by normal reports</td></tr>
+      <tr><td><b>External Weak-Label IU-Xray E2E (250 Sel. / n=238 Eval.)</b></td><td>79 abnormal / 159 normal (report-heuristic; 96/238 vs. Open-I Problems, &kappa;=0.275)</td><td style="color:#059669;font-weight:700">AUROC 0.7408 [0.6699, 0.8070] | ER 89.9/40.9% | Bal. 74.7/69.2% | Alert 54.4/81.1%</td><td>Conf. matrices: ER 71/8/65/94, Bal. 59/20/110/49, Alert 43/36/129/30 | CTR&gt;0.50: 37/49 (75.5%) | 0/238 lexical contradictions [0, 1.54%] | 2.53s, 6.52 GB</td></tr>
+    </tbody>
+  </table>
+  <div class="callout" style="margin-top:12px;">
+    <b>System Scope &amp; Engineering Features:</b> MedVision v4.0 is a resource-constrained multimodal chest X-ray triage research prototype (6.52 GB VRAM). The rule-based <b>Lexical Clinical Safety Filter</b> (suppressing explicit malignancy/biopsy/admission phrases via neutral fallback; 12 malignancy &amp; 9 biopsy flags across 12/238 tested IU-Xray drafts), <b>SQLite DPO Vault</b>, and <b>n8n automation</b> (Gmail + Google Sheets + Telegram) are engineering safeguards/features rather than standalone scientific claims.
+  </div>
+  <h2>7. Transparent Scientific Limitations, Statistical Precision &amp; Clinical Scope</h2>
+  <ul>
+    <li><b>Weak-Label External Feasibility Scope (IU-Xray, n=238):</b> From the 250 UID-disjoint held-out studies (<code>shuffle(seed=42)[:250]</code>, 0 overlap with <code>radiologist</code> LoRA train), 12 lacked frontal radiographs, yielding <b><code>n=238</code></b> evaluated cases. Binary labels derived from report-impression heuristics disagreed with Open-I <code>Problems</code> annotations on <b><code>96/238 (40.34%, Cohen&rsquo;s &kappa; = 0.275)</code></b> (acute vs. chronic findings). Accordingly, this is strictly a <b>Weak-Label External Feasibility Evaluation</b>; multi-reader blinded adjudication and multi-center validation (CheXpert/PadChest) are required before clinical claims.</li>
+    <li><b>Zero-Event Statistical Precision (0/238):</b> Observing <code>0/238</code> lexical negation contradictions or frontal OOD false rejections yields an exact Clopper&ndash;Pearson 95% CI of <b><code>[0.0%, 1.54%]</code></b>, not a zero population error rate; lexical checks do not substitute for full clinical NLI.</li>
+    <li><b>Operating-Point Trade-offs &amp; Non-Diagnostic Scope:</b> External operating points exhibit clear sensitivity&ndash;specificity trade-offs (ER Triage: <code>89.9% / 40.9%</code>; Balanced: <code>74.7% / 69.2%</code>; Alert Gate: <code>54.4% / 81.1%, PPV 58.9%</code>). MedVision AI Studio v4.0 is a <b>Research Prototype &amp; CDSS Proof-of-Concept</b>&mdash;not a cleared diagnostic or clinical triage device&mdash;and requires prospective multi-center trials and regulatory review prior to clinical use.</li>
+    <li><b>RAG Provenance &amp; PubMedQA Class Imbalance:</b> MedMCQA RAG uses a training-split explanation/flashcard corpus (disclosed above); PubMedQA <code>maybe</code> F1 remains low (<code>13.79%</code>) despite <code>78.50%</code> accuracy and <code>60.05%</code> Macro-F1.</li>
+    <li><b>Small-Lesion Localization &amp; Mask Definition:</b> 256&times;256 classification yields coarse Grad-CAM++ localization for millimeter nodules (<code>2.5%</code> Pointing Game); Montgomery manual masks exclude retrocardiac left-lung pixels (Left Dice <code>83.26%</code> vs Right <code>90.36%</code>).</li>
+    <li><b>Continual DPO PoC:</b> The 32-pair DPO cycle validates the human-in-the-loop retraining pipeline rather than claiming offline DPO benchmark gains.</li>
+  </ul>
+</div>
+</body>
+</html>

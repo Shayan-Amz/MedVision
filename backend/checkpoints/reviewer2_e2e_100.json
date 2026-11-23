@@ -1,0 +1,12 @@
+{
+  "n_evaluated": 100,
+  "mean_e2e_latency_ms": 2611.5,
+  "cross_modal_contradiction_rate_pct": 0.0,
+  "ctr_gt_050_total": 27,
+  "ctr_gt_050_reported_by_llm_pct": 77.8,
+  "normal_gt_cases": 60,
+  "normal_triage_agreement_pct": 91.7,
+  "abnormal_gt_cases": 40,
+  "abnormal_triage_sensitivity_pct": 55.0,
+  "peak_vram_gb": 6.52
+}

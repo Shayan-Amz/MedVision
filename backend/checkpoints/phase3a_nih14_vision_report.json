@@ -1,0 +1,152 @@
+{
+  "dataset": "timm/nih-chest-xray-14 (Patient-Disjoint: 69000 Train / 17000 Val / 25500 Test)",
+  "architecture": "DenseNet-121 (Class-Weighted BCE + Youden's J Calibration)",
+  "mean_auroc": 0.8101,
+  "mean_sensitivity_pct": 81.23,
+  "mean_specificity_pct": 65.21,
+  "mean_f1_pct": 24.14,
+  "per_class": {
+    "Atelectasis": {
+      "auroc": 0.7701,
+      "sensitivity": 0.7929,
+      "specificity": 0.5924,
+      "f1": 0.348,
+      "tp": 2599,
+      "fn": 679,
+      "fp": 9058,
+      "tn": 13164
+    },
+    "Cardiomegaly": {
+      "auroc": 0.8853,
+      "sensitivity": 0.8148,
+      "specificity": 0.7837,
+      "f1": 0.2411,
+      "tp": 871,
+      "fn": 198,
+      "fp": 5284,
+      "tn": 19147
+    },
+    "Effusion": {
+      "auroc": 0.8243,
+      "sensitivity": 0.9216,
+      "specificity": 0.5049,
+      "f1": 0.4456,
+      "tp": 4293,
+      "fn": 365,
+      "fp": 10319,
+      "tn": 10523
+    },
+    "Infiltration": {
+      "auroc": 0.707,
+      "sensitivity": 0.8323,
+      "specificity": 0.4439,
+      "f1": 0.4629,
+      "tp": 5087,
+      "fn": 1025,
+      "fp": 10782,
+      "tn": 8606
+    },
+    "Mass": {
+      "auroc": 0.8243,
+      "sensitivity": 0.7117,
+      "specificity": 0.7829,
+      "f1": 0.3053,
+      "tp": 1244,
+      "fn": 504,
+      "fp": 5157,
+      "tn": 18595
+    },
+    "Nodule": {
+      "auroc": 0.752,
+      "sensitivity": 0.6223,
+      "specificity": 0.742,
+      "f1": 0.2297,
+      "tp": 1010,
+      "fn": 613,
+      "fp": 6160,
+      "tn": 17717
+    },
+    "Pneumonia": {
+      "auroc": 0.7124,
+      "sensitivity": 0.7892,
+      "specificity": 0.5241,
+      "f1": 0.0681,
+      "tp": 438,
+      "fn": 117,
+      "fp": 11872,
+      "tn": 13073
+    },
+    "Pneumothorax": {
+      "auroc": 0.8582,
+      "sensitivity": 0.8724,
+      "specificity": 0.6607,
+      "f1": 0.3651,
+      "tp": 2325,
+      "fn": 340,
+      "fp": 7747,
+      "tn": 15088
+    },
+    "Consolidation": {
+      "auroc": 0.753,
+      "sensitivity": 0.9102,
+      "specificity": 0.427,
+      "f1": 0.1939,
+      "tp": 1652,
+      "fn": 163,
+      "fp": 13571,
+      "tn": 10114
+    },
+    "Edema": {
+      "auroc": 0.8444,
+      "sensitivity": 0.9265,
+      "specificity": 0.5729,
+      "f1": 0.1396,
+      "tp": 857,
+      "fn": 68,
+      "fp": 10495,
+      "tn": 14080
+    },
+    "Emphysema": {
+      "auroc": 0.9082,
+      "sensitivity": 0.8719,
+      "specificity": 0.7817,
+      "f1": 0.2584,
+      "tp": 953,
+      "fn": 140,
+      "fp": 5329,
+      "tn": 19078
+    },
+    "Fibrosis": {
+      "auroc": 0.8313,
+      "sensitivity": 0.7535,
+      "specificity": 0.7597,
+      "f1": 0.0964,
+      "tp": 327,
+      "fn": 107,
+      "fp": 6024,
+      "tn": 19042
+    },
+    "Pleural_Thickening": {
+      "auroc": 0.7733,
+      "sensitivity": 0.7857,
+      "specificity": 0.6284,
+      "f1": 0.1619,
+      "tp": 898,
+      "fn": 245,
+      "fp": 9050,
+      "tn": 15307
+    },
+    "Hernia": {
+      "auroc": 0.8976,
+      "sensitivity": 0.7674,
+      "specificity": 0.925,
+      "f1": 0.0641,
+      "tp": 66,
+      "fn": 20,
+      "fp": 1906,
+      "tn": 23508
+    }
+  },
+  "checkpoint": "C:\\Users\\shaya\\Downloads\\medvision-ai-studio-full-project\\medvision-ai-studio\\backend\\checkpoints\\medvision_nih14_densenet121.pth",
+  "roc_figure": "C:\\Users\\shaya\\Downloads\\medvision-ai-studio-full-project\\medvision-ai-studio\\backend\\checkpoints\\phase3a_nih14_roc_300dpi.png"
+}

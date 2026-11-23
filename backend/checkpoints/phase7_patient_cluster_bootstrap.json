@@ -1,0 +1,32 @@
+{
+  "n_images": 25596,
+  "n_unique_patients": 2797,
+  "B_valid": 2000,
+  "point_dn": 0.8139,
+  "point_cn": 0.8141,
+  "point_ens": 0.8213,
+  "densenet_ci95": [
+    0.8071,
+    0.8199
+  ],
+  "convnext_ci95": [
+    0.8079,
+    0.8193
+  ],
+  "ensemble_ci95": [
+    0.8151,
+    0.8267
+  ],
+  "delta_vs_dn_mean": 0.0074,
+  "delta_vs_dn_ci95": [
+    0.0055,
+    0.0096
+  ],
+  "delta_vs_cn_mean": 0.0072,
+  "delta_vs_cn_ci95": [
+    0.0055,
+    0.009
+  ],
+  "wins_vs_dn": 2000,
+  "wins_vs_cn": 2000
+}

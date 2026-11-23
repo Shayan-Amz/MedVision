@@ -1,0 +1,9 @@
+{
+  "method": "Chain-of-Thought (Reason-First)",
+  "model": "MedVision-7B-v4-CAT",
+  "n": 200,
+  "accuracy_pct": 44.5,
+  "prev_no_cot_pct": 55.0,
+  "delta_pct": -10.5,
+  "elapsed_sec": 161.1
+}

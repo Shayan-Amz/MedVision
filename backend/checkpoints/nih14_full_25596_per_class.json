@@ -1,0 +1,151 @@
+{
+  "n_official_test": 25596,
+  "n_unique_patients": 2797,
+  "mean_dn": 0.8139,
+  "mean_cn": 0.8141,
+  "mean_ens": 0.8213,
+  "mean_sens": 83.9,
+  "mean_spec": 63.6,
+  "per_class": [
+    {
+      "class": "Atelectasis",
+      "dn": 0.7745,
+      "cn": 0.7798,
+      "ens": 0.7832,
+      "sens": 83.4,
+      "spec": 56.6,
+      "fpr": 43.4,
+      "fnr": 16.6
+    },
+    {
+      "class": "Cardiomegaly",
+      "dn": 0.8906,
+      "cn": 0.8925,
+      "ens": 0.8981,
+      "sens": 84.8,
+      "spec": 77.2,
+      "fpr": 22.8,
+      "fnr": 15.2
+    },
+    {
+      "class": "Effusion",
+      "dn": 0.8266,
+      "cn": 0.8313,
+      "ens": 0.8331,
+      "sens": 88.0,
+      "spec": 59.8,
+      "fpr": 40.2,
+      "fnr": 12.0
+    },
+    {
+      "class": "Infiltration",
+      "dn": 0.7093,
+      "cn": 0.7156,
+      "ens": 0.7169,
+      "sens": 88.2,
+      "spec": 36.7,
+      "fpr": 63.3,
+      "fnr": 11.8
+    },
+    {
+      "class": "Mass",
+      "dn": 0.8279,
+      "cn": 0.8263,
+      "ens": 0.8337,
+      "sens": 83.9,
+      "spec": 63.0,
+      "fpr": 37.0,
+      "fnr": 16.1
+    },
+    {
+      "class": "Nodule",
+      "dn": 0.7563,
+      "cn": 0.7645,
+      "ens": 0.7685,
+      "sens": 66.1,
+      "spec": 73.0,
+      "fpr": 27.0,
+      "fnr": 33.9
+    },
+    {
+      "class": "Pneumonia",
+      "dn": 0.7107,
+      "cn": 0.7117,
+      "ens": 0.72,
+      "sens": 76.2,
+      "spec": 56.0,
+      "fpr": 44.0,
+      "fnr": 23.8
+    },
+    {
+      "class": "Pneumothorax",
+      "dn": 0.8619,
+      "cn": 0.8646,
+      "ens": 0.8705,
+      "sens": 89.0,
+      "spec": 66.7,
+      "fpr": 33.3,
+      "fnr": 11.0
+    },
+    {
+      "class": "Consolidation",
+      "dn": 0.7554,
+      "cn": 0.7512,
+      "ens": 0.7606,
+      "sens": 89.9,
+      "spec": 44.6,
+      "fpr": 55.4,
+      "fnr": 10.1
+    },
+    {
+      "class": "Edema",
+      "dn": 0.847,
+      "cn": 0.8501,
+      "ens": 0.8541,
+      "sens": 92.4,
+      "spec": 58.5,
+      "fpr": 41.5,
+      "fnr": 7.6
+    },
+    {
+      "class": "Emphysema",
+      "dn": 0.9121,
+      "cn": 0.9016,
+      "ens": 0.9138,
+      "sens": 88.0,
+      "spec": 78.5,
+      "fpr": 21.5,
+      "fnr": 12.0
+    },
+    {
+      "class": "Fibrosis",
+      "dn": 0.834,
+      "cn": 0.8284,
+      "ens": 0.84,
+      "sens": 81.8,
+      "spec": 70.7,
+      "fpr": 29.3,
+      "fnr": 18.2
+    },
+    {
+      "class": "Pleural_Thickening",
+      "dn": 0.7776,
+      "cn": 0.7772,
+      "ens": 0.7856,
+      "sens": 83.9,
+      "spec": 57.0,
+      "fpr": 43.0,
+      "fnr": 16.1
+    },
+    {
+      "class": "Hernia",
+      "dn": 0.9104,
+      "cn": 0.9027,
+      "ens": 0.9204,
+      "sens": 79.1,
+      "spec": 91.7,
+      "fpr": 8.3,
+      "fnr": 20.9
+    }
+  ]
+}

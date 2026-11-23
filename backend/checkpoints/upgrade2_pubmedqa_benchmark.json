@@ -1,0 +1,24 @@
+{
+  "benchmark": "qiaojin/PubMedQA (pqa_labeled, Class-Balanced Train / 200 Unseen Test)",
+  "base_accuracy_pct": 51.5,
+  "unbalanced_sft_accuracy_pct": 77.0,
+  "medvision_7b_sft_dpo_accuracy_pct": 69.5,
+  "delta_pct": 18.0,
+  "macro_f1_pct": 55.42,
+  "per_class_f1_pct": {
+    "yes": 78.82,
+    "no": 74.67,
+    "maybe": 12.77
+  },
+  "gold_distribution": {
+    "yes": 103,
+    "no": 72,
+    "maybe": 25
+  },
+  "aligned_pred_distribution": {
+    "no": 78,
+    "maybe": 22,
+    "yes": 100
+  },
+  "final_checkpoint": "C:\\Users\\shaya\\Downloads\\medvision-ai-studio-full-project\\medvision-ai-studio\\backend\\checkpoints\\medvision-7b-clinical-balanced-final"
+}

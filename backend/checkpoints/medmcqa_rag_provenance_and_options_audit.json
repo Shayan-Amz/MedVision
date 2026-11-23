@@ -1,0 +1,832 @@
+{
+  "n_validation": 4183,
+  "corpus_total_passages": 175413,
+  "corpus_sample_prefixes": [
+    "Clinical Fact: What is the relationship between very low Mg2+ levels, PTH levels, and Ca2+ levels? -> Very low Mg2+ leve",
+    "Clinical Fact: What happens to the female processus vaginalis? -> The female processus vaginalis is obliterated and ther",
+    "Clinical Fact: In what type of patients does JC virus typically present? -> JC virus typically presents in immunocomprom",
+    "Medical Textbook (Surgery): Fundoplication. Operations for GORD are based on the creation of an intra-abdominal segment ",
+    "Medical Textbook (Physiology): Smooth muscle. The calcium-channel blockers represent a group of organic chemical structu",
+    "Medical Textbook (Pharmacology): Hyperkalemia. PRECAUTIONS AND CONTRAINDICATIONS (a) Hypokalemia, hypomagnesemia, hyperc",
+    "Medical Textbook (Medicine): Increased homocysteine levels. Ref Harrison 19 th ed pg 1579 The major risk factors for ath",
+    "Medical Textbook (Surgery): Pig. Ans. (a) PigRef: Internet Source* Xeno transplant of Piglet heart is tried and has show",
+    "Medical Textbook (Anaesthesia): NMDA receptor. (A) NMDA receptor > Pharmacologically Ketamine is classified as NMDA rece",
+    "Medical Textbook (Orthopaedics): Metaphysis. Ans: b (Metaphysis) Ref: Maheswari, 3rd ed, (Rev)p. 163BRIDGENagging pain w",
+    "Medical Textbook (Medicine): Pituitary macroadenoma. Answer is B (Pituitary macroadenoma): Presence of long standing end",
+    "Medical Textbook (Orthopaedics): Congenital deformity. [C) (Congenital deformity): (203- Maheshwari 4th edition)Congenit",
+    "Medical Textbook (Pharmacology): Phospholipase A2. Ans. is'c' i.e., Phospholipase A2(Ref: KDT Vh/e p. 286)Glucocoicoids ",
+    "Medical Textbook (Surgery): Immediately. Ans: a (Immediately after birth) Ref: Bailey & love, 24th ed, p. 1248SACROCOCCY",
+    "Medical Textbook (Surgery): Median nerve. Ans. is 'c' i.e., Median nerve Pronation of the forearm is by two muscles pron"
+  ],
+  "gold_option_in_ctx_count": 1179,
+  "gold_option_in_ctx_pct": 28.19,
+  "any_distractor_in_ctx_count": 1368,
+  "any_distractor_in_ctx_pct": 32.7,
+  "per_distractor_slot_in_ctx_pct": 15.92,
+  "retrieved_ctx_with_explicit_qa_answer_key_pattern": 51,
+  "samples_where_gold_in_ctx": [
+    {
+      "idx": 7,
+      "question_id": "ce49098b-cc48-4168-859e-936e3e0c7459",
+      "question": "Which of the following are not a branch of external carotid Aery in Kiesselbach's plexus.",
+      "gold_letter": "B",
+      "gold_option": "Anterior ethmoidal aery",
+      "all_options_in_ctx": {
+        "A": 1,
+        "B": 1,
+        "C": 1,
+        "D": 0
+      },
+      "cyclic4_correct": true,
+      "top3_doc_ids": [
+        158828,
+        61359,
+        103656
+      ],
+      "top3_passages": [
+        "Medical Textbook (ENT): Posterior Ethmoidal aery. Kiesselbach's plexus It lies in Kiesselbach's area/ Kiesselbach's triangle/ Little's area It is a region in the anteroinferior pa of the nasal septum where four aeries anastomose to form a vascular plexus of that name. The aeries are: - Anterior Ethmoidal aery (from the Ophthalmic aery) - Sphenopalatine aery (terminal branch of the Maxillary aery) - Greater ",
+        "Medical Textbook (Pathology): Mainly external carotid aery. Branch of external carotid aery supplying nasal mucosa are Sphenopalatine aery, Greater palatine aery, Superior labial aery (Branch of facial aery), while, the only branch of Branch of internal Carotid aery supplying nose is Anterior ethmoidal aery.",
+        "Medical Textbook (ENT): Palatal branch of sphenopalatine. LITTLE'S AREA (Anterior inferior pa of nasal septum) - Usual site for epistaxis in children. Four Aeries anastomose here and form Kiesselbach's Plexus. Anterior ethmoidal aery(Ophthalmic aery) Sphenopalatine(Maxillary aery) Septal branch of superior labial(Facial aery) Greater palatine aery(Maxillary aery) Ref: Dhingra 7e pg 197."
+      ]
+    },
+    {
+      "idx": 8,
+      "question_id": "18d5c4a1-cb81-41a8-9bfc-b6f7dec431d2",
+      "question": "Diagnosis of the following ECG-",
+      "gold_letter": "B",
+      "gold_option": "Electrical alternans",
+      "all_options_in_ctx": {
+        "A": 0,
+        "B": 1,
+        "C": 1,
+        "D": 0
+      },
+      "cyclic4_correct": true,
+      "top3_doc_ids": [
+        170929,
+        139314,
+        127558
+      ],
+      "top3_passages": [
+        "Medical Textbook (Medicine): ECG shows evidence of acute left ventricular stress.. Classic Findings in Pulmonary Embolism:- Right Hea strain and Acute Cor Pulmonale - sudden onset of pleuritic chest pain, hemoptysis and hypotension - Tall, peaked P waves in lead II (P pulmonale) - Right axis detion - Right bundle-branch block - S1Q3T3 pattern. On Xray :- Hampton's hump, Westermark sign (areas of relative oligemia secondary to decreased cal",
+        "Medical Textbook (Medicine): Ventricular bigemini. ANS. AThis was not the exact ECG asked. But the options were the same.P. pulmonaleCriteria: (A) >2.5 mm in inferior leads (2, 3, AVF)(B) >1.5 mm in VI and V2Electrical alternans1. Consecutive normally conducted QRS complexes in height2. Seen in pericardial effusion.",
+        "Medical Textbook (Medicine): Electrical alternans. Notice the low voltage ECG which is defined as amplitude of all qRS complexes in limb leads less than 5 mm. Also notice that amplitude of qRS complexes is variable in all the arrow marked leads. Hence, the ECG is diagnostic of electrical alternans. The triad of sinus tachycardia with low voltage ECG and electrical alternans is highly suggestive of pericardia"
+      ]
+    },
+    {
+      "idx": 9,
+      "question_id": "de09d388-bd4e-42a9-ac6b-ee2d95f822e2",
+      "question": "A blue new born presents with cyanosis. The X\u2013ray chest reveal oligaemic lung field and normal sized heart. Most likely diagnosis is \u2013",
+      "gold_letter": "B",
+      "gold_option": "Pulmonary atresia",
+      "all_options_in_ctx": {
+        "A": 1,
+        "B": 1,
+        "C": 0,
+        "D": 0
+      },
+      "cyclic4_correct": false,
+      "top3_doc_ids": [
+        11252,
+        151162,
+        149590
+      ],
+      "top3_passages": [
+        "Clinical Fact: What could be the possible diagnosis in a newborn who presents with cyanosis, a single loud S2 on auscultation (no murmur), and a narrow mediastinum on X-ray? -> The possible diagnosis in a newborn who presents with cyanosis, a single loud S2 on auscultation (no murmur), and a narrow mediastinum on X-ray could be transposition of the great vessels. Transposition of the great vessels is a congenital heart defect in which the two mai",
+        "Medical Textbook (Pediatrics): bc. This child has cyanosis at birth (within 7 days).\nCongenital heart diseases which present with cyanosis at birth are : TGA, TAPVR, Tricuspid atresia, pulmonary atresia, Ebstein anomaly.\nIn TOF cyanosis usually presents after neonatal period (after 28 days).",
+        "Medical Textbook (Radiology): Ebstein's' anomaly. Intracardiac shunts that result in increased pulmonary aerial flow can enlarge the pulmonary vascular system giving the lung fields a plethoric appearance. The most common lesions causing increased vascularity without cyanosis are, Atrial septal defect (ASD) Ventricular septal defect (VSD) Patent ductus aeriosus (PDA) The main cardiac lesions with cyanosis a"
+      ]
+    },
+    {
+      "idx": 10,
+      "question_id": "384a9281-2ee1-480b-a7d8-fd3ef49558e5",
+      "question": "27.\tThe lateral spread of dental caries is facilitated mostly  by the",
+      "gold_letter": "B",
+      "gold_option": "Dentinoenamel junction",
+      "all_options_in_ctx": {
+        "A": 1,
+        "B": 1,
+        "C": 0,
+        "D": 0
+      },
+      "cyclic4_correct": false,
+      "top3_doc_ids": [
+        49784,
+        147605,
+        113869
+      ],
+      "top3_passages": [
+        "Medical Textbook (Dental): Produced by ameloblasts. Enamel spindles are formed by extensions of odontoblast processes into enamel before calcification. They are odontoblastic processes that cross the dentinoenamel junction and get entrapped in the enamel.",
+        "Medical Textbook (Dental): Oriented At an acute angle to the dentine. Enamel spindle-\n\nDiameter (2\u03bc)\nExtended odontoblast processes in enamel\nPerpendicular (right angle) to dentin\nDDT (Dark \u2013 Dehydrated \u2013 Transmitted light)",
+        "Medical Textbook (Social & Preventive Medicine): Fluorosis is the most common cause of dental caries in children. Dental flourosis is the main cause of mottling of dental enamel.decreased.flourine causes dental cariesREF.PARK'S TEXTBOOK OF PREVENTIVE AND SOCIAL MEDICINE.Editon-21.Page no.-595)"
+      ]
+    },
+    {
+      "idx": 12,
+      "question_id": "84d89a4f-db04-402d-88ab-ca39f6eee8bd",
+      "question": "Respiratory rhythm generation center is located at:",
+      "gold_letter": "B",
+      "gold_option": "Pre-Botzinger complex",
+      "all_options_in_ctx": {
+        "A": 0,
+        "B": 1,
+        "C": 0,
+        "D": 1
+      },
+      "cyclic4_correct": true,
+      "top3_doc_ids": [
+        127739,
+        92990,
+        94804
+      ],
+      "top3_passages": [
+        "Medical Textbook (Physiology): Generating respiratory rhythm. Respiratory rhythm generation is a function of dorsal repsiratory group of neurons (and not pnemotaxic center) Pneumotaxic Center It is located dorsally in the nucleus parabrachialis of the upper pons and it transmits signals to the inspiratory area. Primary effect of this center is to control the switchoff point of the inspiratory ramp, thus controlling the",
+        "Medical Textbook (Physiology): Pre-Botzinger complex. The pre-Botzinger complex (preBotC) is a cluster of interneurons in the ventral respiratory group of the medulla of the brainstem. This complex has been proven to be essential for the generation of the respiratory rhythm in mammals Ref: guyton and hall textbook of medical physiology 12 edition page number:370,371,372",
+        "Medical Textbook (Physiology): Pre-Botzinger complex. Pre-Botzinger complex initiates the respiratory rhythm, consists of six group of neurons that functions as \"central pattern generator \" for initiation of respiration. Located in the ventrolateral medulla. Ref: Ganong 25th ed/page 655"
+      ]
+    },
+    {
+      "idx": 17,
+      "question_id": "e38402c3-69bf-40a8-90c4-09277ca352eb",
+      "question": "In a\t6-month-old child, thick curd like white\tpatch\nappears on the buccal mucosa. On rubbing it leaves an\nerythematous patch. Most likely diagnosis is:",
+      "gold_letter": "D",
+      "gold_option": "Candidiasis",
+      "all_options_in_ctx": {
+        "A": 0,
+        "B": 1,
+        "C": 0,
+        "D": 1
+      },
+      "cyclic4_correct": true,
+      "top3_doc_ids": [
+        96865,
+        164682,
+        104135
+      ],
+      "top3_passages": [
+        "Medical Textbook (Dental): Candidiasis. creamy curd like white patch on tongue is diagnostic of candidiasis. In lichen planus ,Classic lesion- small polygonal shaped, and red/ violet, flat topped papule. Four Ps- purple polygonal pruritic papule. In histoplasmosis-lesions are erythema nodosum like lesions,erythema multiforme like lesions and non specific lesions appear as papules,pustules and nodu",
+        "Medical Textbook (Microbiology): Thrush. Candida infection causes mucosal lesion like vaginitis and oral thrush. oral thrush found commonly in bottle-fed infants and aged and debilitated. This condition is characterised by creamy white patches appear on the tongue and buccal mucosa following removal, this leaves a red oozing surface. Tinea capitis is caused by dermatophytes. Ref: Textbook of Microb",
+        "Medical Textbook (Microbiology): Multiple small white spots on the buccal mucosa. The disease described is measles (rubeola), which has the typical presentation described in the question stem. Measles is caused by a Morbillivirus, an RNA virus belonging to the Paramyxovirus family. Koplik's spots, which are pathognomonic for measles, are small, bluish-white spots on the buccal mucosa in the early stages of measles. These lesions appear ju"
+      ]
+    },
+    {
+      "idx": 18,
+      "question_id": "9078aaca-bbfd-41cd-ad69-03057fca84ba",
+      "question": "Characteristic of venous blood flow of lower limb in duplex Doppler is?",
+      "gold_letter": "A",
+      "gold_option": "Monophasic",
+      "all_options_in_ctx": {
+        "A": 1,
+        "B": 0,
+        "C": 1,
+        "D": 0
+      },
+      "cyclic4_correct": false,
+      "top3_doc_ids": [
+        78533,
+        152152,
+        116165
+      ],
+      "top3_passages": [
+        "Medical Textbook (Radiology): Triphasic pattern. Normal Venous doppler is Monophasic with Respiratory and Cardiac Phasicity. High Resistance Peripheral Aeries show a Triphasic pattern.",
+        "Medical Textbook (Radiology): Venography. Ans. B. Venography* Duplex ultrasound is the initial investigation of choice in nearly all patients with suspected DVT.* Its reliability is dependent upon the skill of the user.* Major axial veins of the lower limb are well displayed.* It has a sensitivity of 98.7% and specificity of 100% for above-knee DVT and a sensitivity of 85.2% and specificity of 98.2%",
+        "Medical Textbook (Surgery): Duplex USG. . Duplex scanning shows noncompressible vein which is wider than normal.On compression over calf muscles,it does not show any augmentation of flow.Normal venous sound atg the area of femoral vein which disappears during inspiration is conspicuously absent in DVT. Refer page no 224 of SRB's manual of surgery 5 th edition."
+      ]
+    },
+    {
+      "idx": 25,
+      "question_id": "a3da135a-a6a2-4e1c-8823-8ab0913f5668",
+      "question": "A patient presented to emergency with overdose some drug. There were increased salivation and increased bronchial secretions. On examination, blood pressure was 88/60 mmHg. RBC esterase level is 50. What should be the treatment of this person?",
+      "gold_letter": "B",
+      "gold_option": "Atropine",
+      "all_options_in_ctx": {
+        "A": 1,
+        "B": 1,
+        "C": 0,
+        "D": 1
+      },
+      "cyclic4_correct": false,
+      "top3_doc_ids": [
+        11166,
+        35759,
+        86611
+      ],
+      "top3_passages": [
+        "Clinical Fact: What is the probable diagnosis for a patient who has overdosed on cocaine and has elevated levels of K+ and creatine phosphokinase (CPK)? -> The likely diagnosis for this patient is rhabdomyolysis, which can lead to acute tubular necrosis (ATN) and renal failure. Rhabdomyolysis is a medical condition in which muscle tissue breaks down rapidly, releasing a protein called myoglobin into the bloodstream. Myoglobin can cause damage to ",
+        "Medical Textbook (Pharmacology): Physostigmine. Ans. is 'd' i.e., Physostigmine o Atropine blocks cholinergic receptors. So, for atropine overdose, we require a drug that increases cholinergic action. o Physostigmine increases the concentration of Ach. Physostigmine counteracts central (because it crosses BBB) as well as peripheral symptoms of atropine toxicity (other anticholinesterases like neostigmine ",
+        "Medical Textbook (Forensic Medicine): Physostigmine. Ans. is 'b' i.e., Physostigmine Atropine blocks cholinergic receptors. So, for atropine overdose, we require a drug that increases cholinergic action. Physostigmine increases the concentration of Ach. Physostigmine counteracts central (because it crosses BBB) as well as peripheral symptoms of atropine toxicity (other anticholinesterases like neostigmine and "
+      ]
+    },
+    {
+      "idx": 28,
+      "question_id": "b6149b01-79a9-4d07-8cbc-828452b3906e",
+      "question": "Breakdown of periodontal fibres in periodontitis is due to bacterial enzyme: (OR) Which of the following bacterial products have been implicated in initiation of inflammatory periodontal disease?",
+      "gold_letter": "A",
+      "gold_option": "Collagenase",
+      "all_options_in_ctx": {
+        "A": 1,
+        "B": 1,
+        "C": 1,
+        "D": 0
+      },
+      "cyclic4_correct": true,
+      "top3_doc_ids": [
+        171105,
+        144174,
+        18217
+      ],
+      "top3_passages": [
+        "Medical Textbook (Microbiology): Staphylokinase. Pathogenic bacteria release exoenzymes that increase their ability to invade body tissue. These include coagulase, kinases, lipase, hyaluronidase, and collagenase. All Staphylococci produce catalase, an enzyme responsible for conversion of toxic hydrogen peroxide to water and oxygen which accumulates during bacterial metabolism or is released following phago",
+        "Medical Textbook (Dental): Matrix metalloproteinases. Matrix metalloproteinases are the most important proteinases involved in the destruction of periodontal tissues.",
+        "Clinical Fact: What is the name of the enzyme contained in Streptococcus pyogenes that breaks down connective tissue, leading to the spread of cellulitis? -> The enzyme contained in Streptococcus pyogenes that breaks down connective tissue, leading to the spread of cellulitis is called hyaluronidase."
+      ]
+    },
+    {
+      "idx": 32,
+      "question_id": "e845e625-845e-4d02-ab3f-e00f2284d62e",
+      "question": "Which of the following is the only complete cailage ring in the respiratory tree?",
+      "gold_letter": "A",
+      "gold_option": "Cricoid cailage",
+      "all_options_in_ctx": {
+        "A": 1,
+        "B": 0,
+        "C": 0,
+        "D": 0
+      },
+      "cyclic4_correct": true,
+      "top3_doc_ids": [
+        156432,
+        159256,
+        132844
+      ],
+      "top3_passages": [
+        "Medical Textbook (ENT): Subglottis. The subglottis is the narrowest poion of the airway in children, and the cricoid cailage is the only complete cailaginous ring in the airway. Because airflow in a cylinder is directly propoional to the fouh power of the radius, even a slight reduction in the area of the subglottis can lead to significant obstruction.",
+        "Medical Textbook (Anatomy): Cricoid. Ans. is 'a' i.e., Cricoid Cricoid cailage is the only cailage that forms a complete ring. Laryngeal cailages Thyroid (unpaired) It is the largest of all laryngeal cailages. It is 'V' shaped with right and left lamina. Both laminae (alae) meet anteriorly forming an angle of 90deg in males and 120deg in females and forms laryngeal prominence. Vocal cords are a",
+        "Medical Textbook (Anatomy): Cricoid. Ans. is 'b' i.e., CricoidCricoid cailage is the only cailage forming a complete ring, therefore is shaped like a ring.Laryngeal cailages Thyroid (unpaired)o It is the largest of all laryngeal cailages. It is 'V' shaped with right and left lamina. Both laminae (alae) meet anteriorly forming an angle of 90deg in males and 120deg in females and forms laryngeal "
+      ]
+    },
+    {
+      "idx": 34,
+      "question_id": "67add9f9-94b5-40b2-904d-fb4965fb8309",
+      "question": "In Erythroblastosis fetalis not involved is \u2013",
+      "gold_letter": "D",
+      "gold_option": "Anti Lewis",
+      "all_options_in_ctx": {
+        "A": 0,
+        "B": 0,
+        "C": 0,
+        "D": 1
+      },
+      "cyclic4_correct": true,
+      "top3_doc_ids": [
+        87857,
+        70416,
+        104858
+      ],
+      "top3_passages": [
+        "Medical Textbook (Gynaecology & Obstetrics): Anti-Lewis. Anti Lewis REF: Fernando arias 3' e p. 359-360 The Lewis antigen doesn't cause erythroblastosis fetalis and differs from all other antigens that they are not synthesized in RBC membrane, but absorbed into it.",
+        "Medical Textbook (Gynaecology & Obstetrics): Anti-Lewis. Anti-Lewis and anti-I antibodies are not associated with fetal hemolytic disease. It differs from all other antigens in that they are not synthesized in RBC membrane, but absorbed into it. Ref: Obstetrics and Gynecology By Charles R. B. Beckmann, American College of Obstetricians and Gynecologists, 2010, Page 197.",
+        "Medical Textbook (Pediatrics): D antigen in Rh group. Erythroblastosis fetalis (Hemolytic Disease of the newborn)\nErythroblastosis fetalis is caused by the transplacental passage of maternal antibody active against paternal RBC antigens of the infant and is characterized by an increased rate of RBC destruction\u00a0\u00a0Although more than 60 different RBC antigens are capable of eliciting an antibody response, the signi"
+      ]
+    },
+    {
+      "idx": 38,
+      "question_id": "3a13e9bb-48ab-46c1-9d50-e1612840d922",
+      "question": "A patient went into shock immediately after normal delivery, likely cause:",
+      "gold_letter": "C",
+      "gold_option": "Uterine inversion",
+      "all_options_in_ctx": {
+        "A": 1,
+        "B": 0,
+        "C": 1,
+        "D": 0
+      },
+      "cyclic4_correct": false,
+      "top3_doc_ids": [
+        65818,
+        107778,
+        11168
+      ],
+      "top3_passages": [
+        "Medical Textbook (Gynaecology & Obstetrics): Uterine inversion. Uterine inversion is the likely cause of shock immediately after delivery. Uterine inversion: A rare cause of postpaum collapse; acute in onset and occurs immediately after delivery. If the question would have been \"shock after delivery\" the answer would be PPH which is more common than uterine inversion. Causes: Mismanagement of 3rd stage of labor: Deliveri",
+        "Medical Textbook (Gynaecology & Obstetrics): Inversion of uterus. Inversion of uterus ?? 'c' i.e., Amniotic fluid embolism The patient went into unexplained shock after postpaum. Both uterine inversion and amniotic fluid embolism can cause unexplained shock. Uterine inversion is more common and impoant cause of unexplained shock than amniotic fluid embolism. Munrokerr's operative obstetrics says \"In all cases of unexplaine",
+        "Clinical Fact: What is the probable diagnosis for a patient who experiences hypotension, respiratory failure, and disseminated intravascular coagulation (DIC) immediately after giving birth? -> The likely diagnosis for this patient is amniotic fluid embolism. Amniotic fluid embolism is a rare but serious complication of pregnancy in which amniotic fluid or other debris enters the maternal circulation and triggers an allergic-like reaction. This c"
+      ]
+    },
+    {
+      "idx": 39,
+      "question_id": "9bad2095-2dd9-4485-946a-4ef51d16e8a4",
+      "question": "A patient presented with flat topped violaceous papules, thinning of nails and onycholysis. What is the microscopic finding observed in this patient?",
+      "gold_letter": "C",
+      "gold_option": "Basal cell degeneration",
+      "all_options_in_ctx": {
+        "A": 0,
+        "B": 0,
+        "C": 1,
+        "D": 0
+      },
+      "cyclic4_correct": true,
+      "top3_doc_ids": [
+        53744,
+        66121,
+        78174
+      ],
+      "top3_passages": [
+        "Medical Textbook (Dental): Basal cell degeneration. As per the clinical features,flat topped papules with thinning of nails are characteristc of lichen planus LICHEN PLANUS:- Histology:-1. Irregular acanthosis of the epidermis.2. Hypergranulosis 3. Compact hyperkeratosis.4. Basal cell damage.5. Colloid bodies6. Pigment incontinence.7. Band like lympho histiocytic infiltrate obscuring the dermoepidermal interf",
+        "Medical Textbook (Dental): Basal cell degeneration. LICHEN PLANUS:-Inflammatory T cell mediated auto immune disorder affecting skin, hair,nails and mucous membranes.Four P s- purple , polygonal pruritic papule. clinical features: skin lesions- erythematous to violaceous, flat topped, polygonal papules. most common sites- flexors of wrist , lumbar,ankle region oral cavity-erosive or ulcerative leions on mucosa",
+        "Medical Textbook (Skin): Lichen planus. Lichen planus is a self limiting condition in which flat topped violaceous papules are seen on the flexor aspect of the body. Wickham's striae are white streaks seen on the lesions especially when viewed with magnifying lens. Ref: Illustrated Synopsis of Dermatology and STD's By Neena Khanna, Page 55"
+      ]
+    },
+    {
+      "idx": 40,
+      "question_id": "86da0aa9-4ee5-4d2d-909b-e40e20b97d1c",
+      "question": "Which of the following is not. true regarding myelopathy?",
+      "gold_letter": "B",
+      "gold_option": "Brisk jaw jerk",
+      "all_options_in_ctx": {
+        "A": 0,
+        "B": 1,
+        "C": 0,
+        "D": 0
+      },
+      "cyclic4_correct": false,
+      "top3_doc_ids": [
+        104963,
+        53255,
+        156672
+      ],
+      "top3_passages": [
+        "Medical Textbook (Medicine): Brisk jaw jerk. Ans. is 'b' i.e., Brisk jaw jerk Brisk jaw jerk as it occurs when lesion is supranuclear /above pons. Hyperactive pectoralis reflex Hyperactive pectoralis reflex is an indicator of upper cervical spinal cord compression. Normally myelopathy is accompanied with brisk triceps jerks and absent biceps jerks. The common level of myelopathy is C5/C6. But when myel",
+        "Medical Textbook (Medicine): Syringomyelia. Answer is D (Syringomyelia): Jaw jerk is exaggerated in supranuclear lesions that are above the mid pos. Suringomyelia is a lesion of the spinal cord placed distal to the brainstem (or mid pons) and hence does not lead to an exaggerated jaw jerk. Exaggerated Jaw Jerk Jaw jerk is exaggerated in supranuclear lesions that are above the mid pons Jaw Jerk is help",
+        "Medical Textbook (Medicine): Objective evidence of Sensory loss. . *It is characterised clinically by ascending paralysis. *Deep tendon reflex disappear early in the process *Sensory involvement , including loss of pain sensation ,is often present but is usually not a prominent feature . *CSF protein levels are elevated The most common initial symptom of GBS is acroparesthesia with little objective sensory loss . Severe r"
+      ]
+    },
+    {
+      "idx": 43,
+      "question_id": "9a3940ff-8c7a-492c-86d4-259c47cef675",
+      "question": "Which one of the following is a muscle splitting incision?",
+      "gold_letter": "D",
+      "gold_option": "Lanz incision",
+      "all_options_in_ctx": {
+        "A": 0,
+        "B": 0,
+        "C": 0,
+        "D": 1
+      },
+      "cyclic4_correct": false,
+      "top3_doc_ids": [
+        75013,
+        169900,
+        118886
+      ],
+      "top3_passages": [
+        "Medical Textbook (Gynaecology & Obstetrics): Maylard. Ans. is 'b' i.e, MaylardMaylard Incision is a surgical incision in which a transverse cut is made on rectus abdominis muscle to allow wider access to the pelvic cavity. It is also called Mackenrodt incision.For gynaecological surgery, the skin incision is made 5-8 cm above the pubic symphysis.The rectus fascia and rectus muscles are transected. Care must be ",
+        "Medical Textbook (Surgery): Chevron incision. This is Chevron incision or roof-top incision or bilateral subcostal incision. Used in PancreaticoduodenectomyKochers is right subcostal incision, for open cholecystectomyLanz incision used in appendicitisMaylard for pelvic surgeries, rectus muscle is cut in this",
+        "Medical Textbook (Surgery): Rectus abdominis. Ans. is 'a' i.e., Rectus abdominis Maylard incision:* Mayland Incision is a surgical incision in which a transverse cut is made on rectus abdominis muscle to allow wider access to the pelvic cavity. It is also called Mackenrodt incision.* For gynaecological surgery, the skin incision is made 5-8 cm above the pubic symphysis. The site of skin incision is abov"
+      ]
+    },
+    {
+      "idx": 46,
+      "question_id": "849b1909-c988-4d0b-8eaf-a716707cbe97",
+      "question": "Which pa of brachial plexus do not give branches",
+      "gold_letter": "B",
+      "gold_option": "Division",
+      "all_options_in_ctx": {
+        "A": 0,
+        "B": 1,
+        "C": 0,
+        "D": 0
+      },
+      "cyclic4_correct": false,
+      "top3_doc_ids": [
+        70871,
+        84635,
+        116998
+      ],
+      "top3_passages": [
+        "Medical Textbook (Anatomy): C5, C6, C7, C8, T1. BRANCHES OF THE BRACHIAL PLEXUS There are a total of 17 branches arising from the brachial plexus that are destined to supply the upper limb of the seventeen branches of the brachial plexus; three of the branches arise from the root, one from the trunk, three from the lateral cord, five from the medial cord and five from the posterior cord. Branches from the",
+        "Medical Textbook (Anatomy): Posterior cord. Supraclavicular branches of brachial plexus Branches of brachial plexus which are above the clavicle are called supraclavicular branches. These arise from roots and trunks.",
+        "Medical Textbook (Unknown): Dorsal scapular nerve. The roots of the brachial plexus are the anterior rami of spinal nerves Cs-T1. These five roots form the three trunks of the plexus. Each trunk divides into an anterior and a posterior division. The divisions form the three cords of the brachial plexus. The dorsal scapular nerve is a branch of the C, root. The supra scapular nerve is a branch of the upper tr"
+      ]
+    },
+    {
+      "idx": 49,
+      "question_id": "0e46082c-1abc-4330-a12d-6948554559a2",
+      "question": "The cells which will proliferate from top to bottom of villi are:",
+      "gold_letter": "C",
+      "gold_option": "Paneth cells",
+      "all_options_in_ctx": {
+        "A": 0,
+        "B": 1,
+        "C": 1,
+        "D": 0
+      },
+      "cyclic4_correct": true,
+      "top3_doc_ids": [
+        89813,
+        104792,
+        166844
+      ],
+      "top3_passages": [
+        "Medical Textbook (Anatomy): paneth cell. paneth cellThe small intestine contains large finger-like projections (villi). A one-cell thick epithelium overlies each villus. The epithelium regenerates itself thorughout life, and serves not only as the initial site for processing nutrients absorbed from the lumen, but also acts as a barrier to prevent microbes in the lumen from crossing into the body. T",
+        "Medical Textbook (Anatomy): Paneth cell. Paneth cells move downward to the crypt base whereas other cell types move upwards towards the villus tip.Under normal physiological circumstances, cells within the intestinal epithelium are continuously and rapidly replaced by migration of cells onto the villus from several adjacent crypts of Leiberkuhn or intestinal glands. 4 differentiated cell types of t",
+        "Medical Textbook (Anatomy): Goblet cells. Goblet cells are interspersed between the absorptive cells. They are less abundant in the duodenum and more numerous in the ileum. These cells produce glycoprotein mucins that are hydrated and cross-linked to form mucus, whose main function is to protect and lubricate the lining of the intestine. The cells of the gastric glands are parietal (oxyntic) cells, "
+      ]
+    },
+    {
+      "idx": 51,
+      "question_id": "ee55a9bc-62bb-4952-957a-1902ff5b4376",
+      "question": "In plasmodium vivax malaria, relapse is caused by:September 2012",
+      "gold_letter": "C",
+      "gold_option": "Hypnozoite",
+      "all_options_in_ctx": {
+        "A": 0,
+        "B": 0,
+        "C": 1,
+        "D": 0
+      },
+      "cyclic4_correct": true,
+      "top3_doc_ids": [
+        118029,
+        87573,
+        86217
+      ],
+      "top3_passages": [
+        "Medical Textbook (Medicine): P.vivax Rovale and P.malariae. Malaria relapse. Malaria relapse has a specific meaning in regards to malaria and refers to the reactivation of the infection hypnozoites. Relapse is when symptoms reappear after the parasites have been eliminated from blood but persist as dormant hypnozoites in liver cells . Mostly seen in p.malariae . Ref Harrison20th edition pg 1035",
+        "Medical Textbook (Microbiology): Relapse seen in P. Falciparum. P vivax and P ovale may persist as dormant forms, or hypnozoites after the parasites have disappeared from the peripheral blood. The resurgence of an erythrocytic infection (relapse) occurs when merozoites from hypnozoites in the liver break out, are not phagocytosed in the bloodstream, and succeed in reestablishing a red cell infection. Without treatment, P",
+        "Medical Textbook (Microbiology): Relapses. Relapses are due to hypnozoites in liver. These are seen in case of P.vivax and P.ovale. P. Falciparum is not associated with relapses. P. falciparum infects RBC's of all ages, hence the parasitemia is very high. Hemoglobinuria is commonly seen."
+      ]
+    },
+    {
+      "idx": 52,
+      "question_id": "06cab4ad-fb49-4daa-92db-5ee3529af02f",
+      "question": "Retraction of mandible is achieved by:",
+      "gold_letter": "B",
+      "gold_option": "Temporalis",
+      "all_options_in_ctx": {
+        "A": 1,
+        "B": 1,
+        "C": 1,
+        "D": 1
+      },
+      "cyclic4_correct": false,
+      "top3_doc_ids": [
+        102855,
+        131442,
+        58203
+      ],
+      "top3_passages": [
+        "Medical Textbook (Anatomy): Lateral pterygoids. Depression of the MandibleDepression of the mandible is brought about by contraction of the digastrics, the geniohyoids, and the mylohyoids; the lateral pterygoids play an impoant role by pulling the mandible forward.Elevation of the MandibleElevation of the mandible is brought about by contraction of the temporalis, the masseter, and the medial pterygoids. ",
+        "Medical Textbook (Anatomy): All the above. The mandible is moved primarily by the four muscles of mastication: the masseter, medial pterygoid, lateral pterygoid and the temporalis. Ref - BDC 6th volume 3 pg31",
+        "Medical Textbook (Anatomy): Muscles 2 and 3 elevate the mandible. 1 - Temporalis\n2 - Masseter.\n3 - Lateral pterygoid.\n4 -\u00a0Medial pterygoid.\n5 - Mylohyoid.\nLateral pterygoid is the depressor of mandible."
+      ]
+    },
+    {
+      "idx": 55,
+      "question_id": "87f6392c-b727-4e7d-be12-189db181fd2b",
+      "question": "Base pairs in DNA",
+      "gold_letter": "C",
+      "gold_option": "3.2 billion",
+      "all_options_in_ctx": {
+        "A": 0,
+        "B": 0,
+        "C": 1,
+        "D": 0
+      },
+      "cyclic4_correct": true,
+      "top3_doc_ids": [
+        86233,
+        160149,
+        141141
+      ],
+      "top3_passages": [
+        "Medical Textbook (Pathology): 20,000. There are roughly 3.2 billion DNA base pairs in the human genome. Out of the total genome there are about 20,000 protein encoding genes,which comprises only 1.5% of the genome.",
+        "Medical Textbook (Biochemistry): 6 billion base pairs (bp). Genome Base pairs Haploid 3 billion Diploid 3 x 2 = 6 billion Value based one liners Average size of a gene 27,000 bp Protein coding genes 19000 to 20000 only Percentage of exons 1-2 % of human genome Percentage of Adenine in human genome 54 % (most abundant base) Longest/ largest gene DMD gene, codes for muscle protein Dystrophin Largest protein Titin Most ",
+        "Medical Textbook (Biochemistry): 3 billion. Ans: b (3 billion) Ref: Harper, 23rd ed, p. 411Total number of base pairs in haploid (23) human chromosome - 3 billion base pairs.Total number of genes - 30,000. (Harrison, 386)Total number of genes in human chromosome - 1,00,000 genes (Harper)Some useful tips about structure of nucleotides:* Uracil + CH3 (Methylation) - Thymine* Uracil + NH2 (amine) - Cytos"
+      ]
+    },
+    {
+      "idx": 57,
+      "question_id": "1bf69f9a-987c-48fc-9356-d62d2148c3a6",
+      "question": "Tracheal secretions should be suctioned for:",
+      "gold_letter": "A",
+      "gold_option": "10-15 seconds",
+      "all_options_in_ctx": {
+        "A": 1,
+        "B": 0,
+        "C": 0,
+        "D": 0
+      },
+      "cyclic4_correct": true,
+      "top3_doc_ids": [
+        160993,
+        115806,
+        87386
+      ],
+      "top3_passages": [
+        "Medical Textbook (Anaesthesia): 10-15 seconds. Minimal time should be taken for suctioning to minimize the time period of ventilator disconnect . 10 secs is enough time for suctioning.",
+        "Medical Textbook (Pediatrics): bc. Suctioning during resuscitation \n\nThe mouth and nose should be suctioned\nThe mouth is suctioned first to ensure that there is nothing for the infant to aspirate when the nose is suctioned.\nOne should not insert the catheter very deep in mouth or nose for suction --> Stimulation of posterior pharynx during the first few minutes after birth can produce a vagal",
+        "Medical Textbook (Anaesthesia): 3.5,12. For full term infant, oral tracheal tube should have internal diameter of 3.5 mm and a length of 12 cm."
+      ]
+    },
+    {
+      "idx": 59,
+      "question_id": "0e7917ea-310b-4477-9897-f4901f728448",
+      "question": "Which of the following lipoproteins does not move towards charged end in electrophoresis?",
+      "gold_letter": "D",
+      "gold_option": "Chylomicrons",
+      "all_options_in_ctx": {
+        "A": 0,
+        "B": 0,
+        "C": 0,
+        "D": 1
+      },
+      "cyclic4_correct": false,
+      "top3_doc_ids": [
+        173839,
+        127703,
+        170874
+      ],
+      "top3_passages": [
+        "Medical Textbook (Biochemistry): B-100. The major apolipoproteins of HDL (a-lipoprotein) are apoAs. The main apolipoprotein of LDL (b-lipoprotein) is apo B (B-100), which is found also in VLDL. Chylomicrons contain a truncated form of apo B (B-48) that is synthesized in the intestine, while B-100 is synthesized in the liver. Apo E, found in VLDL, HDL, chylomicrons, and chylomicron remnants, is als",
+        "Medical Textbook (Biochemistry): HDL. High density lipoprotein molecules have highest electrophoretic mobility. It has least lipid content and highest protein content.",
+        "Medical Textbook (Pathology): VLDLs. Although both chylomicrons and VLDLs are triglyceride-rich lipoproteins, the liver, unlike the small intestine, produces only VLDLs. LDLs and HDLs are not triglyceride-rich lipoproteins. Chylomicron remnants are generated in the circulation by the metabolism of chylomicrons."
+      ]
+    },
+    {
+      "idx": 64,
+      "question_id": "57eb90ac-1025-4763-b6c0-ff5581ef2126",
+      "question": "The most common bone tumor that occurs in children is:",
+      "gold_letter": "A",
+      "gold_option": "Osteosarcoma",
+      "all_options_in_ctx": {
+        "A": 1,
+        "B": 0,
+        "C": 0,
+        "D": 1
+      },
+      "cyclic4_correct": true,
+      "top3_doc_ids": [
+        80089,
+        137803,
+        117274
+      ],
+      "top3_passages": [
+        "Medical Textbook (Surgery): Secondaries. Osteosarcoma is the most frequent bone cancer occurring in children and adolescents aged 10-20 years, whereas in children younger than 10 years, the most common primary bone cancer is Ewing sarcoma. Multiple myeloma is the most common primary neoplasm of the skeletal system. The disease is a malignancy of plasma cells. Osteoid osteoma is a benign bone-formin",
+        "Medical Textbook (Pediatrics): None of above. Ans. is 'd' i.e., None of the above o Osteosarcoma is the most common primary' malignant bone tumor in children and adolescent, followed by Ewing sarocoma.o In children less than 10 year, Ewing Sarcoma is more common than osteosarcoma.o NeuroblastomaEmbryonal cancer of peripheral sympathetic nervous system.Third most common pediatric cancer account for about",
+        "Medical Textbook (Pathology): Ewing sarcoma. The histologic appearance is characteristic of an Ewing sarcoma. The radiologic appearance of the mass in this child is typical for a malignant tumor, with bone destruction and soft-tissue extension. The two most common malignant bone tumors in children are osteosarcoma and Ewing sarcoma. Osteosarcomas typically arise in the metaphyseal region, whereas Ewing"
+      ]
+    },
+    {
+      "idx": 66,
+      "question_id": "069b7516-54c4-4e5d-acf7-a7c92fdd2a01",
+      "question": "The zygomatic bone does not articulate with:",
+      "gold_letter": "C",
+      "gold_option": "Nasal bone",
+      "all_options_in_ctx": {
+        "A": 0,
+        "B": 0,
+        "C": 1,
+        "D": 0
+      },
+      "cyclic4_correct": true,
+      "top3_doc_ids": [
+        152322,
+        121969,
+        159155
+      ],
+      "top3_passages": [
+        "Medical Textbook (ENT): Zygoma. Tripod fracture is seen in zygoma fractures as it involves three sites:Zygomatico-maxillary, Zygomatico-frontal, Zygomatico-temporal(arch)Presentation: Flattening of malar prominence, Step deformity, infra orbital paraesthesia, epistaxis, trismus.Ref: Hazarika; 3rd ed; Pg 359",
+        "Medical Textbook (Anatomy): 22. The skull consists of the 22 bonesCalvaria or brain case Facial skeleton Unpaired1.Frontal2.Occipital3.Sphenoid4.EthmoidUnpaired1.Mandible2.VomerPaired1.Parietal2.TemporalPaired1.Maxilla 2.Zygomatic 3.Nasal 4.Lacrimal 5.Palatine 6.Inferior nasal conchaReference: Chaurasia; 6th edition; Chapter 1; Osteology of head and neck",
+        "Medical Textbook (Surgery): Zygomatic bone. ANSWER: (A) Zygomatic boneREF: Essentials of skeletal radiology Lippincott Williams & Wilkins page. 708Fractures of Zygoma (Tripod Fracture):After nasal bones, zygoma is the secondmost frequently fractured bone. Usually, the cause is direct trauma. Fracture line passes through zygomaticofrontal suture, orbital floor, infraorbital margin and foramen, anterior"
+      ]
+    },
+    {
+      "idx": 68,
+      "question_id": "21af7233-ae6a-423c-ae71-9148212a37c3",
+      "question": "Calcium ions triggers muscle contraction by binding to:",
+      "gold_letter": "C",
+      "gold_option": "Troponin",
+      "all_options_in_ctx": {
+        "A": 0,
+        "B": 1,
+        "C": 1,
+        "D": 1
+      },
+      "cyclic4_correct": true,
+      "top3_doc_ids": [
+        74010,
+        109928,
+        41389
+      ],
+      "top3_passages": [
+        "Medical Textbook (Anatomy): Calcium binds to tropomyosin to initiate muscle contraction. Ans. d. Calcium binds to tropomyosin to initiate muscle contraction Calcium binds to Troponin C, not to the tropomyosin, to initiate muscle contraction. `The calcium released into the cytosol binds to Troponin C by the actin filaments, to allow cross-bridge cycling, producing force and, in some situations, motion.'",
+        "Medical Textbook (Physiology): Calcium binds to tropomyosin to initiate muscle contraction. Ans. d. Calcium hinds to tropomyosin to initiate muscle contraction (Ref: Guyton 11/e p90)Calcium binds to Troponin C, not to the tropomyosin, to initiate muscle contraction.'The calcium released into the cytosol binds to Troponin C by the actin filaments, to allow cross-bridge cycling, producing force and, in some situations, motion.'Excitation-Contractio",
+        "Medical Textbook (Physiology): Calcium binds to tropomyosin to initiate muscle contraction.. Calcium binds to troponin to initiate exitation contraction coupling Troponin is present attached to tropomyosine Ref:Guyton and Hall textbook of medical physiology 12th edition,page number:82,83,84"
+      ]
+    }
+  ],
+  "corpus_builder_script": "backend/phase2g_medical_rag_faiss.py",
+  "corpus_source_prefix_counts_top15": {
+    "Clinical Fact": 33427,
+    "Medical Textbook (Medicine)": 13898,
+    "Medical Textbook (Surgery)": 12692,
+    "Medical Textbook (Anatomy)": 12546,
+    "Medical Textbook (Pathology)": 11478,
+    "Medical Textbook (Pharmacology)": 10287,
+    "Medical Textbook (Social & Preventive Medicine)": 9256,
+    "Medical Textbook (Microbiology)": 8781,
+    "Medical Textbook (Gynaecology & Obstetrics)": 7882,
+    "Medical Textbook (Physiology)": 7563,
+    "Medical Textbook (Biochemistry)": 7187,
+    "Medical Textbook (Pediatrics)": 7072,
+    "Medical Textbook (Ophthalmology)": 5284,
+    "Medical Textbook (ENT)": 4261,
+    "Medical Textbook (Forensic Medicine)": 4008
+  },
+  "answer_key_doc_examples_with_ids": [
+    {
+      "doc_id": 33545,
+      "source_prefix": "Medical Textbook (Surgery)",
+      "snippet": "Medical Textbook (Surgery): Aspirin. Answer: c) Aspirin (SCHWARTZ 19TH ED, P-1525; SABISTON 19TH ED, P-895)Granulomatous or Subacute or De Quervain's thyroiditisMost commonly occurs in 30- 40 year-old womenStrong association with the HLA-B35Fever with Sudden or gradual onset of neck painH/o precedin",
+      "source_id": "medvision-rag-v1.0-trainbank::doc_033545",
+      "dataset": "openlifescienceai/medmcqa:train",
+      "original_record_id": "doc_idx_33545",
+      "passage_sha256": "97c52251dd7fae4f"
+    },
+    {
+      "doc_id": 33553,
+      "source_prefix": "Medical Textbook (Physiology)",
+      "snippet": "Medical Textbook (Physiology): Flocculonodular Lobe. Ans:A (Flocculonodular Lobe) Ref: Pal GK. Cerbellurn. In: Textbook of Medical Physiology. Ahuja Publishing House. 2007: 116: 871.Explanation:Functional Division of CerebellumVestibulo cerebellum/Arch-cerebellum (Flocculonodular lobe)Connections wi",
+      "source_id": "medvision-rag-v1.0-trainbank::doc_033553",
+      "dataset": "openlifescienceai/medmcqa:train",
+      "original_record_id": "doc_idx_33553",
+      "passage_sha256": "9ba79b6eb6f0535f"
+    },
+    {
+      "doc_id": 33561,
+      "source_prefix": "Medical Textbook (Anatomy)",
+      "snippet": "Medical Textbook (Anatomy): Subdural space. Ans:A.)Subdural Perilymph drains into subarachnoid space through the aqueduct of cochlea... Endolymph is absorbed in subdural space.",
+      "source_id": "medvision-rag-v1.0-trainbank::doc_033561",
+      "dataset": "openlifescienceai/medmcqa:train",
+      "original_record_id": "doc_idx_33561",
+      "passage_sha256": "403c83c7c5569bd9"
+    },
+    {
+      "doc_id": 33581,
+      "source_prefix": "Medical Textbook (Social & Preventive Medicine)",
+      "snippet": "Medical Textbook (Social & Preventive Medicine): Alma ata. Answer: A. Alma ata. (Ref Park's Textbook of PSM 22nd/Pg.832)The new approach to health care came into existence in 1978 following an international conference at Alma Ata (USSR).The Alma-Ata conference defines the primary health care as foll",
+      "source_id": "medvision-rag-v1.0-trainbank::doc_033581",
+      "dataset": "openlifescienceai/medmcqa:train",
+      "original_record_id": "doc_idx_33581",
+      "passage_sha256": "7a5ab72be58e8215"
+    },
+    {
+      "doc_id": 33585,
+      "source_prefix": "Medical Textbook (Unknown)",
+      "snippet": "Medical Textbook (Unknown): Anti neuronal ab. Ans.A Anti neuronal ab (Ref: Harrison's Internal medicine 18th/Table 319-1; 17th edition, P. 2076). Autoantibodies in Systemic Lupus Erythematosus (SLE) Antibody Prevalence, % Antigen Recognized Clinical Utility Antinuclear antibodies 98 Multiple nuclear",
+      "source_id": "medvision-rag-v1.0-trainbank::doc_033585",
+      "dataset": "openlifescienceai/medmcqa:train",
+      "original_record_id": "doc_idx_33585",
+      "passage_sha256": "ba175fc2faef5034"
+    },
+    {
+      "doc_id": 33803,
+      "source_prefix": "Medical Textbook (Forensic Medicine)",
+      "snippet": "Medical Textbook (Forensic Medicine): ATPase. Answer: a) ATPase (KS NARAYAN REDDY 33rd ED P-327)In antemortem burns, skin adjacent to the burnt area will show increase in the following enzymes after certain time intervalEnzymeAge of wounds (hour)ATPases1Esterases1Aminopeptidases2Acid phosphatase4Alk",
+      "source_id": "medvision-rag-v1.0-trainbank::doc_033803",
+      "dataset": "openlifescienceai/medmcqa:train",
+      "original_record_id": "doc_idx_33803",
+      "passage_sha256": "4d4ad2c30bc325bd"
+    },
+    {
+      "doc_id": 33906,
+      "source_prefix": "Medical Textbook (Ophthalmology)",
+      "snippet": "Medical Textbook (Ophthalmology): Capsulorhexis. Answer- C. CapsulorhexisThe most commonly used technique for anterior capsulotomy during phacoemulsification is continuous curvilinear capsulorhexis (CCC).",
+      "source_id": "medvision-rag-v1.0-trainbank::doc_033906",
+      "dataset": "openlifescienceai/medmcqa:train",
+      "original_record_id": "doc_idx_33906",
+      "passage_sha256": "ea30056d82a43e27"
+    },
+    {
+      "doc_id": 34176,
+      "source_prefix": "Medical Textbook (Ophthalmology)",
+      "snippet": "Medical Textbook (Ophthalmology): Limbus. Answer- A. LimbusLimbal stem cells (also called corneal epithelial stem cells) are stem cells located in the basal epithelial layer of the corneal limbus.Proliferation of limbal stem cells maintains the cornea; for example, replacing cells that are lost tear",
+      "source_id": "medvision-rag-v1.0-trainbank::doc_034176",
+      "dataset": "openlifescienceai/medmcqa:train",
+      "original_record_id": "doc_idx_34176",
+      "passage_sha256": "f2f17bc2f8536e23"
+    },
+    {
+      "doc_id": 34207,
+      "source_prefix": "Medical Textbook (Surgery)",
+      "snippet": "Medical Textbook (Surgery): Most impoant factor for development of deep venous thrombosis is hospital admission. Answer- B. Most impoant factor for development of deep venous thrombosis is hospital admissionVenous thrombosis is the formation of a semi-solid coagulum within the venous system and may ",
+      "source_id": "medvision-rag-v1.0-trainbank::doc_034207",
+      "dataset": "openlifescienceai/medmcqa:train",
+      "original_record_id": "doc_idx_34207",
+      "passage_sha256": "cb333ea420dc93e5"
+    },
+    {
+      "doc_id": 34230,
+      "source_prefix": "Medical Textbook (Surgery)",
+      "snippet": "Medical Textbook (Surgery): Lymphangiosarcoma. Answer- A. LymphangiosarcomaAngiosarcoma is a vascular tumor which may arise de novo in the breast or as a complication of the radiation therapy.",
+      "source_id": "medvision-rag-v1.0-trainbank::doc_034230",
+      "dataset": "openlifescienceai/medmcqa:train",
+      "original_record_id": "doc_idx_34230",
+      "passage_sha256": "5e6156432f8bc033"
+    },
+    {
+      "doc_id": 34248,
+      "source_prefix": "Medical Textbook (Biochemistry)",
+      "snippet": "Medical Textbook (Biochemistry): It helps in membrane transpo. Ans:C.)It helps in membrane transpo. GLUTATHIONE: Glutathione is a tripeptide made up of glutamate, cysteine and glycine (T-glutamyl-cysteinyl-glycine). Glutathione is present in all mammalian cells except neurons. The sulphydryl (-SH) g",
+      "source_id": "medvision-rag-v1.0-trainbank::doc_034248",
+      "dataset": "openlifescienceai/medmcqa:train",
+      "original_record_id": "doc_idx_34248",
+      "passage_sha256": "20f979355e435994"
+    },
+    {
+      "doc_id": 34270,
+      "source_prefix": "Medical Textbook (Surgery)",
+      "snippet": "Medical Textbook (Surgery): Lactiferous ducts. Answer- B. Lactiferous ductsIt is seen in breast carcinoma due to infltration of the lactiferous ducts by carcinoma.It is due to extention of the growth along the lactiferous ducts and subsequent fibrosis.Nipple retraction is circumferential in carcinom",
+      "source_id": "medvision-rag-v1.0-trainbank::doc_034270",
+      "dataset": "openlifescienceai/medmcqa:train",
+      "original_record_id": "doc_idx_34270",
+      "passage_sha256": "755530d54a6f14fb"
+    },
+    {
+      "doc_id": 34518,
+      "source_prefix": "Medical Textbook (Surgery)",
+      "snippet": "Medical Textbook (Surgery): Hyperglycemia. Answer- C. HyperglycemiaBeckwidth- Wiedemann syndrome is an overgrowth syndrome that is characterized by visceromegaly, macroglossia, macrosomia,mphalocele and hyperinsulinemic hypoglycemia.",
+      "source_id": "medvision-rag-v1.0-trainbank::doc_034518",
+      "dataset": "openlifescienceai/medmcqa:train",
+      "original_record_id": "doc_idx_34518",
+      "passage_sha256": "4e94029ceb643679"
+    },
+    {
+      "doc_id": 34521,
+      "source_prefix": "Medical Textbook (Surgery)",
+      "snippet": "Medical Textbook (Surgery): Migraine. Answer-D. MigraineCommon causes include-Aneurysm rupture and subarachnoid hemorrhageBrain tumorEncephalitisHead injuryHydrocephalus (increased fluid around the brain)Hypeensive brain hemorrhageIntraventricularhemorrhageMeningitisSubdural hematomaStatus epileptic",
+      "source_id": "medvision-rag-v1.0-trainbank::doc_034521",
+      "dataset": "openlifescienceai/medmcqa:train",
+      "original_record_id": "doc_idx_34521",
+      "passage_sha256": "f6f76318d70a2961"
+    },
+    {
+      "doc_id": 34528,
+      "source_prefix": "Medical Textbook (Medicine)",
+      "snippet": "Medical Textbook (Medicine): Aplastic anemia. Answer- C. Aplastic anemiaThe patient in question is having Pancytopenia (anemia, leukopenia and thrombocytopenia) - Feature of Aplastic anemia.",
+      "source_id": "medvision-rag-v1.0-trainbank::doc_034528",
+      "dataset": "openlifescienceai/medmcqa:train",
+      "original_record_id": "doc_idx_34528",
+      "passage_sha256": "9a956346c73dac11"
+    },
+    {
+      "doc_id": 34582,
+      "source_prefix": "Medical Textbook (Medicine)",
+      "snippet": "Medical Textbook (Medicine): 4 hour. Answer- D. 4 hour Once the blood bag is opened hy puncturing one of the sealed pos, the platelets must be administered within 4 hours",
+      "source_id": "medvision-rag-v1.0-trainbank::doc_034582",
+      "dataset": "openlifescienceai/medmcqa:train",
+      "original_record_id": "doc_idx_34582",
+      "passage_sha256": "f7e8b2cde83b930b"
+    },
+    {
+      "doc_id": 34699,
+      "source_prefix": "Medical Textbook (Medicine)",
+      "snippet": "Medical Textbook (Medicine): Rhabdomyolysis. Answer- D. RhabdomyolysisIf a urine dipstick of the red supernatant is positive for heme, the patient has either hemoglobinuria or myoglobinuria.If a urine dipstick of the red supernatant is negative for heme, the patient may have one of a variety of unus",
+      "source_id": "medvision-rag-v1.0-trainbank::doc_034699",
+      "dataset": "openlifescienceai/medmcqa:train",
+      "original_record_id": "doc_idx_34699",
+      "passage_sha256": "be1c9d80fdea315c"
+    },
+    {
+      "doc_id": 34901,
+      "source_prefix": "Medical Textbook (Surgery)",
+      "snippet": "Medical Textbook (Surgery): Inferior mesenteric artery. Answer: b) Inferior mesenteric artery (SABISTON 19th ED, P-1299; SCHWARTZ 10TH ED, P-1187)Left Colectomy.For lesions or disease states confined to the distal transverse colon, splenic flexure, or descending colon, a left colectomy is performed.",
+      "source_id": "medvision-rag-v1.0-trainbank::doc_034901",
+      "dataset": "openlifescienceai/medmcqa:train",
+      "original_record_id": "doc_idx_34901",
+      "passage_sha256": "5148a9fd713f3327"
+    },
+    {
+      "doc_id": 34954,
+      "source_prefix": "Medical Textbook (Pathology)",
+      "snippet": "Medical Textbook (Pathology): Chromatin condensation. Answer- C. Chromatin condensationBoth form of cell death, finally lead to nuclear changes i.e. chromatin condensation (pyknosis).",
+      "source_id": "medvision-rag-v1.0-trainbank::doc_034954",
+      "dataset": "openlifescienceai/medmcqa:train",
+      "original_record_id": "doc_idx_34954",
+      "passage_sha256": "f489ca3e36ddbaeb"
+    },
+    {
+      "doc_id": 35097,
+      "source_prefix": "Medical Textbook (Surgery)",
+      "snippet": "Medical Textbook (Surgery): Deltoid Ligament. Answer- A. Deltoid LigamentDeltoid ligament injuries involve the deltoid ligament that forms the medial pa of the anHe joint.It attaches the medial malleolus to multiple tarsal bones.It occurs due to eversion and/orpronation injury, or can be associated ",
+      "source_id": "medvision-rag-v1.0-trainbank::doc_035097",
+      "dataset": "openlifescienceai/medmcqa:train",
+      "original_record_id": "doc_idx_35097",
+      "passage_sha256": "62b72eb1ed5c4e8d"
+    }
+  ],
+  "corpus_version": "medvision-rag-v1.0-trainbank",
+  "faiss_index_sha256": "9b7b1f9e5109beaaed63756971f6d994da5b8348dc6a282ce32abbf3c8ba23d7",
+  "docs_json_sha256": "e18b26ab0ac15c6e8b1729da2d0fb761b14962c046bc7535a4f8de95ee29b471"
+}

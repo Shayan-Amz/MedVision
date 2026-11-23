@@ -1,0 +1,8 @@
+{
+  "w_v2": 0.35,
+  "w_v3": 0.65,
+  "adapter": "soup_35",
+  "pubmedqa": 72.0,
+  "medmcqa": 56.0,
+  "avg": 64.0
+}

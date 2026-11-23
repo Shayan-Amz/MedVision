@@ -1,0 +1,84 @@
+version: '3.9'
+
+services:
+  postgres:
+    image: pgvector/pgvector:pg16
+    container_name: medvision_postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER:-medvision_admin}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-medvision_secret_2026}
+      POSTGRES_DB: ${POSTGRES_DB:-medvision_db}
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+      - ./scripts/init_db.sql:/docker-entrypoint-initdb.d/init_db.sql
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U medvision_admin -d medvision_db"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  redis:
+    image: redis:7.2-alpine
+    container_name: medvision_redis
+    restart: unless-stopped
+    ports:
+      - "6379:6379"
+    volumes:
+      - redisdata:/data
+
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: medvision_backend
+    restart: unless-stopped
+    env_file:
+      - .env.example
+    environment:
+      DATABASE_URL: postgresql+asyncpg://medvision_admin:medvision_secret_2026@postgres:5432/medvision_db
+      REDIS_URL: redis://redis:6379/0
+      N8N_WEBHOOK_BASE_URL: http://n8n:5678/webhook
+      CUDA_VISIBLE_DEVICES: "0"
+    ports:
+      - "8000:8000"
+    depends_on:
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_started
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: 1
+              capabilities: [gpu]
+    volumes:
+      - ./backend:/app
+      - model_cache:/root/.cache/huggingface
+
+  n8n:
+    image: n8nio/n8n:latest
+    container_name: medvision_n8n
+    restart: unless-stopped
+    ports:
+      - "5678:5678"
+    environment:
+      - N8N_HOST=localhost
+      - N8N_PORT=5678
+      - N8N_PROTOCOL=http
+      - NODE_ENV=production
+      - WEBHOOK_URL=http://localhost:5678/
+      - GENERIC_TIMEZONE=UTC
+    volumes:
+      - n8n_data:/home/node/.n8n
+      - ./n8n_workflows:/workflows
+
+volumes:
+  pgdata:
+  redisdata:
+  n8n_data:
+  model_cache:
