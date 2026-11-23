@@ -57,7 +57,6 @@ python final_release_consistency_audit.py
 ```
 
 # Open http://127.0.0.1:8000
-```
 
 # MedVision & Clinical LLM Studio (v4.0): A Modular Multimodal Clinical AI Suite on a Single 12 GB Consumer GPU
 
